@@ -4,8 +4,8 @@ from flask_login import UserMixin
 
 
 follows = db.Table('follows',
-    db.Column('follow_a_id', db.Integer, ForeignKey('users.id'), primary_key=True),
-    db.Column('follow_b_id', db.Integer, ForeignKey('users.id'), primary_key=True)
+    db.Column('follow_a_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('follow_b_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -23,8 +23,8 @@ class User(db.Model, UserMixin):
 
   friends = db.relationship(
     'User', secondary=follows,
-    primaryJoin=id==follows.c.follow_a_id,
-    secondaryjoin=id==follows.c.follow_b_id
+    primaryjoin = (id==follows.c.follow_a_id),
+    secondaryjoin= (id==follows.c.follow_b_id)
   )
 
 
