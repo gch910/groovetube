@@ -15,7 +15,7 @@ class Video(db.Model):
     user = db.relationship('User', back_populates='videos')
     comments = db.relationship('Comment', back_populates='video')
     likes = db.relationship('Like')
-    liked_by = db.relationship('User', secondary='Like')
+    # liked_by = db.relationship('User', secondary='Like')
 
     def to_dict(self):
         return {
@@ -27,7 +27,7 @@ class Video(db.Model):
             "category_id": self.category_id,
             "user": self.user,
             "comments": self.comments,
-            "liked_by": self.liked_by
+            "likes": self.likes
         }
 
 

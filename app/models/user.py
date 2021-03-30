@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
   videos = db.relationship('Video', back_populates='user')
   comments = db.relationship('Comment', back_populates='user')
   likes = db.relationship('Like')
-  liked_videos = db.relationship('Video', secondary='Like')
+  # liked_videos = db.relationship('Video', backref=db.backref("videos"), secondary='Like')
 
   friends = db.relationship(
     'User', secondary=follows,

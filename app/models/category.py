@@ -7,6 +7,8 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
 
+    videos = db.relationship("Video")
+
     def to_dict(seld):
         return {
             "id": self.id,
