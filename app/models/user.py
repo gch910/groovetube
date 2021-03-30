@@ -2,6 +2,12 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
+follows = db.Table('follows',
+    db.Column('follow_a_id', db.Integer, ForeignKey('users.id'), primary_key=True),
+    db.Column('follow_b_id', db.Integer, ForeignKey('users.id'), primary_key=True)
+)
+
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
@@ -9,6 +15,17 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+
+  videos = db.relationship('Video', back_populates='user')
+  comments = db.relationship('Comment', back_populates='user')
+  likes = db.relationship('Like')
+  liked_videos = db.relationship('Video', secondary='Like')
+
+  friends = db.relationship(
+    'User', secondary=follows,
+    primaryJoin=id==follows.c.follow_a_id,
+    secondaryjoin=id==follows.c.follow_b_id
+  )
 
 
   @property
@@ -29,5 +46,8 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
+      "email": self.email,
+      "videos": self.videos,
+      "comments": self.comments,
+      "liked_videos": self.liked_videos
     }
