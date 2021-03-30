@@ -25,9 +25,9 @@ class Video(db.Model):
             "thumbnail_path": self.thumbnail_path,
             "user_id": self.user_id,
             "category_id": self.category_id,
-            "user": self.user,
-            "comments": self.comments,
-            "likes": self.likes
+            # "user": self.user,
+            # "comments": self.comments,
+            # "likes": self.likes
         }
 
 
