@@ -1,0 +1,25 @@
+.active {
+    color: green;
+}
+
+#side-nav {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-between;
+}
+
+#top-nav {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+#logout-button {
+    width: 100px;
+}
+
+#search-bar {
+    height: 30px;
+}
+

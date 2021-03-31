@@ -10,7 +10,7 @@ const Home = () => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(()=> {
-        dispatch(getVideo(2)).then(() => setIsLoaded(true))
+        dispatch(getVideo(1)).then(() => setIsLoaded(true))
     }, [dispatch])
 
     console.log(video)

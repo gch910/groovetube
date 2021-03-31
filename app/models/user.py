@@ -47,7 +47,6 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      "videos": self.videos,
-      "comments": self.comments,
-      "liked_videos": self.liked_videos
+      "videos": [video.to_dict() for video in self.videos],
+      "comments": [comment.to_dict() for comment in self.comments]
     }

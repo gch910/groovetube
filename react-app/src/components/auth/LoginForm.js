@@ -1,20 +1,27 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import { useDispatch } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom";
+import { loginUser } from "../../store/session";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch()
+  const [formErrors, setFormErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (!user.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(user.errors);
-    }
+      await dispatch(loginUser(email, password))
+      .then((res) => {
+      if (res?.errors) {
+        setFormErrors(res.errors);
+        return res.errors;
+      } else {
+        return history.push("/");
+      }
+    })
   };
 
   const updateEmail = (e) => {
@@ -32,7 +39,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   return (
     <form onSubmit={onLogin}>
       <div>
-        {errors.map((error) => (
+        {formErrors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
