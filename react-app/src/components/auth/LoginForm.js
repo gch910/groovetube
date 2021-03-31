@@ -19,6 +19,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         setFormErrors(res.errors);
         return res.errors;
       } else {
+        setAuthenticated(true)
         return history.push("/");
       }
     })
