@@ -13,11 +13,11 @@ const Home = () => {
   console.log(sessionUser);
 
   const changeImg = (e) => {
-    e.target.src = e.target.id
-  }
+    e.target.src = e.target.id;
+  };
 
   // const changeGif = (e) => {
-  //   e.target.src = 
+  //   e.target.src =
   // }
 
   useEffect(() => {
@@ -33,21 +33,23 @@ const Home = () => {
   return (
     isLoaded && (
       <div id="home-grid">
-        {userVideos.map(video => (
-        <img 
-        onMouseEnter={changeImg}
-        onMouseLeave={(e) => e.target.src = video.img_path + '.jpg'}
-        id={video.gif_path}
-        className="thumbnail"
-        src={`${video.img_path}.jpg`}/>
+        {userVideos.map((video) => (
+          <div id="thumbnail-div">
+            <img
+              onMouseEnter={changeImg}
+              onMouseLeave={(e) => (e.target.src = video.img_path + ".jpg")}
+              id={video.gif_path}
+              className="thumbnail"
+              src={`${video.img_path}.jpg`}
+            />
+            <div id="thumbnail-h3-div">
+              <h3>{video.title}</h3>
+            </div>
+          </div>
         ))}
       </div>
     )
   );
 };
 
-export default Home
-
-
-
-
+export default Home;

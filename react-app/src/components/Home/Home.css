@@ -1,22 +1,21 @@
-#test-video {
-    border: none;
-}
-
-#test-youtube-video {
-    height:400px;
-    width: 600px;
-}
 
 .thumbnail {
-    margin-right: 20px;
-    margin-top: 20px;
+    /* margin-right: 20px;
+    margin-top: 20px; */
 }
 
 #home-grid {
     /* position: absolute; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    top: 100px;
+    /* margin-top: 100px; */
     margin-left: 200px;
-    
+    background-color: #F9F9F9;
+    height: 100vh;
+    align-items: center;
 }
+
+#thumbnail-h3-div {
+    padding: 10px;  
+}
+

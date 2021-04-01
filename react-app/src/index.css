@@ -1,5 +1,10 @@
 /* TODO Add site wide styles */
+body {
+    margin: 0 auto;
+}
 
 .no-outline:focus {
     outline: none;
 }
+
+
