@@ -27,23 +27,23 @@ def search():
 
     r = requests.get(search_url, params=search_params)
 
-    search_videos = r.json()
-    # search_video_ids = [video['id']['videoId'] for video in search_videos]
+    search_videos = r.json()["items"]
+    search_video_ids = [video['id']['videoId'] for video in search_videos]
 
     video_params = {
         'key': os.environ.get('YOUTUBE_API_KEY'),
-        # 'id': search_video_ids,
-        'part': 'snippet, contentDetails',
+        'id': search_video_ids,
+        'part': 'snippet',
         'maxResults': 10
     }
 
     r2 = requests.get(videos_url, params=video_params)
 
-    videos = r2.json()
+    videos = r2.json()["items"]
     
-    # video_data = [{ 'id': video['id']['videoId'],'url': 'https://www.youtube.com/watch?v=' + str(video['id']['videoId']),'thumbnail': video['snippet']['thumbnails']['high']['url'],'title': video['snippet']['title']} for video in videos]
-    
-    return jsonify(search_videos)
+    video_data = [{'id': video['id'],'url': 'https://www.youtube.com/watch?v=' + str(video['id']),'thumbnail': video['snippet']['thumbnails']['high']['url'],'title': video['snippet']['title']} for video in videos]
+    # 
+    return jsonify(video_data)
 
 @youtube_routes.route('/search')
 def video_categories():

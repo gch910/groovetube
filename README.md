@@ -96,3 +96,7 @@ This is the backend for the Flask React project.
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
+
+YOUTUBE_API_KEY=AIzaSyB-cg2PILg2f5Yu9DU8XL1YypjJNqsZ5Bc
+
+apiKey2 = AIzaSyAQbLME48AtbT94bAL-XC2xYp-TKDj5d0E
