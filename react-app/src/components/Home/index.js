@@ -21,6 +21,7 @@ const Home = () => {
             <source src={video.video_path} type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
+            <iframe width="480" height="270" src="//www.youtube.com/embed/adLGHcj_fmA\" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>
         </>
 
     )
