@@ -54,13 +54,13 @@ def video_categories():
         'key': os.environ.get('YOUTUBE_API_KEY'),
         'part': 'snippet',
         'q': 'anderson paak',
-        'maxResults': 1, 
+        'maxResults': 10, 
     }
 
     r = requests.get(search_url, params=search_params)
 
     search_videos = r.json()['items']
-    search_video_ids = [video['id']['videoId'] for video in search_videos]
+    search_video_ids = [video['id'] for video in search_videos]
 
 
     video_params = {

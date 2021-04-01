@@ -6,6 +6,7 @@ class Video(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
+    artist = db.Column(db.String(255), nullable=False)
     video_path = db.Column(db.String(1000), nullable=False)
     thumbnail_path = db.Column(db.String(1000), default="https://www.clipartmax.com/png/middle/309-3096799_play-icon-video-play-button-youtube.png")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -21,6 +22,7 @@ class Video(db.Model):
         return {
             "id": self.id,
             "title": self.title,
+            "artist": self.artist,
             "video_path": self.video_path,
             "thumbnail_path": self.thumbnail_path,
             "user_id": self.user_id,
