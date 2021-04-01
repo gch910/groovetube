@@ -12,6 +12,14 @@ const Home = () => {
 
   console.log(sessionUser);
 
+  const changeImg = (e) => {
+    e.target.src = e.target.id
+  }
+
+  // const changeGif = (e) => {
+  //   e.target.src = 
+  // }
+
   useEffect(() => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -24,10 +32,13 @@ const Home = () => {
 
   return (
     isLoaded && (
-      <div>
+      <div id="home-grid">
         {userVideos.map(video => (
         <img 
-        onMouseEnter={() => setImage(video.gif_path)}
+        onMouseEnter={changeImg}
+        onMouseLeave={(e) => e.target.src = video.img_path + '.jpg'}
+        id={video.gif_path}
+        className="thumbnail"
         src={`${video.img_path}.jpg`}/>
         ))}
       </div>
