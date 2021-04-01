@@ -7,15 +7,34 @@
 #home-grid {
     /* position: absolute; */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     /* margin-top: 100px; */
     margin-left: 200px;
-    background-color: #F9F9F9;
+    /* background-color: #F9F9F9; */
+    background-color: rgb(190, 190, 190); 
     height: 100vh;
+    align-items: start;
+    padding-top: 20px;
+}
+
+#thumbnail-div {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
     align-items: center;
+
+}
+
+#thumbnail-div > * {
+    width: 300px;
 }
 
 #thumbnail-h3-div {
     padding: 10px;  
+}
+
+#thumbnail-h3-link {
+    text-decoration: none;
+    color: rgb(48, 48, 48);
 }
 

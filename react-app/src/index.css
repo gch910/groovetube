@@ -1,6 +1,9 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap');
+
 body {
     margin: 0 auto;
+    font-family: 'Overpass', sans-serif;
 }
 
 .no-outline:focus {
