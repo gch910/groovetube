@@ -8,7 +8,8 @@ class Video(db.Model):
     title = db.Column(db.String(255), nullable=False)
     artist = db.Column(db.String(255), nullable=False)
     video_path = db.Column(db.String(1000), nullable=False)
-    thumbnail_path = db.Column(db.String(1000), default="https://www.clipartmax.com/png/middle/309-3096799_play-icon-video-play-button-youtube.png")
+    img_path = db.Column(db.String(1000), default="https://www.clipartmax.com/png/middle/309-3096799_play-icon-video-play-button-youtube.png")
+    gif_path = db.Column(db.String(1000), default="https://www.clipartmax.com/png/middle/309-3096799_play-icon-video-play-button-youtube.png")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
 
@@ -24,7 +25,8 @@ class Video(db.Model):
             "title": self.title,
             "artist": self.artist,
             "video_path": self.video_path,
-            "thumbnail_path": self.thumbnail_path,
+            "img_path": self.img_path,
+            "gif_path": self.gif_path,
             "user_id": self.user_id,
             "category_id": self.category_id,
             # "user": self.user,

@@ -100,3 +100,9 @@ This is the backend for the Flask React project.
 YOUTUBE_API_KEY=AIzaSyB-cg2PILg2f5Yu9DU8XL1YypjJNqsZ5Bc
 
 apiKey2 = AIzaSyAQbLME48AtbT94bAL-XC2xYp-TKDj5d0E
+
+/* // <img src="https://i.ytimg.com/an_webp/ferZnZ0_rSM/mqdefault_6s.webp?du=3000&sqp=CITRl4MG&rs=AOn4CLCZdV_F3sJRzv5WoatVPSWPFjptEg"/>
+// <iframe id="test-youtube-video" width="480" height="270" src="//www.youtube.com/embed/adLGHcj_fmA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>
+// <iframe id="test-youtube-video" width="480" height="270" src="//www.youtube.com/embed/ferZnZ0_rSM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>
+// <iframe id="test-youtube-video" width="480" height="270" src="//www.youtube.com/embed/-wVraXhkjMI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>
+// formula for ifram src "//www.youtube.com/embed/adLGHcj_fmA\"
