@@ -48,6 +48,7 @@ requests = "==2.25.1"
 rsa = "==4.7.2"
 uritemplate = "==3.0.1"
 urllib3 = "==1.26.4"
+boto3 = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
