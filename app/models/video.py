@@ -1,4 +1,6 @@
 from .db import db
+from .collection import user_collection
+from .follows import follows
 
 class Video(db.Model):
 
@@ -17,6 +19,7 @@ class Video(db.Model):
     user = db.relationship('User', back_populates='videos')
     comments = db.relationship('Comment', back_populates='video')
     likes = db.relationship('Like')
+    user_collection = db.relationship("User", secondary=user_collection, back_populates="video_collection")
     # liked_by = db.relationship('User', secondary='Like')
 
     def to_dict(self):
