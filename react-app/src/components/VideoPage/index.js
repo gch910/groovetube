@@ -19,10 +19,8 @@ const VideoPage = () => {
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <div id="video-h1-div">
-          <h1 id="video-h1">Video Page</h1>
-        </div>
-        <div>
+        <div id="video-outer-div">
+            <h2 id="video-h2">{video.title}</h2>
           <div id="current-video-div">
             <iframe
               id="current-video"

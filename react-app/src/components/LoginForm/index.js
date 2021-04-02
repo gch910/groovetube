@@ -2,27 +2,27 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { loginUser } from "../../store/session";
+import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [formErrors, setFormErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
-      await dispatch(loginUser(email, password))
-      .then((res) => {
+    await dispatch(loginUser(email, password)).then((res) => {
       if (res?.errors) {
         setFormErrors(res.errors);
         return res.errors;
       } else {
-        setAuthenticated(true)
+        setAuthenticated(true);
         return history.push("/");
       }
-    })
+    });
   };
 
   const updateEmail = (e) => {
@@ -33,20 +33,20 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  // if (authenticated) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
-    <form onSubmit={onLogin}>
+    <form id="login-form" onSubmit={onLogin}>
       <div>
         {formErrors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
         <input
+          className="login-field"
           name="email"
           type="text"
           placeholder="Email"
@@ -55,15 +55,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
         <input
+          className="login-field"
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <div id="login-button-div">
+          <button id="login-button" type="submit">Login</button>
+        </div>
       </div>
     </form>
   );

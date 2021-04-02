@@ -1,8 +1,23 @@
-#video-h1 {
-  width: 100vw;
-  position: relative;
+#video-h2 {
+
+  /* position: relative;
   left: 80%;
-  margin-bottom: 50px;
+  margin-bottom: 50px; */
+ width: 100%;
+ padding: 0px;
+ position: relative;
+ margin-left: 100px;
+ left: 28%;
+ top: 15px;
+ /* line-height: 1; */
+ text-align: center;
+}
+
+#video-h1-div {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+ 
 }
 
 
@@ -10,17 +25,20 @@
   /* display: flex;
     justify-content: center; */
   /* height: 100vh; */
+  margin-top: 30px;
   position: relative;
   display: flex;
+  justify-content: center;
   left: 30%;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
 }
 
+
 #current-video {
   /* width: 60%;
   height: 40%; */
-  margin-left: 100px;
+  margin-left: 80px;
   /* margin-right: 200px; */
   position: absolute;
   top: 0;
@@ -29,6 +47,8 @@
   height: 100%;
 }
 
+
 #outer-video-div {
     width: 60%;
 }
+
