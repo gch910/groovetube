@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getVideo } from "../../store/videos";
+import IframeResizer from "iframe-resizer-react";
 
 import "./VideoPage.css";
 
@@ -19,19 +20,21 @@ const VideoPage = () => {
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <div id="video-outer-div">
-            <h2 id="video-h2">{video.title}</h2>
-          <div id="current-video-div">
-            <iframe
-              id="current-video"
-              width="100%"
-              height="100%"
-              src={video.video_path}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"
-              allowfullscreen
-            ></iframe>
-          </div>
+        <h2 id="video-h2">{video.title}</h2>
+        <div id="current-video-div">
+          <iframe
+            id="current-video"
+            // width="640px"
+            // height="360px"
+            src={video.video_path}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div id="add-video-button-div">
+          <button>Add Video</button>
         </div>
       </div>
     )

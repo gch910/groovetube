@@ -9,10 +9,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     /* margin-top: 100px; */
-    margin-left: 200px;
     /* background-color: #F9F9F9; */
     background-color: rgb(231, 231, 231); 
-    height: 100vh;
+    /* flex-grow: 1; */
     align-items: start;
     padding-top: 20px;
 }

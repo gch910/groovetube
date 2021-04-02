@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import Nav from "./components/Nav";
+import SideNav from "./components/Nav/SideNav";
+import TopNav from "./components/Nav/TopNav";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -34,41 +36,47 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <ProtectedRoute
-          path="/users"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <Home />
-        </ProtectedRoute>
-        <Route path="/videos/:videoId">
-          <VideoPage />
-        </Route>
-      </Switch>
+      {/* <Nav setAuthenticated={setAuthenticated} /> */}
+      <TopNav setAuthenticated={setAuthenticated} />
+      <div id="content">
+        <SideNav setAuthenticated={setAuthenticated} />
+        <div id="scroll">
+          <Switch>
+            <Route path="/login" exact={true}>
+              <LoginForm
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            </Route>
+            <Route path="/sign-up" exact={true}>
+              <SignUpForm
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            </Route>
+            <ProtectedRoute
+              path="/users"
+              exact={true}
+              authenticated={authenticated}
+            >
+              <UsersList />
+            </ProtectedRoute>
+            <ProtectedRoute
+              path="/users/:userId"
+              exact={true}
+              authenticated={authenticated}
+            >
+              <User />
+            </ProtectedRoute>
+            <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+              <Home />
+            </ProtectedRoute>
+            <Route path="/videos/:videoId">
+              <VideoPage />
+            </Route>
+          </Switch>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }

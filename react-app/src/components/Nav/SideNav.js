@@ -6,7 +6,6 @@ import LogoutButton from "./LogoutButton";
 const SideNav = ({ setAuthenticated }) => {
   const sessionUser = useSelector((state) => state.session.user);
   return (
-    <div>
       <nav id="side-nav">
         <NavLink
           className="nav-link"
@@ -45,10 +44,6 @@ const SideNav = ({ setAuthenticated }) => {
 
         <LogoutButton setAuthenticated={setAuthenticated} />
       </nav>
-      <div id="side-nav-buffer">
-        <h1>hello</h1>
-      </div>
-    </div>
   );
 };
 

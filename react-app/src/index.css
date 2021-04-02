@@ -4,10 +4,23 @@
 body {
     margin: 0 auto;
     font-family: 'Overpass', sans-serif;
+    overflow: hidden;
 }
 
 .no-outline:focus {
     outline: none;
+}
+
+#content {
+    height: calc(100vh - 60px);
+    width: 100vw;
+    display: flex;
+}
+
+#scroll {
+    overflow: auto;
+    width: calc(100vw - 200px);
+    background-color: rgb(231, 231, 231); 
 }
 
 
