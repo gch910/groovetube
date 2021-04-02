@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getVideo } from "../../store/videos";
-import IframeResizer from "iframe-resizer-react";
+
 
 import "./VideoPage.css";
 
@@ -15,7 +15,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     dispatch(getVideo(videoId)).then(() => setIsLoaded(true));
-  });
+  }, [dispatch]);
 
   return (
     isLoaded && (
