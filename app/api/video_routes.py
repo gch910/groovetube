@@ -21,5 +21,9 @@ def user_videos(user_id):
 @video_routes.route("/<int:video_id>")
 def video(video_id):
     video = Video.query.get(video_id)
+    videoDict = video.to_dict()
+    user_id = videoDict["user_id"]
+    user = User.query.get(user_id)
+    videoDict["user"] = user.to_dict()
 
-    return {"video": video.to_dict()}
+    return {"video": videoDict}

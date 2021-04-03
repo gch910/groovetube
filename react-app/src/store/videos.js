@@ -54,7 +54,6 @@ export const getUserVideos = (userId) => async dispatch => {
 }
 
 export const addCollection = (userId, videoId) => async dispatch => {
-  console.log("in collection thunk")
   const res = await fetch(`/api/collection/${videoId}/${userId}`, {
     method: 'POST',
     headers: {
@@ -63,7 +62,6 @@ export const addCollection = (userId, videoId) => async dispatch => {
   })
 
   const data = await res.json();
-  console.log("collection data", data)
 
   dispatch(collectionAdd(data.collection))
 
@@ -80,6 +78,7 @@ export const getAllVideos = () => async dispatch => {
 
   return data;
 }
+
 
 const initialState = {};
 

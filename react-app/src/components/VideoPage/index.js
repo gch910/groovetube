@@ -26,20 +26,21 @@ const VideoPage = () => {
   // if(userVideosArray) setIsAdded(userVideosArray.some(video => video.id == videoId))
 
   useEffect(() => {
-    dispatch(getVideo(videoId));
+    dispatch(getVideo(videoId))
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
   }, [dispatch, isAdded]);
 
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <h2 id="video-h2">{video.title}</h2>
+        <h2 id="video-h2">{video?.title}</h2>
+        <h3>Uploaded By: {video?.user.username}</h3>
         <div id="current-video-div">
           <iframe
             id="current-video"
             // width="640px"
             // height="360px"
-            src={video.video_path}
+            src={video?.video_path}
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"
             frameborder="0"

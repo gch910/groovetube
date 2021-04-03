@@ -34,7 +34,7 @@ class Video(db.Model):
             "user_id": self.user_id,
             "category_id": self.category_id,
             # "user_collection": [something.to_dict() for something in self.user_collection]
-            # "user": self.user,
+            # "user": self.user.to_dict(),
             # "comments": self.comments,
             # "likes": self.likes
         }
