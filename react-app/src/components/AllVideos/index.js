@@ -1,43 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllVideos } from "../../store/videos";
 import { Link } from "react-router-dom";
-import { getUserVideos } from "../../store/videos";
-import "./Home.css";
 
-const Home = () => {
+const AllVideos = () => {
   const dispatch = useDispatch();
+  const videos = useSelector((state) => state.videos.all_videos);
   const sessionUser = useSelector((state) => state.session.user);
-  const videos = useSelector((state) => state.videos.user_videos);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [image, setImage] = useState("");
-
-  console.log(sessionUser);
 
   const changeImg = (e) => {
     e.target.src = e.target.id;
   };
 
-  // const changeGif = (e) => {
-  //   e.target.src =
-  // }
-
   useEffect(() => {
-    dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
+    dispatch(getAllVideos(sessionUser?.id)).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  let userVideos;
-  let videoCollection;
+  let allVideos;
 
-  videos ? (userVideos = Object.values(videos)) : (userVideos = null);
-
-  sessionUser ? videoCollection = sessionUser.video_collection : videoCollection = null;
-
-  if(videoCollection) console.log(videoCollection)
+  videos ? (allVideos = Object.values(videos)) : (allVideos = null);
 
   return (
     isLoaded && (
       <div id="home-grid">
-        {userVideos.map((video) => (
+        {allVideos?.map((video) => (
           <div id="thumbnail-div">
             <Link to={`/videos/${video.id}`}>
               <img
@@ -60,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AllVideos;

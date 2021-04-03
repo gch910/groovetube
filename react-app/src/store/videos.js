@@ -1,5 +1,8 @@
 const VIDEO = "videos/VIDEO";
 const USER_VIDEOS = "videos/USER_VIDEOS"
+const COLLECTION_ADD = "videos/COLLECTION_ADD"
+const ALL_VIDEOS = "videos/ALL_VIDEOS";
+
 
 const video = (video) => {
   return {
@@ -15,6 +18,21 @@ const userVideos = (videos) => {
   }
 }
 
+const collectionAdd = (vids) => (
+  {
+    type: COLLECTION_ADD,
+    vids,
+  }
+)
+
+const allVideos = (videos) => (
+  {
+    type: ALL_VIDEOS,
+    videos,
+  }
+)
+ 
+
 export const getVideo = (videoId) => async (dispatch) => {
   const res = await fetch(`/api/videos/${videoId}`);
 
@@ -26,13 +44,39 @@ export const getVideo = (videoId) => async (dispatch) => {
 };
 
 export const getUserVideos = (userId) => async dispatch => {
-  console.log("in get user videos")
   const res = await fetch(`/api/videos/user/${userId}`)
 
   const data = await res.json();
-  console.log("data get user videos", data)
 
   dispatch(userVideos(data.videos))
+
+  return data;
+}
+
+export const addCollection = (userId, videoId) => async dispatch => {
+  console.log("in collection thunk")
+  const res = await fetch(`/api/collection/${videoId}/${userId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  const data = await res.json();
+  console.log("collection data", data)
+
+  dispatch(collectionAdd(data.collection))
+
+  return data;
+
+}
+
+export const getAllVideos = () => async dispatch => {
+  const res = await fetch("/api/videos");
+
+  const data = await res.json();
+
+  dispatch(allVideos(data.videos));
 
   return data;
 }
@@ -57,7 +101,22 @@ const videosReducer = (state = initialState, action) => {
       newState.user_videos = newObj;
       return newState;
     }
-  
+    case COLLECTION_ADD: {
+      newState = {...state};
+      const collection = action.vids
+      newState.collection = collection;
+      return newState
+    }
+    case ALL_VIDEOS: {
+      newState = {...state}
+      const videos = action.videos;
+      const newObj = {}
+      videos.forEach(video => {
+        newObj[video.id] = video
+      });
+      newState.all_videos = newObj;
+      return newState;
+    }
     default:
       return state;
   }
