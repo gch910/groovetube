@@ -12,6 +12,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.video_routes import video_routes
 from .api.youtube_routes import youtube_routes
+from .api.collection_routes import collection_routes
 # from .api.image_routes import image_routes
 
 from .seeds import seed_commands
@@ -38,6 +39,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(video_routes, url_prefix="/api/videos")
 app.register_blueprint(youtube_routes, url_prefix="/api/youtube")
+app.register_blueprint(collection_routes, url_prefix="/api/collection")
 # app.register_blueprint(image_routes, url_prefix="/api/images")
 db.init_app(app)
 Migrate(app, db)

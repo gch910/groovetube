@@ -59,6 +59,7 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      "videos": [video.to_dict() for video in self.videos],
-      "comments": [comment.to_dict() for comment in self.comments]
+      # "videos": [video.to_dict() for video in self.videos],
+      "comments": [comment.to_dict() for comment in self.comments],
+      "video_collection": [video.to_dict() for video in self.video_collection]
     }
