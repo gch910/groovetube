@@ -26,15 +26,18 @@ const Home = () => {
   }, [dispatch]);
 
   let userVideos;
+  let videoCollection;
 
   videos ? (userVideos = Object.values(videos)) : (userVideos = null);
 
-  if (userVideos) console.log(userVideos[0]);
+  sessionUser ? videoCollection = sessionUser.video_collection : videoCollection = null;
+
+  if(videoCollection) console.log(videoCollection)
 
   return (
     isLoaded && (
       <div id="home-grid">
-        {userVideos.map((video) => (
+        {videoCollection?.map((video) => (
           <div id="thumbnail-div">
             <Link to={`/videos/${video.id}`}>
               <img

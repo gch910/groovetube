@@ -26,11 +26,11 @@ const SideNav = ({ setAuthenticated }) => {
 
         <NavLink
           className="nav-link"
-          to="/sign-up"
+          to={sessionUser ? "/videos" : "/sign-up" }
           exact={true}
           activeClassName="active"
         >
-          Sign Up
+          {sessionUser ? "All Videos" : "Sign Up"}
         </NavLink>
 
         <NavLink

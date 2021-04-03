@@ -10,9 +10,10 @@ def collection_add(video_id, user_id):
 
     user = User.query.get(user_id)
 
-    new_video.user_collection.append(user)
+    # new_video.user_collection.append(user)\
+    user.video_collection.append(new_video)
 
-    db.session.add(new_video)
+    db.session.add(user)
     db.session.commit()
 
     result_dict = {"user": user.to_dict()}

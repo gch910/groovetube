@@ -114,7 +114,48 @@ pinegrove4 = Video(
     category_id=5
     )
 
-all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4]
+misch1 = Video(
+    title='Tom Misch: NPR Music Tiny Desk Concert',
+    artist="Tom Misch",
+    video_path="//www.youtube.com/embed/IUMTaAQ43lY",
+    img_path="/images/misch1",
+    gif_path="/gifs/misch1.gif",
+    user_id=2,
+    category_id=8
+)
+misch2 = Video(
+    title='Tom Misch Live at Montreux Jazz Festival 2019',
+    artist="Tom Misch",
+    video_path="//www.youtube.com/embed/X_1cgHy4M7E",
+    img_path="/images/misch2",
+    gif_path="/gifs/misch2.gif",
+    user_id=2,
+    category_id=8
+)
+misch3 = Video(
+    title='Tom Misch | Live at Melt Festival 2017',
+    artist="Tom Misch",
+    video_path="//www.youtube.com/embed/kedJiv-RTtc",
+    img_path="/images/misch3",
+    gif_path="/gifs/misch3.gif",
+    user_id=2,
+    category_id=8
+)
+misch4 = Video(
+    title='Soulection Radio Sessions: Tom Misch',
+    artist="Tom Misch",
+    video_path="//www.youtube.com/embed/aAFbvMUD5SU",
+    img_path="/images/misch4",
+    gif_path="/gifs/misch4.gif",
+    user_id=2,
+    category_id=8
+)
+
+user1_collection = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4]
+
+user2_collection = [misch1, misch2, misch3, misch4]
+
+all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, misch1, misch2, misch3, misch4]
 
     
     

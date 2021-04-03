@@ -2,14 +2,14 @@ from werkzeug.security import generate_password_hash
 from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
+demo1 = User(username='Demo', email='demo@aa.io', password='password')
+    
+demo2 = User(username="Demo2", email='demo2@aa.io', password='password')
 
 
 def seed_users():
-
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password')
-
-    db.session.add(demo)
+    db.session.add(demo1)
+    db.session.add(demo2)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
