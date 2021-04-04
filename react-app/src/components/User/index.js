@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getUserVideos } from "../store/videos";
-import "./User.css"
+import { getUserVideos } from "../../store/videos";
+import UserFavorites from "./UserFavorites";
+import "./User.css";
 
 function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch();
   const userVideos = useSelector((state) => state.videos.user_videos);
+  const uploadedVideos = useSelector(state => state.user)
+  const [songsClicked, setSongsClicked] = useState(true);
+  const [popularClicked, setPopularClicked] = useState(false);
 
   const changeImg = (e) => {
     e.target.src = e.target.id;
+  };
+
+  const displaySongs = () => {
+    setSongsClicked(true);
+    setPopularClicked(false);
+  };
+  const displayPopular = () => {
+    setSongsClicked(false);
+    setPopularClicked(true);
   };
 
   useEffect(() => {
@@ -49,26 +62,24 @@ function User() {
           <strong>Email</strong> {user.email}
         </li>
       </ul>
-      <div id="home-grid">
-        {userVideosArray?.map((video) => (
-          <div id="thumbnail-div">
-            <Link to={`/videos/${video.id}`}>
-              <img
-                onMouseEnter={changeImg}
-                onMouseLeave={(e) => (e.target.src = video.img_path + ".jpg")}
-                id={video?.gif_path}
-                className="thumbnail"
-                src={`${video.img_path}.jpg`}
-              />
-            </Link>
-            <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>
-              <div id="thumbnail-h3-div">
-                <h3>{video.title}</h3>
-              </div>
-            </Link>
-          </div>
-        ))}
+      <nav id="profile-nav">
+        <button className="profile-nav-link no-outline" onClick={displaySongs}>
+          Songs
+        </button>
+        <button
+          className="profile-nav-link no-outline"
+          onClick={displayPopular}
+        >
+          Popular
+        </button>
+      </nav>
+      <div id="profile-display">
+        <div id="profile-songs-div">{songsClicked ? <UserFavorites userVideosArray={userVideosArray} changeImg={changeImg} /> : ""}</div>
+        <div id="profile-popular-div">
+          {popularClicked ? <h1>Popular</h1> : ""}
+        </div>
       </div>
+      
     </div>
   );
 }

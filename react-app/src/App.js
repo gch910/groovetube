@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import SideNav from "./components/Nav/SideNav";
 import TopNav from "./components/Nav/TopNav";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
+import UsersList from "./components/User/UsersList";
 import User from "./components/User";
 import Home from "./components/Home";
 import AllVideos from "./components/AllVideos";
