@@ -20,7 +20,7 @@ body {
 #scroll {
     overflow: auto;
     width: calc(100vw - 200px);
-    background-color: rgb(231, 231, 231); 
+    background-color: rgb(236, 236, 236); 
 }
 
 

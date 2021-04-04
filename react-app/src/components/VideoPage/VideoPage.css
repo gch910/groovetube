@@ -57,9 +57,10 @@
 }
 
  #add-video-button-div {
-  display: flex;
+  /* display: flex;
   width: 34vw;
-  justify-content: center;
+  justify-content: center; */
+  left: 30%;
   position: relative;
   height: 30px;
   margin-top: 10px;
