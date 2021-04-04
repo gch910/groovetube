@@ -37,7 +37,7 @@ function User() {
 
   return (
     <div>
-      <h1>{user.username}'s Favorite videos</h1>
+      <h1 id="user-favorites-h1">{user.username}'s Favorite videos</h1>
       <ul id="user-info">
         <li>
           <strong>User Id</strong> {userId}

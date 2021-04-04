@@ -1,4 +1,9 @@
-#user-info {
+/* #user-info {
     display: flex;
     justify-content: space-around;
+} */
+
+#user-favorites-h1 {
+    display: flex;
+    justify-content: center;
 }

@@ -53,7 +53,7 @@ const VideoPage = () => {
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <h3>Uploaded By: {video?.user.username}</h3>
+        <h3 id="uploaded-by">Uploaded By: {video?.user.username}</h3>
         <h2 id="video-h2">{video?.title}</h2>
         <div id="current-video-div">
           <iframe
