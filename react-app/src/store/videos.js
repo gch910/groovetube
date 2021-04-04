@@ -2,6 +2,7 @@ const VIDEO = "videos/VIDEO";
 const USER_VIDEOS = "videos/USER_VIDEOS"
 const COLLECTION_ADD = "videos/COLLECTION_ADD"
 const ALL_VIDEOS = "videos/ALL_VIDEOS";
+const POST_COMMENT = "/videos/postComment";
 
 
 const video = (video) => {
@@ -31,6 +32,13 @@ const allVideos = (videos) => (
     videos,
   }
 )
+
+const postComment = (comment) => {
+  return {
+    type: POST_COMMENT,
+    comment: comment
+  }
+}
  
 
 export const getVideo = (videoId) => async (dispatch) => {
@@ -79,6 +87,28 @@ export const getAllVideos = () => async dispatch => {
   return data;
 }
 
+export const postUserComment = (comment, videoId) => async dispatch => {
+  const { content, user_id } = comment
+  console.log("in comment thunk")
+  const res = await fetch(`/api/videos/${videoId}/comment`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content,
+      user_id,
+      videoId: videoId
+    }),
+  })
+  console.log(res);
+  const data = await res.json()
+  
+  dispatch(postComment(data))
+
+  return data
+}
+
 
 const initialState = {};
 
@@ -114,6 +144,13 @@ const videosReducer = (state = initialState, action) => {
         newObj[video.id] = video
       });
       newState.all_videos = newObj;
+      return newState;
+    }
+    case POST_COMMENT: {
+      newState = { ...state };
+      // const userSongs = newState.user_songs = {}
+      const comment = action.comment;
+      newState.comment = comment;
       return newState;
     }
     default:
