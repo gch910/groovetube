@@ -59,8 +59,8 @@ function User() {
 
   return (
     <div>
-      <h1 id="user-favorites-h1">{favoritesClicked ? `${user.username}'s Favorite videos` : ""}</h1>
-      <h1 id="user-favorites-h1">{uploadedClicked ? `${user.username}'s Uploaded videos` : ""}</h1>
+      <h1 id="user-favorites-h1">{favoritesClicked ? `${user.username}'s Collection` : ""}</h1>
+      <h1 id="user-favorites-h1">{uploadedClicked ? `${user.username}'s Uploads` : ""}</h1>
       <ul id="user-info">
         <li>
           <strong>User Id</strong> {userId}
@@ -73,14 +73,14 @@ function User() {
         </li>
       </ul>
       <nav id="profile-nav">
-        <button className="profile-nav-link no-outline" onClick={displaySongs}>
-          Favorited
+        <button className={`profile-nav-link no-outline ${favoritesClicked ? "active" : ""}`} onClick={displaySongs}>
+          Collection
         </button>
         <button
-          className="profile-nav-link no-outline"
+          className={`profile-nav-link no-outline ${uploadedClicked ? "active" : ""}`}
           onClick={displayPopular}
         >
-          Uploaded
+          Uploads
         </button>
       </nav>
       <div id="profile-display">

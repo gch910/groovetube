@@ -39,7 +39,7 @@ const Home = () => {
   return (
     isLoaded && (
       <>
-        <h1 id="home-h1">Your Videos</h1>
+        <h1 id="home-h1">Your Collection</h1>
         <div id="home-grid">
           {userVideos.map((video) => (
             <div id="thumbnail-div">

@@ -47,3 +47,7 @@
     color: #FF5D00;
     background-color: white;
 }
+
+.active {
+    color: red;
+}
