@@ -14,6 +14,7 @@ const VideoPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [newComment, setNewComment] = useState(false);
+  const [deleteShown, setDeleteShown] = useState(false);
 
   const addVideo = async (e) => {
     e.preventDefault();
@@ -21,14 +22,27 @@ const VideoPage = () => {
     setIsAdded(true);
   };
 
+  // const deleteComment = (e) => {
+  //   console.log();
+  //   if (userId == e.target.className.split(" ")[1]) {
+  //     dispatch(deleteUserComment(e.target.id));
+  //     setDeleted(true);
+  //     setTimeout(() => {
+  //       setDeleted(false);
+  //     }, 100);
+  //   }
+  // };
+
   let userVideosArray;
   let userId;
-  userVideos ? (userVideosArray = Object.values(userVideos)): (userVideosArray = null);
+  userVideos
+    ? (userVideosArray = Object.values(userVideos))
+    : (userVideosArray = null);
 
   // if(userVideosArray) setIsAdded(userVideosArray.some(video => video.id == videoId))
 
   useEffect(() => {
-    dispatch(getVideo(videoId))
+    dispatch(getVideo(videoId));
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return setNewComment(false);
@@ -54,13 +68,46 @@ const VideoPage = () => {
           ></iframe>
         </div>
         <div id="add-video-button-div">
-          <button onClick={addVideo}>{userVideosArray?.some(video => video.id == videoId) ? "Added" : "Add Video"}</button>
+          <button onClick={addVideo}>
+            {userVideosArray?.some((video) => video.id == videoId)
+              ? "Added"
+              : "Add Video"}
+          </button>
         </div>
         <CommentForm
-            userId={userId}
-            newComment={newComment}
-            setNewComment={setNewComment}
-          />
+          userId={userId}
+          newComment={newComment}
+          setNewComment={setNewComment}
+        />
+        <div id="comments-div">
+          {video?.comments.map((comment) => (
+            <div
+              className="comment-div"
+              onMouseEnter={() => setDeleteShown(true)}
+              onMouseLeave={() => setDeleteShown(false)}
+            >
+              <img
+                id="user-comment-image"
+                src="https://i.stack.imgur.com/l60Hf.png"
+                alt="profile"
+              />
+              <h3 id="comment-username">{comment.user.username}:</h3>
+              <p>{comment.content}</p>
+              {deleteShown && userId == comment.user_id && (
+                <div id="delete-comment-button-div">
+                  <button
+                    className={`delete-comment-button ${comment.user_id}`}
+                    id={comment.id}
+                    userId={comment.user_id}
+                    // onClick={deleteComment}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     )
   );

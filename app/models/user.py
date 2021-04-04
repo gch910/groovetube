@@ -63,3 +63,8 @@ class User(db.Model, UserMixin):
       "comments": [comment.to_dict() for comment in self.comments],
       "video_collection": [video.to_dict() for video in self.video_collection]
     }
+
+  def just_username(self):
+    return {
+      "username": self.username
+    }

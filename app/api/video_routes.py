@@ -42,5 +42,4 @@ def video_comment(id):
             content=form.data["content"])
         db.session.add(comment)
         db.session.commit()
-    print("somethinggggggggggg", comment.to_dict())
     return comment.to_dict()
