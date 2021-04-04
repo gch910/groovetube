@@ -3,6 +3,7 @@ const USER_VIDEOS = "videos/USER_VIDEOS"
 const COLLECTION_ADD = "videos/COLLECTION_ADD"
 const ALL_VIDEOS = "videos/ALL_VIDEOS";
 const POST_COMMENT = "/videos/postComment";
+const DELETE_COMMENT = "/songs/deleteComment";
 
 
 const video = (video) => {
@@ -37,6 +38,12 @@ const postComment = (comment) => {
   return {
     type: POST_COMMENT,
     comment: comment
+  }
+}
+
+const deleteComment = () => {
+  return {
+    type: DELETE_COMMENT,
   }
 }
  
@@ -89,7 +96,7 @@ export const getAllVideos = () => async dispatch => {
 
 export const postUserComment = (comment, videoId) => async dispatch => {
   const { content, user_id } = comment
-  console.log("in comment thunk")
+
   const res = await fetch(`/api/videos/${videoId}/comment`, {
     method: "POST",
     headers: {
@@ -101,10 +108,25 @@ export const postUserComment = (comment, videoId) => async dispatch => {
       video_id: videoId
     }),
   })
-  console.log(res);
+
   const data = await res.json()
   
   dispatch(postComment(data))
+
+  return data
+}
+
+export const deleteUserComment = (commentId) => async dispatch => {
+  const res = await fetch(`/api/videos/comment/${commentId}/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  console.log("response", res)
+  const data = await res.json()
+
+  dispatch(deleteComment())
 
   return data
 }
@@ -152,6 +174,9 @@ const videosReducer = (state = initialState, action) => {
       const comment = action.comment;
       newState.comments = comment;
       return newState;
+    }
+    case DELETE_COMMENT: {
+      return state;
     }
     default:
       return state;

@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getVideo, addCollection, getUserVideos } from "../../store/videos";
+import {
+  getVideo,
+  addCollection,
+  getUserVideos,
+  deleteUserComment,
+} from "../../store/videos";
 import CommentForm from "./CommentForm";
 import "./VideoPage.css";
 
@@ -15,6 +20,7 @@ const VideoPage = () => {
   const [isAdded, setIsAdded] = useState(false);
   const [newComment, setNewComment] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
+  const [deleted, setDeleted] = useState(false);
 
   const addVideo = async (e) => {
     e.preventDefault();
@@ -22,16 +28,16 @@ const VideoPage = () => {
     setIsAdded(true);
   };
 
-  // const deleteComment = (e) => {
-  //   console.log();
-  //   if (userId == e.target.className.split(" ")[1]) {
-  //     dispatch(deleteUserComment(e.target.id));
-  //     setDeleted(true);
-  //     setTimeout(() => {
-  //       setDeleted(false);
-  //     }, 100);
-  //   }
-  // };
+  const deleteComment = (e) => {
+    console.log();
+    if (sessionUser?.id == e.target.className.split(" ")[1]) {
+      dispatch(deleteUserComment(e.target.id));
+      setDeleted(true);
+      setTimeout(() => {
+        setDeleted(false);
+      }, 100);
+    }
+  };
 
   let userVideosArray;
   let userId;
@@ -46,7 +52,7 @@ const VideoPage = () => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return setNewComment(false);
-  }, [dispatch, isAdded, newComment]);
+  }, [dispatch, isAdded, newComment, deleted]);
 
   if (sessionUser.user) userId = sessionUser?.user?.id;
 
@@ -86,24 +92,24 @@ const VideoPage = () => {
               onMouseEnter={() => setDeleteShown(true)}
               onMouseLeave={() => setDeleteShown(false)}
             >
-              <img
-                id="user-comment-image"
-                src="https://i.stack.imgur.com/l60Hf.png"
-                alt="profile"
-              />
-              <h3 id="comment-username">{comment.user.username}:</h3>
-              <p>{comment.content}</p>
-              {deleteShown && userId == comment.user_id && (
-                <div id="delete-comment-button-div">
-                  <button
-                    className={`delete-comment-button ${comment.user_id}`}
-                    id={comment.id}
-                    userId={comment.user_id}
-                    // onClick={deleteComment}
-                  >
-                    Delete
-                  </button>
-                </div>
+              <div id="image-username-comment">
+                <img
+                  id="user-comment-image"
+                  src="https://i.stack.imgur.com/l60Hf.png"
+                  alt="profile"
+                />
+                <h3 id="comment-username">{comment.user.username}:</h3>
+                <p id="comment-p">{comment.content}</p>
+              </div>
+              {deleteShown && sessionUser?.id == comment.user_id && (
+                <button
+                  className={`delete-comment-button ${comment.user_id}`}
+                  id={comment.id}
+                  userId={comment.user_id}
+                  onClick={deleteComment}
+                >
+                  Delete Comment
+                </button>
               )}
             </div>
           ))}
