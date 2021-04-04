@@ -98,7 +98,7 @@ export const postUserComment = (comment, videoId) => async dispatch => {
     body: JSON.stringify({
       content,
       user_id,
-      videoId: videoId
+      video_id: videoId
     }),
   })
   console.log(res);

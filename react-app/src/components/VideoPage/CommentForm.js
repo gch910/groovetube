@@ -27,7 +27,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
     if (!sessionUser) history.push("/login");
 
     const userComment = {
-      user_id: userId,
+      user_id: sessionUser?.id,
       content: comment,
     };
 
@@ -50,7 +50,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
       {/* <div id="like-button-div">
          {liked ? <button onClick={likeSong} id="heart-button">Liked<i className="fas fa-heart"></i></button> : <button onClick={likeSong} id="heart-button">Like<i className="far fa-heart"></i></button>}
       </div> */}
-      <form id="comment-form" onSubmit={commentSubmit}>
+      <form method="post" id="comment-form" onSubmit={commentSubmit}>
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}

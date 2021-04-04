@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Video, User, Comment
+from app.models import db, Video, User, Comment
 from app.forms.comment_form import CommentForm
 
 video_routes = Blueprint("videos", __name__)
@@ -30,10 +30,11 @@ def video(video_id):
     return {"video": videoDict}
 
 
+
 @video_routes.route('/<int:id>/comment', methods=['POST'])
 def video_comment(id):
     form = CommentForm()
-    print(form)
+    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment(
