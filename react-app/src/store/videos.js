@@ -150,7 +150,7 @@ const videosReducer = (state = initialState, action) => {
       newState = { ...state };
       // const userSongs = newState.user_songs = {}
       const comment = action.comment;
-      newState.comment = comment;
+      newState.comments = comment;
       return newState;
     }
     default:
