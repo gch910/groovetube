@@ -34,14 +34,13 @@ def video(video_id):
 @video_routes.route('/<int:id>/comment', methods=['POST'])
 def video_comment(id):
     form = CommentForm()
-    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment(
             user_id=form.data["user_id"],
             video_id=id,
-            content=form.data["content"],
-        )
+            content=form.data["content"])
         db.session.add(comment)
         db.session.commit()
-    return comment
+    print("somethinggggggggggg", comment.to_dict())
+    return comment.to_dict()
