@@ -4,8 +4,11 @@
 } */
 
 #user-favorites-h1 {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    position: sticky;
+    margin-left: 38%;
+    margin-top: 30px;
 }
 
 #user-list-div {
@@ -22,4 +25,25 @@
     font-size: 40px;
     margin-bottom: 30px;
     list-style: none;
+}
+
+#profile-nav {
+    display: grid;
+    grid-template-rows: 40px;
+    grid-template-columns: 1fr 1fr 6fr;
+    align-items: center;
+    border-bottom: 1px solid rgb(128, 128, 128, 0.2);
+    background-color: white;
+}
+
+.profile-nav-link {
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #FF5D00;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    /* padding-bottom: 20px; */
+    color: #FF5D00;
+    background-color: white;
 }

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const UserFavorites = ({userVideosArray, changeImg}) => {
-    
+const UserUploaded = ({userUploadedArray, changeImg}) => {
   return (
     <div id="home-grid">
-      {userVideosArray?.map((video) => (
+      {userUploadedArray?.map((video) => (
         <div id="thumbnail-div">
           <Link to={`/videos/${video.id}`}>
             <img
@@ -28,4 +26,4 @@ const UserFavorites = ({userVideosArray, changeImg}) => {
   );
 };
 
-export default UserFavorites;
+export default UserUploaded;

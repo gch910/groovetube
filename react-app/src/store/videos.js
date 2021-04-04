@@ -2,8 +2,9 @@ const VIDEO = "videos/VIDEO";
 const USER_VIDEOS = "videos/USER_VIDEOS"
 const COLLECTION_ADD = "videos/COLLECTION_ADD"
 const ALL_VIDEOS = "videos/ALL_VIDEOS";
-const POST_COMMENT = "/videos/postComment";
-const DELETE_COMMENT = "/songs/deleteComment";
+const POST_COMMENT = "/videos/POST_COMMENT";
+const DELETE_COMMENT = "/videos/DELETE_COMMENT";
+const UPLOADED_VIDEOS = "/videos/UPLOADED_VIDEOS"
 
 
 const video = (video) => {
@@ -16,6 +17,13 @@ const video = (video) => {
 const userVideos = (videos) => {
   return {
     type: USER_VIDEOS,
+    videos,
+  }
+}
+
+const uploadedVideos = (videos) => {
+  return {
+    type: UPLOADED_VIDEOS,
     videos,
   }
 }
@@ -65,6 +73,16 @@ export const getUserVideos = (userId) => async dispatch => {
 
   dispatch(userVideos(data.videos))
 
+  return data;
+}
+
+export const getUploadedVideos = (userId) => async dispatch => {
+  const res = await fetch(`/api/videos/user/${userId}/uploads`)
+
+  const data = await res.json();
+
+  dispatch(uploadedVideos(data.videos))
+  
   return data;
 }
 
@@ -150,6 +168,16 @@ const videosReducer = (state = initialState, action) => {
         newObj[video.id] = video
       })
       newState.user_videos = newObj;
+      return newState;
+    }
+    case UPLOADED_VIDEOS: {
+      newState = { ...state };
+      const videos = action.videos;
+      const newObj = {};
+      videos.forEach(video => {
+        newObj[video.id] = video
+      })
+      newState.uploaded_videos = newObj;
       return newState;
     }
     case COLLECTION_ADD: {

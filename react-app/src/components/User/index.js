@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getUserVideos } from "../../store/videos";
+import { getUserVideos, getUploadedVideos } from "../../store/videos";
 import UserFavorites from "./UserFavorites";
+import UserUploaded from "./UserUploaded"
 import "./User.css";
 
 function User() {
@@ -10,21 +11,21 @@ function User() {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const userVideos = useSelector((state) => state.videos.user_videos);
-  const uploadedVideos = useSelector(state => state.user)
-  const [songsClicked, setSongsClicked] = useState(true);
-  const [popularClicked, setPopularClicked] = useState(false);
+  const uploadedVideos = useSelector(state => state.videos.uploaded_videos)
+  const [favoritesClicked, setfavoritesClicked] = useState(true);
+  const [uploadedClicked, setUploadedClicked] = useState(false);
 
   const changeImg = (e) => {
     e.target.src = e.target.id;
   };
 
   const displaySongs = () => {
-    setSongsClicked(true);
-    setPopularClicked(false);
+    setfavoritesClicked(true);
+    setUploadedClicked(false);
   };
   const displayPopular = () => {
-    setSongsClicked(false);
-    setPopularClicked(true);
+    setfavoritesClicked(false);
+    setUploadedClicked(true);
   };
 
   useEffect(() => {
@@ -37,6 +38,7 @@ function User() {
       setUser(user);
     })();
     dispatch(getUserVideos(userId));
+    dispatch(getUploadedVideos(userId));
   }, [userId]);
 
   if (!user) {
@@ -44,13 +46,21 @@ function User() {
   }
 
   let userVideosArray;
+  let userUploadedArray;
   userVideos
     ? (userVideosArray = Object.values(userVideos))
     : (userVideosArray = null);
+  
+  uploadedVideos
+    ? (userUploadedArray = Object.values(uploadedVideos))
+    : (userUploadedArray = null);
+
+  
 
   return (
     <div>
-      <h1 id="user-favorites-h1">{user.username}'s Favorite videos</h1>
+      <h1 id="user-favorites-h1">{favoritesClicked ? `${user.username}'s Favorite videos` : ""}</h1>
+      <h1 id="user-favorites-h1">{uploadedClicked ? `${user.username}'s Uploaded videos` : ""}</h1>
       <ul id="user-info">
         <li>
           <strong>User Id</strong> {userId}
@@ -64,19 +74,19 @@ function User() {
       </ul>
       <nav id="profile-nav">
         <button className="profile-nav-link no-outline" onClick={displaySongs}>
-          Songs
+          Favorited
         </button>
         <button
           className="profile-nav-link no-outline"
           onClick={displayPopular}
         >
-          Popular
+          Uploaded
         </button>
       </nav>
       <div id="profile-display">
-        <div id="profile-songs-div">{songsClicked ? <UserFavorites userVideosArray={userVideosArray} changeImg={changeImg} /> : ""}</div>
+        <div id="profile-songs-div">{favoritesClicked ? <UserFavorites userVideosArray={userVideosArray} changeImg={changeImg} /> : ""}</div>
         <div id="profile-popular-div">
-          {popularClicked ? <h1>Popular</h1> : ""}
+          {uploadedClicked ? <UserUploaded userUploadedArray={userUploadedArray} changeImg={changeImg}/> : ""}
         </div>
       </div>
       
