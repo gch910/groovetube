@@ -46,11 +46,11 @@ def video(video_id):
 def video_comment(id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        comment = Comment(
+    comment = Comment(
             user_id=form.data["user_id"],
             video_id=id,
             content=form.data["content"])
+    if form.validate_on_submit():
         db.session.add(comment)
         db.session.commit()
     return comment.to_dict()
@@ -63,12 +63,13 @@ def delete_video_comment(id):
 
     return comment.to_dict()
 
+
 @video_routes.route('/search', methods=['POST'])
 def video_search():
-    form = CommentForm()
+    form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     user_search = form.data["search"]
     if form.validate_on_submit():
-        videos = Video.filter_by(user_search in title)
-        return jsonify(videos)
+        videos = Video.query.filter(Video.title.ilike(f'%{user_search}%')).all()
+    return {"videos": [video.to_dict() for video in videos]}
     

@@ -12,6 +12,7 @@ import User from "./components/User";
 import Home from "./components/Home";
 import AllVideos from "./components/AllVideos";
 import VideoPage from "./components/VideoPage";
+import SearchResults from "./components/Nav/SearchResults";
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -77,6 +78,9 @@ function App() {
             </Route>
             <Route path="/videos">
               <AllVideos />
+            </Route>
+            <Route path="/search-results">
+              <SearchResults />
             </Route>
           </Switch>
         </div>
