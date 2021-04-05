@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
+import SignUpForm from "./SignupForm";
 import Nav from "./components/Nav";
 import SideNav from "./components/Nav/SideNav";
 import TopNav from "./components/Nav/TopNav";
@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import AllVideos from "./components/AllVideos";
 import VideoPage from "./components/VideoPage";
 import SearchResults from "./components/Nav/SearchResults";
+import NoResults from "./components/Nav/NoResults";
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -81,6 +82,9 @@ function App() {
             </Route>
             <Route path="/search-results">
               <SearchResults />
+            </Route>
+            <Route path="/no-results">
+              <NoResults />
             </Route>
           </Switch>
         </div>

@@ -33,11 +33,13 @@
     border: none;
     height: 30px;
     width: 80%;
+    min-width: 350px;
     border-radius: 6px 6px 6px 6px;
 }
 
 #search-bar-form {
-    width: 30%;
+    width: 40%;
+    margin-left: 17%;
 }
 
 .nav-link {

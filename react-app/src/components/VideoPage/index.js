@@ -95,7 +95,7 @@ const VideoPage = () => {
               <div id="image-username-comment">
                 <img
                   id="user-comment-image"
-                  src="https://i.stack.imgur.com/l60Hf.png"
+                  src={comment.user.profile_img}
                   alt="profile"
                 />
                 <h3 id="comment-username">{comment.user.username}:</h3>
