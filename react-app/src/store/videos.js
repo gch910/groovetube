@@ -179,6 +179,7 @@ export const getSearchResults = (search) => async dispatch => {
 const initialState = {
   all_videos: [],
   search_results: [],
+  user_videos: [],
 };
 
 const videosReducer = (state = initialState, action) => {
@@ -190,13 +191,9 @@ const videosReducer = (state = initialState, action) => {
       return newState;
     }
     case USER_VIDEOS: {
-      newState = { ...state };
+      newState = {...state}
       const videos = action.videos;
-      const newObj = {};
-      videos.forEach(video => {
-        newObj[video.id] = video
-      })
-      newState.user_videos = newObj;
+      newState.user_videos = videos;
       return newState;
     }
     case UPLOADED_VIDEOS: {

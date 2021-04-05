@@ -48,13 +48,13 @@ const VideoPage = () => {
   // if(userVideosArray) setIsAdded(userVideosArray.some(video => video.id == videoId))
 
   useEffect(() => {
-    dispatch(getVideo(videoId));
+    dispatch(getVideo(videoId)).then(setIsLoaded(true));
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return setNewComment(false);
   }, [dispatch, isAdded, newComment, deleted]);
 
-  if (sessionUser.user) userId = sessionUser?.user?.id;
+  if (sessionUser?.user) userId = sessionUser?.user?.id;
 
   return (
     isLoaded && (

@@ -15,19 +15,19 @@ const AllVideos = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllVideos(sessionUser?.id)).then(() => setIsLoaded(true));
+    dispatch(getAllVideos()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  let allVideos;
+  // let allVideos;
 
-  videos ? (allVideos = Object.values(videos)) : (allVideos = null);
+  // videos ? (allVideos = Object.values(videos)) : (allVideos = null);
 
   return (
     isLoaded && (
       <div>
         <h1 id="all-videos-h1">All Videos</h1>
         <div id="home-grid">
-          {allVideos?.map((video) => (
+          {videos.map((video) => (
             <div id="thumbnail-div">
               <Link to={`/videos/${video.id}`}>
                 <img
