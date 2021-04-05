@@ -150,7 +150,9 @@ export const deleteUserComment = (commentId) => async dispatch => {
 }
 
 
-const initialState = {};
+const initialState = {
+  all_videos: [],
+};
 
 const videosReducer = (state = initialState, action) => {
   let newState;
@@ -189,11 +191,7 @@ const videosReducer = (state = initialState, action) => {
     case ALL_VIDEOS: {
       newState = {...state}
       const videos = action.videos;
-      const newObj = {}
-      videos.forEach(video => {
-        newObj[video.id] = video
-      });
-      newState.all_videos = newObj;
+      newState.all_videos = videos;
       return newState;
     }
     case POST_COMMENT: {

@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
+  profile_img = db.Column(db.String(1000), default="https://i.stack.imgur.com/l60Hf.png")
   hashed_password = db.Column(db.String(255), nullable = False)
 
   videos = db.relationship('Video', back_populates='user')
@@ -66,5 +67,6 @@ class User(db.Model, UserMixin):
 
   def just_username(self):
     return {
-      "username": self.username
+      "username": self.username,
+      "profile_img": self.profile_img
     }

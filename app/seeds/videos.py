@@ -6,7 +6,7 @@ paak1 = Video(
     artist="Anderson .Paak",
     video_path="//www.youtube.com/embed/ferZnZ0_rSM",
     img_path="/images/paak1",
-    gif_path="https://i.ytimg.com/an_webp/ferZnZ0_rSM/mqdefault_6s.webp?du=3000&sqp=CITRl4MG&rs=AOn4CLCZdV_F3sJRzv5WoatVPSWPFjptEg",
+    gif_path="/gifs/paak1.gif",
     user_id=1,
     category_id=1
     )
@@ -16,7 +16,7 @@ paak2 = Video(
     artist="Anderson .Paak",
     video_path="//www.youtube.com/embed/adLGHcj_fmA",
     img_path="/images/paak2",
-    gif_path="https://i.ytimg.com/an_webp/adLGHcj_fmA/mqdefault_6s.webp?du=3000&sqp=CIDgl4MG&rs=AOn4CLC-VQeBmokaTDucJ5lnL1yqWFW6hA",
+    gif_path="/gifs/paak2.gif",
     user_id=1,
     category_id=1
     )
@@ -26,7 +26,7 @@ paak3 = Video(
     artist="Anderson .Paak",
     video_path="//www.youtube.com/embed/-wVraXhkjMI",
     img_path="/images/paak3",
-    gif_path="https://i.ytimg.com/an_webp/-wVraXhkjMI/mqdefault_6s.webp?du=3000&sqp=COzll4MG&rs=AOn4CLDoiAb3LMoCK5Ng4M7m-Uk-olgKSQ",
+    gif_path="/gifs/paak3.gif",
     user_id=1,
     category_id=1
     )
@@ -35,7 +35,7 @@ paak4 = Video(
     artist="Anderson .Paak",
     video_path="//www.youtube.com/embed/29m54KcvMEQ",
     img_path="/images/paak4",
-    gif_path="https://i.ytimg.com/an_webp/29m54KcvMEQ/mqdefault_6s.webp?du=3000&sqp=CPDJl4MG&rs=AOn4CLAJwOrZlZzhhL4dgKucZ2wy00cb_Q",
+    gif_path="/gifs/paak4.gif",
     user_id=1,
     category_id=1
     )
@@ -44,7 +44,7 @@ lahavas1 = Video(
     artist="Lianne LaHavas",
     video_path="//www.youtube.com/embed/9HUV5a7MgS4",
     img_path="/images/lahavas1",
-    gif_path="https://i.ytimg.com/an_webp/9HUV5a7MgS4/mqdefault_6s.webp?du=3000&sqp=CLjkl4MG&rs=AOn4CLDwUxnRSRrr4j3O7CqQ2sHmH48I_Q",
+    gif_path="/gifs/lahavas1.gif",
     user_id=1,
     category_id=3
     )
@@ -53,7 +53,7 @@ lahavas2 = Video(
     artist="Lianne LaHavas",
     video_path="//www.youtube.com/embed/tLzdKJeFT7Q",
     img_path="/images/lahavas2",
-    gif_path="https://i.ytimg.com/an_webp/tLzdKJeFT7Q/mqdefault_6s.webp?du=3000&sqp=CLDXl4MG&rs=AOn4CLCqeYlw6tRnYgb1UK3Kg31JH1wiiQ",
+    gif_path="/gifs/lahavas2.gif",
     user_id=1,
     category_id=3
     )
@@ -62,7 +62,7 @@ lahavas3 = Video(
     artist="Lianne LaHavas",
     video_path="//www.youtube.com/embed/tLzdKJeFT7Q",
     img_path="/images/lahavas3",
-    gif_path="https://i.ytimg.com/an_webp/RSUGGLTEImg/mqdefault_6s.webp?du=3000&sqp=CKjXl4MG&rs=AOn4CLBoMZeeLWdAnQzOFe9W6O7mIi7zhw",
+    gif_path="/gifs/lahavas3.gif",
     user_id=1,
     category_id=3
     )
@@ -71,7 +71,7 @@ lahavas4 = Video(
     artist="Lianne LaHavas",
     video_path="//www.youtube.com/embed/ak9oOapxDBA",
     img_path="/images/lahavas4",
-    gif_path="https://i.ytimg.com/an_webp/ak9oOapxDBA/mqdefault_6s.webp?du=3000&sqp=CIDwl4MG&rs=AOn4CLAfs0Qgmhk3HxAWHvQXZUedjQVnuQ",
+    gif_path="/gifs/lahavas4.gif",
     user_id=1,
     category_id=3
     )
@@ -81,7 +81,7 @@ pinegrove1 = Video(
     artist="Pinegrove",
     video_path="//www.youtube.com/embed/weL8HTY1NJU",
     img_path="/images/pinegrove1",
-    gif_path="https://i.ytimg.com/an_webp/weL8HTY1NJU/mqdefault_6s.webp?du=3000&sqp=CK6zl4MG&rs=AOn4CLBx20s4WmHRLZT6ZgYfM2_LUtil6g",
+    gif_path="/gifs/pinegrove1.gif",
     user_id=1,
     category_id=2
     )
@@ -91,7 +91,7 @@ pinegrove2 = Video(
     artist="Pinegrove",
     video_path="//www.youtube.com/embed/0JvG551iDTE",
     img_path="/images/pinegrove2",
-    gif_path="https://i.ytimg.com/an_webp/0JvG551iDTE/mqdefault_6s.webp?du=3000&sqp=CLfml4MG&rs=AOn4CLAiuh3h7m23kbuNLb_5JGwsXR_e1Q",
+    gif_path="/gifs/pinegrove2.gif",
     user_id=1,
     category_id=5
     )
@@ -100,7 +100,7 @@ pinegrove3 = Video(
     artist="Pinegrove",
     video_path="//www.youtube.com/embed/wdvCd88vjw8",
     img_path="/images/pinegrove3",
-    gif_path="https://i.ytimg.com/an_webp/wdvCd88vjw8/mqdefault_6s.webp?du=3000&sqp=CK3cl4MG&rs=AOn4CLAGtbTqQOWpoqEWeuaynTXDjOl87A",
+    gif_path="/gifs/pinegrove3.gif",
     user_id=1,
     category_id=5
     )
@@ -109,7 +109,7 @@ pinegrove4 = Video(
     artist="Pinegrove",
     video_path="//www.youtube.com/embed/sIPXjhZB2Z8",
     img_path="/images/pinegrove4",
-    gif_path="https://i.ytimg.com/an_webp/sIPXjhZB2Z8/mqdefault_6s.webp?du=3000&sqp=CL3il4MG&rs=AOn4CLCWKIW8Zyoe9zg2TPH4pZNhnYs4qw",
+    gif_path="/gifs/pinegrove4.gif",
     user_id=1,
     category_id=5
     )

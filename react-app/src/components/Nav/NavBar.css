@@ -32,8 +32,12 @@
 #search-bar {
     border: none;
     height: 30px;
-    width: 30%;
+    width: 80%;
     border-radius: 6px 6px 6px 6px;
+}
+
+#search-bar-form {
+    width: 30%;
 }
 
 .nav-link {

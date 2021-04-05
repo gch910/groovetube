@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Video, User, Comment
 from app.forms.comment_form import CommentForm
+from app.forms.search_form import SearchForm
 
 video_routes = Blueprint("videos", __name__)
 
@@ -55,9 +56,19 @@ def video_comment(id):
     return comment.to_dict()
 
 @video_routes.route('/comment/<int:id>/delete', methods=["DELETE"])
-def delete_song_comment(id):
+def delete_video_comment(id):
     comment = Comment.query.get(id)
     db.session.delete(comment)
     db.session.commit()
 
     return comment.to_dict()
+
+@video_routes.route('/search', methods=['POST'])
+def video_search():
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    user_search = form.data["search"]
+    if form.validate_on_submit():
+        videos = Video.filter_by(user_search in title)
+        return jsonify(videos)
+    
