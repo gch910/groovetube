@@ -12,6 +12,7 @@ function User() {
   const dispatch = useDispatch();
   const userVideos = useSelector((state) => state.videos.user_videos);
   const uploadedVideos = useSelector(state => state.videos.uploaded_videos)
+  const sessionUser = useSelector((state) => state.session.user);
   const [favoritesClicked, setfavoritesClicked] = useState(true);
   const [uploadedClicked, setUploadedClicked] = useState(false);
 
@@ -59,8 +60,8 @@ function User() {
 
   return (
     <div>
-      <h1 id="user-favorites-h1">{favoritesClicked ? `${user.username}'s Collection` : ""}</h1>
-      <h1 id="user-favorites-h1">{uploadedClicked ? `${user.username}'s Uploads` : ""}</h1>
+      <h1 id="user-favorites-h1">{favoritesClicked ? sessionUser.id === user.id ? "Your Collection" : `${user.username}'s Collection` : ""}</h1>
+      <h1 id="user-favorites-h1">{uploadedClicked ? sessionUser.id === user.id ? "Your Uploads" : `${user.username}'s Uploads` : ""}</h1>
       <ul id="user-info">
         <li>
           <strong>User Id</strong> {userId}

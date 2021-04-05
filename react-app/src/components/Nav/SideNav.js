@@ -17,7 +17,7 @@ const SideNav = ({ setAuthenticated }) => {
         </NavLink>
         <NavLink
           className="nav-link"
-          to="/login"
+          to={sessionUser ? `/users/${sessionUser.id}` : "/login"}
           exact={true}
           activeClassName="active"
         >
@@ -42,7 +42,7 @@ const SideNav = ({ setAuthenticated }) => {
           Users
         </NavLink>
 
-        <LogoutButton setAuthenticated={setAuthenticated} />
+        { sessionUser ? <LogoutButton setAuthenticated={setAuthenticated} /> : "" }
       </nav>
   );
 };
