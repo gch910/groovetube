@@ -7,6 +7,7 @@ import {
   getUserVideos,
   deleteUserComment,
 } from "../../store/videos";
+import { addUserFollow } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import "./VideoPage.css";
 
@@ -16,8 +17,10 @@ const VideoPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const video = useSelector((state) => state.videos.current_video);
   const userVideos = useSelector((state) => state.videos.user_videos);
+  const userFollows = useSelector((state) => state.follows)
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+  const [isFollowed, setIsFollowed] = useState(false);
   const [newComment, setNewComment] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -27,6 +30,12 @@ const VideoPage = () => {
     await dispatch(addCollection(sessionUser?.id, videoId));
     setIsAdded(true);
   };
+
+  const addFollow = async (e) => {
+    e.preventDefault();
+    await dispatch(addUserFollow(sessionUser?.id, video?.user?.id))
+    setIsFollowed(true)
+  }
 
   const deleteComment = (e) => {
     console.log();
@@ -52,7 +61,7 @@ const VideoPage = () => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return setNewComment(false);
-  }, [dispatch, isAdded, newComment, deleted]);
+  }, [dispatch, isAdded, isFollowed, newComment, deleted]);
 
   if (sessionUser?.user) userId = sessionUser?.user?.id;
 
@@ -79,8 +88,11 @@ const VideoPage = () => {
               ? "Added"
               : "Add Video"}
           </button>
-          <button id="follow-button">
-              Follow {video?.user.username}
+          <button id="follow-button" onClick={addFollow}>
+              {userFollows?.following?.some(user => user.id == video?.user?.id)
+              ? "Fallowing"
+              : `Follow ${video?.user.username}`
+            }
           </button>
         </div>
         <CommentForm

@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
     secondary=follows,
     primaryjoin=(follows.c.follower_id == id),
     secondaryjoin=(follows.c.followed_id == id),
-    backref=db.backref("follows", lazy="dynamic"),
+    # backref=db.backref("follows", lazy="dynamic"),
     lazy="dynamic"
   )
   following = db.relationship(
@@ -71,7 +71,7 @@ class User(db.Model, UserMixin):
       # "videos": [video.to_dict() for video in self.videos],
       "comments": [comment.to_dict() for comment in self.comments],
       "video_collection": [video.to_dict() for video in self.video_collection],
-      "followers": [user.to_dict() for user in self.followers]
+      # "followers": [user.to_dict() for user in self.followers]
     }
 
   def just_username(self):

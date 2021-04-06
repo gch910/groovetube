@@ -34,6 +34,9 @@ def add_follower(session_user_id, user_id):
     db.session.add(user)
     db.session.commit()
 
-    result_dict = {f"{user.to_dict()['username']}'s followers": user.followers_dict()["followers"]}
+    result_dict = {
+        "followers": user.followers_dict()["followers"],
+        "following": user.following_dict()["following"]
+        }
 
     return result_dict
