@@ -95,12 +95,13 @@ const VideoPage = () => {
             allowfullscreen
           ></iframe>
         </div>
-        {video && (
+        {video && sessionUser && (
           <ButtonDiv
             video={video}
             addFollow={addFollow}
             userVideos={userVideos}
             addVideo={addVideo}
+            sessionUser={sessionUser}
           />
         )}
         {/* <div id="add-video-button-div">

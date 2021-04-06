@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const ButtonDiv = ({addFollow, addVideo, userVideos, video }) => {
+const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
     const [isFollowing, setIsFollowing] = useState(video.user.is_following);
 
     return (
@@ -11,12 +11,14 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video }) => {
               ? "Added"
               : "Add Video"}
           </button>
+          {video.user.id !== sessionUser.id && (
           <button id="follow-button" onClick={() => addFollow(setIsFollowing)}>
               {isFollowing
               ? "Following"
               : `Follow`
             }
           </button>
+          )}
         </div>
     )
 }
