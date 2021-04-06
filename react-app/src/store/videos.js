@@ -180,6 +180,7 @@ const initialState = {
   all_videos: [],
   search_results: [],
   user_videos: [],
+  uploaded_videos: [],
 };
 
 const videosReducer = (state = initialState, action) => {
@@ -199,11 +200,7 @@ const videosReducer = (state = initialState, action) => {
     case UPLOADED_VIDEOS: {
       newState = { ...state };
       const videos = action.videos;
-      const newObj = {};
-      videos.forEach(video => {
-        newObj[video.id] = video
-      })
-      newState.uploaded_videos = newObj;
+      newState.uploaded_videos = videos;
       return newState;
     }
     case COLLECTION_ADD: {

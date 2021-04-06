@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/User/UsersList";
 import User from "./components/User";
 import Home from "./components/Home";
-import AllVideos from "./components/AllVideos";
+import AllVideosPage from "./components/AllVideosPage";
 import VideoPage from "./components/VideoPage";
 import SearchResults from "./components/Nav/SearchResults";
 import NoResults from "./components/Nav/NoResults";
@@ -78,7 +78,7 @@ function App() {
               <VideoPage />
             </Route>
             <Route path="/videos">
-              <AllVideos />
+              <AllVideosPage />
             </Route>
             <Route path="/search-results">
               <SearchResults />

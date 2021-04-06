@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllVideos } from "../../store/videos";
+import { getUserVideos } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 
-const AllVideos = () => {
+const UserVideos = ({userId}) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const allVideos = useSelector((state) => state.videos.all_videos);
-//   const [image, setImage] = useState("");
+  const videos = useSelector((state) => state.videos.user_videos);
 
   const changeImg = (e, video) => {
     // console.log(video.gif_path);
@@ -19,14 +18,13 @@ const AllVideos = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllVideos())
+    dispatch(getUserVideos(userId))
   }, [dispatch]);
 
   return (
       <>
-        <h1 id="home-h1">All Videos</h1>
         <div id="home-grid">
-          {allVideos.map((video) => {
+          {videos.map((video) => {
             return (
               <div id="thumbnail-div">
                 <Link to={`/videos/${video.id}`}>
@@ -62,4 +60,4 @@ const AllVideos = () => {
   );
 };
 
-export default AllVideos;
+export default UserVideos;
