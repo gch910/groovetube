@@ -89,8 +89,8 @@ const VideoPage = () => {
               : "Add Video"}
           </button>
           <button id="follow-button" onClick={addFollow}>
-              {userFollows?.following?.some(user => user.id == video?.user?.id)
-              ? "Fallowing"
+              {userFollows?.followers?.some(user => user.id == sessionUser?.id)
+              ? "Following"
               : `Follow ${video?.user.username}`
             }
           </button>

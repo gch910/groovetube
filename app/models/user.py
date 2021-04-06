@@ -71,7 +71,9 @@ class User(db.Model, UserMixin):
       # "videos": [video.to_dict() for video in self.videos],
       "comments": [comment.to_dict() for comment in self.comments],
       "video_collection": [video.to_dict() for video in self.video_collection],
-      # "followers": [user.to_dict() for user in self.followers]
+      "followers": [user.to_simple() for user in self.followers],
+      "following": [user.to_simple() for user in self.following]
+
     }
 
   def just_username(self):
@@ -80,19 +82,26 @@ class User(db.Model, UserMixin):
       "profile_img": self.profile_img
     }
 
-  def followers_dict(self):
-    return {
-    "id": self.id,
-    "username": self.username,
-    "email": self.email,
-    "followers": [user.followers_dict() for user in self.followers]
-    }
+  # def followers_dict(self):
+  #   return {
+  #   "id": self.id,
+  #   "username": self.username,
+  #   "email": self.email,
+  #   "followers": [user.followers_dict() for user in self.followers]
+  #   }
 
-  def following_dict(self):
-      return {
-    "id": self.id,
-    "username": self.username,
-    "email": self.email,
-    "following": [user.following_dict() for user in self.following]
+  # def following_dict(self):
+  #     return {
+  #   "id": self.id,
+  #   "username": self.username,
+  #   "email": self.email,
+  #   "following": [user.following_dict() for user in self.following]
+  #   }
+  
+  def to_simple(self):
+    return {
+      "id": self.id,
+      "username": self.username
     }
+    
 

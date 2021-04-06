@@ -24,8 +24,8 @@ export const addUserFollow = (sessionUserId, userId) => async (dispatch) => {
 };
 
 const initialState = {
-  fallowers: [],
-  fallowing: [],
+  followers: [],
+  following: [],
 };
 
 const followsReducer = (state = initialState, action) => {

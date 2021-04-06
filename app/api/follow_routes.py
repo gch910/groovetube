@@ -9,7 +9,7 @@ follow_routes = Blueprint("follow", __name__)
 def get_followers(user_id):
     user = User.query.get(user_id)
 
-    result_dict = {f"{user.to_dict()['username']}'s followers": user.followers_dict()["followers"]}
+    result_dict = {f"{user.to_dict()['username']}'s followers": user.to_dict()["followers"]}
 
     return result_dict
 
@@ -18,7 +18,7 @@ def get_followers(user_id):
 def get_following(user_id):
     user = User.query.get(user_id)
 
-    result_dict = {f"{user.to_dict()['username']}'s following": user.following_dict()["following"]}
+    result_dict = {f"{user.to_dict()['username']}'s following": user.to_dict["following"]}
 
     return result_dict
 
@@ -27,16 +27,20 @@ def get_following(user_id):
 def add_follower(session_user_id, user_id):
     session_user = User.query.get(session_user_id)
 
+    session_user_following = session_user.to_dict()["following"]
+
     user = User.query.get(user_id)
 
-    user.followers.append(session_user)
+    if session_user_id != user_id and user_id not in session_user_following:
 
-    db.session.add(user)
-    db.session.commit()
+        user.followers.append(session_user)
+
+        db.session.add(user)
+        db.session.commit()
 
     result_dict = {
-        "followers": user.followers_dict()["followers"],
-        "following": user.following_dict()["following"]
+        "followers": user.to_dict()["followers"],
+        "following": user.to_dict()["following"]
         }
 
     return result_dict
