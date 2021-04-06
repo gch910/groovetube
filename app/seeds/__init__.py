@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .categories import seed_categories
 from .seed_videos import seed_videos
 from .collections import seed_collection
+from .aws_upload import upload_file_to_s3
 
 
 
@@ -17,6 +18,7 @@ def seed():
     seed_categories()
     seed_videos()
     seed_collection()
+    upload_file_to_s3("/images/paak1.jpg")
     # Add other seed functions here
 
 # Creates the `flask seed undo` command

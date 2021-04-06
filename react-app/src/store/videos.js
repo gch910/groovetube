@@ -112,7 +112,7 @@ export const addCollection = (userId, videoId) => async dispatch => {
 }
 
 export const getAllVideos = () => async dispatch => {
-  const res = await fetch("/api/videos");
+  const res = await fetch("/api/videos/");
 
   const data = await res.json();
 
