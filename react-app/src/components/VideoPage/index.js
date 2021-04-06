@@ -79,6 +79,9 @@ const VideoPage = () => {
               ? "Added"
               : "Add Video"}
           </button>
+          <button id="follow-button">
+              Follow {video?.user.username}
+          </button>
         </div>
         <CommentForm
           userId={userId}

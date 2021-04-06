@@ -32,6 +32,14 @@ class User(db.Model, UserMixin):
     backref=db.backref("follows", lazy="dynamic"),
     lazy="dynamic"
   )
+  following = db.relationship(
+    "User",
+    secondary=follows,
+    primaryjoin=(follows.c.followed_id == id),
+    secondaryjoin=(follows.c.follower_id == id),
+    # backref=db.backref("follows", lazy="dynamic"),
+    lazy="dynamic"
+  )
   # liked_videos = db.relationship('Video', backref=db.backref("videos"), secondary='Like')
 
   # friends = db.relationship(
@@ -78,5 +86,13 @@ class User(db.Model, UserMixin):
     "username": self.username,
     "email": self.email,
     "followers": [user.followers_dict() for user in self.followers]
+    }
+
+  def following_dict(self):
+      return {
+    "id": self.id,
+    "username": self.username,
+    "email": self.email,
+    "following": [user.following_dict() for user in self.following]
     }
 
