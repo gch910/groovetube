@@ -7,8 +7,9 @@ import {
   getUserVideos,
   deleteUserComment,
 } from "../../store/videos";
-import { addUserFollow } from "../../store/follows";
+import { addUserFollow, getUserFollows } from "../../store/follows";
 import CommentForm from "./CommentForm";
+import ButtonDiv from "./ButtonDiv";
 import "./VideoPage.css";
 
 const VideoPage = () => {
@@ -17,10 +18,10 @@ const VideoPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const video = useSelector((state) => state.videos.current_video);
   const userVideos = useSelector((state) => state.videos.user_videos);
-  const userFollows = useSelector((state) => state.follows)
+  const userFollows = useSelector((state) => state.follows);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [isFollowed, setIsFollowed] = useState(false);
+  // const [isFollowed, setIsFollowed] = useState(false);
   const [newComment, setNewComment] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -31,11 +32,18 @@ const VideoPage = () => {
     setIsAdded(true);
   };
 
-  const addFollow = async (e) => {
-    e.preventDefault();
-    await dispatch(addUserFollow(sessionUser?.id, video?.user?.id))
-    setIsFollowed(true)
-  }
+  const addFollow = (setIsFollowing) => {
+    dispatch(addUserFollow(video.user.id)).then((res) => {
+      console.log(res.result);
+      if (res.result === "follow") {
+        setIsFollowing(true);
+      } else {
+        setIsFollowing(false);
+      }
+    });
+  };
+
+  console.log("video user", video?.user.id);
 
   const deleteComment = (e) => {
     console.log();
@@ -61,7 +69,12 @@ const VideoPage = () => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return setNewComment(false);
-  }, [dispatch, isAdded, isFollowed, newComment, deleted]);
+  }, [dispatch, isAdded, newComment, deleted]);
+
+  useEffect(() => {
+    video &&
+      dispatch(getUserFollows(video.user.id)).then(() => setIsLoaded(true));
+  }, [dispatch, video]);
 
   if (sessionUser?.user) userId = sessionUser?.user?.id;
 
@@ -82,19 +95,27 @@ const VideoPage = () => {
             allowfullscreen
           ></iframe>
         </div>
-        <div id="add-video-button-div">
+        {video && (
+          <ButtonDiv
+            video={video}
+            addFollow={addFollow}
+            userVideos={userVideos}
+            addVideo={addVideo}
+          />
+        )}
+        {/* <div id="add-video-button-div">
           <button onClick={addVideo}>
             {userVideosArray?.some((video) => video.id == videoId)
               ? "Added"
               : "Add Video"}
           </button>
           <button id="follow-button" onClick={addFollow}>
-              {userFollows?.followers?.some(user => user.id == sessionUser?.id)
+              {video.user.is_following
               ? "Following"
               : `Follow ${video?.user.username}`
             }
           </button>
-        </div>
+        </div> */}
         <CommentForm
           userId={userId}
           newComment={newComment}

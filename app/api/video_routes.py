@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, Video, User, Comment
 from app.forms.comment_form import CommentForm
 from app.forms.search_form import SearchForm
+
 
 video_routes = Blueprint("videos", __name__)
 
@@ -36,7 +37,11 @@ def video(video_id):
     videoDict = video.to_dict()
     user_id = videoDict["user_id"]
     user = User.query.get(user_id)
+
     videoDict["user"] = user.to_dict()
+    videoDict["user"]["is_following"] = current_user.id in [follower["id"] for follower in videoDict["user"]["followers"]] if current_user else False
+
+    videoDict["owned"] = current_user.id == user_id if current_user else False
 
     return {"video": videoDict}
 

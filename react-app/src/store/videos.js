@@ -181,6 +181,7 @@ const initialState = {
   search_results: [],
   user_videos: [],
   uploaded_videos: [],
+  current_video: null,
 };
 
 const videosReducer = (state = initialState, action) => {
