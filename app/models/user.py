@@ -62,7 +62,8 @@ class User(db.Model, UserMixin):
       "email": self.email,
       # "videos": [video.to_dict() for video in self.videos],
       "comments": [comment.to_dict() for comment in self.comments],
-      "video_collection": [video.to_dict() for video in self.video_collection]
+      "video_collection": [video.to_dict() for video in self.video_collection],
+      "followers": [user.to_dict() for user in self.followers]
     }
 
   def just_username(self):
@@ -70,3 +71,12 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "profile_img": self.profile_img
     }
+
+  def followers_dict(self):
+    return {
+    "id": self.id,
+    "username": self.username,
+    "email": self.email,
+    "followers": [user.followers_dict() for user in self.followers]
+    }
+
