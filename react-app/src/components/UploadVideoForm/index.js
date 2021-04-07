@@ -2,67 +2,61 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { newUpload } from "../../store/upload";
-import "./UploadvideoForm.css";
+import "./UploadVideoForm.css";
 
 const UploadVideoForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-  const [selectgenres, setSelectGenres] = useState([]);
-  const [genre, setGenre] = useState(1);
-  const [video, setvideo] = useState(null);
-  const [videoLoading, setvideoLoading] = useState(false);
+  const user = useSelector((state) => state.session.user);
+  const [selectCategories, setSelectCategories] = useState([]);
+  const [category, setCategory] = useState(1);
+  const [video, setvideo] = useState("");
   const [image, setImage] = useState("");
+  const [gif, setGif] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
+  const [gifLoading, setGifLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("2021-03-24");
+  const [artist, setArtist] = useState("");
+
+  const getYoutubeEmbed = (link) => {
+    const linkEmbed = link.replace("watch?v=", "embed/")
+    return linkEmbed
+  }
 
   useEffect(() => {
     fetch("/api/videos/categories")
       .then((response) => response.json())
-      .then((data) => setSelectGenres(data.genres));
+      .then((data) => setSelectCategories(data.categories));
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const video_path = new FormData();
-    video_path.append("video", video);
-    video_path.append("image", image);
+
+    const embed = getYoutubeEmbed(video)
+
     const videoAttributes = {
       title,
-      release_date: date,
+      artist: artist,
+      video_path: embed,
+      img_path: image,
+      gif_path: gif,
       user_id: user.id,
-      genre_id: genre,
+      category_id: category,
     };
-    setvideoLoading(true);
-    setImageLoading(true);
-    const res = await dispatch(newUpload(video_path, videoAttributes));
+ 
+    const res = await dispatch(newUpload(videoAttributes));
     /* aws uploads can be a bit slow—displaying
     some sort of loading message is a good idea*/
 
     if (res.ok) {
       await res.json();
-      setvideoLoading(false);
-      setImageLoading(false);
       history.push("/");
-    } else {
-      setvideoLoading(false);
-      setImageLoading(false);
-      /* a real app would probably use more advanced
-       error handling*/
-    }
+    } 
   };
 
-  const updatevideo = (e) => {
-    const file = e.target.files[0];
-    setvideo(file);
-  };
-  const updateImage = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-  };
+ 
   return (
-    selectgenres.length && (
+    selectCategories.length && (
       <div id="upload-form-div">
         <form id="upload-form" onSubmit={handleSubmit}>
           <h1 id="upload-h1">Upload a video</h1>
@@ -77,26 +71,26 @@ const UploadVideoForm = () => {
             />
           </div>
           <div>
-            <label className="upload-label">Release Date</label>
+            <label className="upload-label">Artist</label>
             <input
               className="upload-field"
-              type="date"
-              value={date}
+              type="text"
+              value={artist}
               onChange={(e) => {
-                setDate(e.target.value);
+                setArtist(e.target.value);
               }}
               required
             />
           </div>
           <div>
-            <label className="upload-label">Select a genre</label>
+            <label className="upload-label">Select a Category</label>
             <select
               className="upload-field"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               required
             >
-              {selectgenres.map((el, idx) => {
+              {selectCategories.map((el, idx) => {
                 return (
                   <option key={idx} value={el.id}>
                     {el.name}
@@ -106,25 +100,30 @@ const UploadVideoForm = () => {
             </select>
           </div>
           <div>
-            <label className="upload-label">Upload a video file</label>
+            <label className="upload-label">YouTube Link to Upload</label>
             <input
               className="upload-field"
-              type="file"
-              accept="audio/*"
-              onChange={updatevideo}
+              type="text"
+              onChange={(e) => setvideo(e.target.value)}
               required
             />
-            {videoLoading && <p>Loading...</p>}
           </div>
           <div>
-            <label className="upload-label">Upload an album image</label>
+            <label className="upload-label">Upload Video Thumbnail</label>
             <input
               className="upload-field"
-              type="file"
-              accept="image/*"
-              onChange={updateImage}
+              type="text"
+              onChange={(e) => setImage(e.target.value)}
             />
-            {imageLoading && <p>Loading...</p>}
+          </div>
+          <div>
+            <label className="upload-label">Upload Video Gif</label>
+            <input
+              className="upload-field"
+              type="text"
+              // accept="image/*"
+              onChange={(e) => setGif(e.target.value)}
+            />
           </div>
           <div id="upload-submit-button-div">
             <button id="upload-submit-button" type="submit">

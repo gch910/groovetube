@@ -9,7 +9,7 @@ class Category(db.Model):
 
     videos = db.relationship("Video")
 
-    def to_dict(seld):
+    def to_dict(self):
         return {
             "id": self.id,
             "name": self.name
