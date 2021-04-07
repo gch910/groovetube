@@ -39,9 +39,9 @@ def video(video_id):
     user = User.query.get(user_id)
 
     videoDict["user"] = user.to_dict()
-    videoDict["user"]["is_following"] = current_user.id in [follower["id"] for follower in videoDict["user"]["followers"]] if current_user else False
+    videoDict["user"]["is_following"] = current_user.id in [follower["id"] for follower in videoDict["user"]["followers"]] if current_user.is_authenticated else False
 
-    videoDict["owned"] = current_user.id == user_id if current_user else False
+    videoDict["owned"] = current_user.id == user_id if current_user.is_authenticated else False
 
     return {"video": videoDict}
 
