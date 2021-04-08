@@ -101,7 +101,7 @@ function User() {
           {favoritesClicked ? <UserVideos userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
         </div>
         <div id="profile-popular-div">
-          {uploadedClicked ? <UserUploads userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
+          {uploadedClicked ? <UserUploads userId={userId} sessionUser={sessionUser} user={user} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
         </div>
       </div>
     </div>

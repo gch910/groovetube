@@ -6,6 +6,7 @@ const POST_COMMENT = "/videos/POST_COMMENT";
 const DELETE_COMMENT = "/videos/DELETE_COMMENT";
 const UPLOADED_VIDEOS = "/videos/UPLOADED_VIDEOS"
 const SEARCH_RESULTS = "videos/SEARCH_RESULTS";
+const DELETE_VIDEO = "video/DELETE_VIDEO";
 
 
 const video = (video) => {
@@ -61,6 +62,12 @@ const searchResults = (videos) => {
     type: SEARCH_RESULTS,
     videos,
 
+  }
+}
+
+const deleteVideo = () => {
+  return {
+    type: DELETE_VIDEO,
   }
 }
  
@@ -175,6 +182,17 @@ export const getSearchResults = (search) => async dispatch => {
   return data.videos;
 }
 
+export const deleteUserVideo = (videoId) => async dispatch => {
+  const res = await fetch(`/api/videos/${videoId}/delete`, {
+    method: 'DELETE',
+    
+  })
+
+  dispatch(deleteVideo())
+
+  return res
+}
+
 
 const initialState = {
   all_videos: [],
@@ -230,6 +248,10 @@ const videosReducer = (state = initialState, action) => {
       newState = {...state };
       const videos = action.videos;
       newState.search_results = videos;
+      return newState;
+    }
+    case DELETE_VIDEO: {
+      newState = {...state}
       return newState;
     }
     default:

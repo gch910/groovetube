@@ -9,10 +9,29 @@ const SearchResults = () => {
   const searchResults = useSelector((state) => state.videos.search_results);
 
   const changeImg = (e, video) => {
-      video &&
-      (e.target.src =
-        gifs[`${video.gif_path.match(/(?<=gifs\/).*(?=\.gif)/)[0]}`]);
+    if(video && gifs[gifKeyCreator(video.gif_path)]) {
+      e.target.src = gifs[gifKeyCreator(video.gif_path)]
+    } else {
+      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
+    }
+    
   };
+
+  const gifKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const gifKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return gifKey
+  }
+  const imgKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const imgKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return imgKey
+  }
+
   return (
     <div>
       {searchResults.map((video) => (
@@ -25,21 +44,10 @@ const SearchResults = () => {
           <div id="search-results-div">
             <Link to={`/videos/${video.id}`}>
               <img
-                onMouseEnter={(e) => changeImg(e, video)}
-                onMouseLeave={(e) =>
-                  (e.target.src =
-                    imgs[
-                      `${
-                        video.img_path.match(/(?<=images\/).*(?=\.jpg)/)[0]
-                      }`
-                    ])
-                }
+                 onMouseEnter={(e) => changeImg(e, video)}
+                 onMouseLeave={(e) => imgs[imgKeyCreator(video.img_path)] ? e.target.src = imgs[imgKeyCreator(video.img_path)] : e.target.src = video.img_path}
                 className="thumbnail"
-                src={
-                  imgs[
-                    `${video.img_path.match(/(?<=images\/).*(?=\.jpg)/)[0]}`
-                  ]
-                }
+                src={imgs[imgKeyCreator(video.img_path)] ? imgs[imgKeyCreator(video.img_path)] : video.img_path}
               />
             </Link>
           </div>

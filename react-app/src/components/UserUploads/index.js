@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {getUploadedVideos} from "../../store/videos";
+import {getUploadedVideos, deleteUserVideo} from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
+import "./UserUploads.css"
 
-const UserUploads = ({userId, gifKeyCreator, imgKeyCreator}) => {
+const UserUploads = ({userId, gifKeyCreator, imgKeyCreator, user, sessionUser}) => {
   const dispatch = useDispatch();
   const uploadedVideos = useSelector(state => state.videos.uploaded_videos)
   const [isLoaded, setIsLoaded] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const deleteVideoClick = (e) => {
+    dispatch(deleteUserVideo(e.target.id))
+
+    setSuccess(true)
+
+    setTimeout(() => {
+      setSuccess(false)
+      setDeleted(true)
+    }, 1000)
+
+  }
  
 
   const changeImg = (e, video) => {
@@ -22,7 +37,9 @@ const UserUploads = ({userId, gifKeyCreator, imgKeyCreator}) => {
 
   useEffect(() => {
     dispatch(getUploadedVideos(userId)).then(() => setIsLoaded(true));
-  }, [dispatch]);
+
+    return setDeleted(false)
+  }, [dispatch, deleted]);
 
   return (
     isLoaded && (
@@ -40,6 +57,7 @@ const UserUploads = ({userId, gifKeyCreator, imgKeyCreator}) => {
                     src={imgs[imgKeyCreator(video.img_path)] ? imgs[imgKeyCreator(video.img_path)] : video.img_path}
                   />
                 </Link>
+                {sessionUser.id === user.id ? <button onClick={(e) => deleteVideoClick(e)} id={video.id} className="delete-video-button">{success ? "Deleted!" : "Delete"}</button> : ""}
                 <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>
                   <div id="thumbnail-h3-div">
                     <h3>{video.title}</h3>
