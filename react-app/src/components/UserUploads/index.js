@@ -11,15 +11,14 @@ const UserUploads = ({userId, gifKeyCreator, imgKeyCreator, user, sessionUser}) 
   const uploadedVideos = useSelector(state => state.videos.uploaded_videos)
   const [isLoaded, setIsLoaded] = useState(false);
   const [deleted, setDeleted] = useState(false);
-  const [success, setSuccess] = useState(false);
+ 
 
   const deleteVideoClick = (e) => {
     dispatch(deleteUserVideo(e.target.id))
 
-    setSuccess(true)
+    e.target.innerText = "Deleted!"
 
     setTimeout(() => {
-      setSuccess(false)
       setDeleted(true)
     }, 1000)
 
@@ -57,7 +56,7 @@ const UserUploads = ({userId, gifKeyCreator, imgKeyCreator, user, sessionUser}) 
                     src={imgs[imgKeyCreator(video.img_path)] ? imgs[imgKeyCreator(video.img_path)] : video.img_path}
                   />
                 </Link>
-                {sessionUser.id === user.id ? <button onClick={(e) => deleteVideoClick(e)} id={video.id} className="delete-video-button">{success ? "Deleted!" : "Delete"}</button> : ""}
+                {sessionUser.id === user.id ? <button onClick={(e) => deleteVideoClick(e)} id={video.id} className="delete-video-button">Delete</button> : ""}
                 <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>
                   <div id="thumbnail-h3-div">
                     <h3>{video.title}</h3>
