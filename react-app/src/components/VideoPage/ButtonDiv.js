@@ -6,7 +6,7 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
     return (
         
         <div id="add-video-button-div">
-          <button onClick={addVideo}>
+          <button id="add-button" onClick={addVideo}>
             {userVideos?.some((vid) => vid.id == video.id)
               ? "Added"
               : "Add Video"}

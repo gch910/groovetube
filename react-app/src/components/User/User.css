@@ -39,15 +39,15 @@
 .profile-nav-link {
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #FF5D00;
+    border-bottom: 1px solid #6a34ce;
     width: 100px;
     height: 40px;
     cursor: pointer;
     /* padding-bottom: 20px; */
-    color: #FF5D00;
+    color: #6a34ce;
     background-color: white;
 }
 
-.active {
-    color: red;
-}
+/* .active {
+    color: black;
+} */

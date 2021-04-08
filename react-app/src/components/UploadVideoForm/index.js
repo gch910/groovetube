@@ -17,6 +17,7 @@ const UploadVideoForm = () => {
   const [gifLoading, setGifLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const getYoutubeEmbed = (link) => {
     const linkEmbed = link.replace("watch?v=", "embed/")
@@ -44,14 +45,15 @@ const UploadVideoForm = () => {
       category_id: category,
     };
  
-    const res = await dispatch(newUpload(videoAttributes));
-    /* aws uploads can be a bit slow—displaying
-    some sort of loading message is a good idea*/
+    dispatch(newUpload(videoAttributes));
 
-    if (res.ok) {
-      await res.json();
+
+    setSuccess(true)
+    setTimeout(() => {
       history.push("/");
-    } 
+    }, 1500)
+      
+    // } 
   };
 
  
@@ -60,7 +62,7 @@ const UploadVideoForm = () => {
       <div id="upload-form-div">
         <form id="upload-form" onSubmit={handleSubmit}>
           <h1 id="upload-h1">Upload a video</h1>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">video Title</label>
             <input
               className="upload-field"
@@ -70,7 +72,7 @@ const UploadVideoForm = () => {
               required
             />
           </div>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">Artist</label>
             <input
               className="upload-field"
@@ -82,7 +84,7 @@ const UploadVideoForm = () => {
               required
             />
           </div>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">Select a Category</label>
             <select
               className="upload-field"
@@ -99,7 +101,7 @@ const UploadVideoForm = () => {
               })}
             </select>
           </div>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">YouTube Link to Upload</label>
             <input
               className="upload-field"
@@ -108,7 +110,7 @@ const UploadVideoForm = () => {
               required
             />
           </div>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">Upload Video Thumbnail</label>
             <input
               className="upload-field"
@@ -116,7 +118,7 @@ const UploadVideoForm = () => {
               onChange={(e) => setImage(e.target.value)}
             />
           </div>
-          <div>
+          <div className="upload-div">
             <label className="upload-label">Upload Video Gif</label>
             <input
               className="upload-field"
@@ -127,7 +129,7 @@ const UploadVideoForm = () => {
           </div>
           <div id="upload-submit-button-div">
             <button id="upload-submit-button" type="submit">
-              Submit
+              {success ? "Success!" : "Upload"}
             </button>
           </div>
         </form>

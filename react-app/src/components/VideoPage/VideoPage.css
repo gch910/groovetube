@@ -181,3 +181,21 @@
   left: 10%;
 } */
 
+#add-button {
+  background-color: #6a34ce;
+  border-radius: 3px 3px 3px 3px;
+  border: none;
+  color: white;
+  height: 30px;
+  width: 70px;
+}
+
+#follow-button {
+  background-color: #6a34ce;
+  border-radius: 3px 3px 3px 3px;
+  border: none;
+  color: white;
+  height: 30px;
+  width: 70px;
+}
+
