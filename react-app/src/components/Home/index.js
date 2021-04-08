@@ -13,6 +13,21 @@ const Home = () => {
   const allVideos = useSelector((state) => state.videos.all_videos);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const gifKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const gifKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return gifKey
+  }
+  const imgKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const imgKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return imgKey
+  }
+
 
   useEffect(() => {
     // dispatch(getAllVideos()).then(() => 
@@ -27,7 +42,7 @@ const Home = () => {
         {sessionUser ? (
           <div>
             <h1 id="home-h1">Your Collection</h1>
-            <UserVideos userId={sessionUser?.id} isLoaded={isLoaded} />
+            <UserVideos userId={sessionUser?.id} isLoaded={isLoaded} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator}/>
           </div>
         ) : (
           <AllVideos />

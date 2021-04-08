@@ -1,7 +1,7 @@
 
 .thumbnail {
-    /* margin-right: 20px;
-    margin-top: 20px; */
+    width: 320px;
+    height: 180px;
 }
 
 #home-grid {
