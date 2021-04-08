@@ -5,17 +5,19 @@ import {getUploadedVideos} from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 
-const UserUploads = ({userId}) => {
+const UserUploads = ({userId, gifKeyCreator, imgKeyCreator}) => {
   const dispatch = useDispatch();
   const uploadedVideos = useSelector(state => state.videos.uploaded_videos)
   const [isLoaded, setIsLoaded] = useState(false);
  
 
   const changeImg = (e, video) => {
-    // console.log(video.gif_path);
-    video &&
-      (e.target.src =
-        gifs[`${video.gif_path.match(/(?<=gifs\/).*(?=\.gif)/)[0]}`]);
+    if(video && gifs[gifKeyCreator(video.gif_path)]) {
+      e.target.src = gifs[gifKeyCreator(video.gif_path)]
+    } else {
+      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
+    }
+    
   };
 
   useEffect(() => {
@@ -32,21 +34,10 @@ const UserUploads = ({userId}) => {
                 <Link to={`/videos/${video.id}`}>
                   <img
                     onMouseEnter={(e) => changeImg(e, video)}
-                    onMouseLeave={(e) =>
-                      (e.target.src =
-                        imgs[
-                          `${
-                            video.img_path.match(/(?<=images\/).*(?=\.jpg)/)[0]
-                          }`
-                        ])
-                    }
+                    onMouseLeave={(e) => imgs[imgKeyCreator(video.img_path)] ? e.target.src = imgs[imgKeyCreator(video.img_path)] : e.target.src = video.img_path}
                     id={video?.gif_path}
                     className="thumbnail"
-                    src={
-                      imgs[
-                        `${video.img_path.match(/(?<=images\/).*(?=\.jpg)/)[0]}`
-                      ]
-                    }
+                    src={imgs[imgKeyCreator(video.img_path)] ? imgs[imgKeyCreator(video.img_path)] : video.img_path}
                   />
                 </Link>
                 <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>

@@ -17,6 +17,14 @@ const SideNav = ({ setAuthenticated }) => {
         </NavLink>
         <NavLink
           className="nav-link"
+          to={sessionUser ? `/newvideo/upload` : "/login"}
+          exact={true}
+          activeClassName="active"
+        >
+          Upload
+        </NavLink>
+        <NavLink
+          className="nav-link"
           to={sessionUser ? `/users/${sessionUser.id}` : "/login"}
           exact={true}
           activeClassName="active"

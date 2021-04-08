@@ -12,6 +12,21 @@ function User() {
   const [favoritesClicked, setfavoritesClicked] = useState(true);
   const [uploadedClicked, setUploadedClicked] = useState(false);
 
+  const gifKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const gifKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return gifKey
+  }
+  const imgKeyCreator = (path) => {
+    const pathName = path.split("/")[2]
+ 
+    const imgKey = pathName?.slice(0, pathName.indexOf("."))
+    
+    return imgKey
+  }
+
   const displaySongs = () => {
     setfavoritesClicked(true);
     setUploadedClicked(false);
@@ -83,10 +98,10 @@ function User() {
       </nav>
       <div id="profile-display">
         <div id="profile-songs-div">
-          {favoritesClicked ? <UserVideos userId={userId} /> : ""}
+          {favoritesClicked ? <UserVideos userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
         </div>
         <div id="profile-popular-div">
-          {uploadedClicked ? <UserUploads userId={userId} /> : ""}
+          {uploadedClicked ? <UserUploads userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
         </div>
       </div>
     </div>
