@@ -42,7 +42,7 @@ const SideNav = ({ setAuthenticated }) => {
         </NavLink>
 
         <NavLink
-          className="nav-link"
+          className="nav-link" 
           to="/users"
           exact={true}
           activeClassName="active"

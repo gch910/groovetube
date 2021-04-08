@@ -64,7 +64,7 @@ const TopNav = () => {
 
   return (
     <nav id="top-nav">
-      <img id="nav-logo" src={logo}/>
+      <Link to="/"><img id="nav-logo" src={logo}/></Link>
       <form id="search-bar-form" onSubmit={onSearchSubmit}>
         <input
           onChange={(e) => setSearch(e.target.value)}
