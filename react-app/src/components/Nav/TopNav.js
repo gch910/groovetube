@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllVideos, getSearchResults } from "../../store/videos";
 import { Link, useHistory } from "react-router-dom";
 import SearchResults from "./SearchResults"
+import logo from "./logo"
 
 const TopNav = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const TopNav = () => {
 
   return (
     <nav id="top-nav">
+      <img id="nav-logo" src={logo}/>
       <form id="search-bar-form" onSubmit={onSearchSubmit}>
         <input
           onChange={(e) => setSearch(e.target.value)}
