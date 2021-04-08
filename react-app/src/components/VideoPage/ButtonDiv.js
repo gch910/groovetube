@@ -9,7 +9,7 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
           <button id="add-button" onClick={addVideo}>
             {userVideos?.some((vid) => vid.id == video.id)
               ? "Added"
-              : "Add Video"}
+              : "Add"}
           </button>
           {video.user.id !== sessionUser.id && (
           <button id="follow-button" onClick={() => addFollow(setIsFollowing)}>
