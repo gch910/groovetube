@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../services/auth";
+import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import "./SignupForm.css"
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
@@ -8,6 +11,17 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(3),
+        width: '30ch',
+      },
+    },
+  }));
+
+  const classes = useStyles();
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -40,40 +54,46 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form id="signup-form" onSubmit={onSignUp}>
+    <form id="signup-form" className={classes.root} onSubmit={onSignUp}>
       <h1>Sign Up</h1>
       <div>
-        <input
+        <TextField
           className="signup-field"
           type="text"
           name="username"
           placeholder="Username"
           onChange={updateUsername}
           value={username}
-        ></input>
+          variant="outlined"
+          label="Username"
+        ></TextField>
       </div>
       <div>
-        <input
+        <TextField
           className="signup-field"
           type="text"
           name="email"
           placeholder="Email"
           onChange={updateEmail}
           value={email}
-        ></input>
+          variant="outlined"
+          label="Email"
+        ></TextField>
       </div>
       <div>
-        <input
+        <TextField
           className="signup-field"
           type="password"
           name="password"
           placeholder="Password"
           onChange={updatePassword}
           value={password}
-        ></input>
+          variant="outlined"
+          label="Password"
+        ></TextField>
       </div>
       <div>
-        <input
+        <TextField
           className="signup-field"
           type="password"
           name="repeat_password"
@@ -81,10 +101,12 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
-        ></input>
+          variant="outlined"
+          label="Confirm Password"
+        ></TextField>
       </div>
       <div id="signup-button-div">
-        <button id="signup-button" type="submit">Sign Up</button>
+        <Button variant="contained" id="signup-button" type="submit">Sign Up</Button>
       </div>
     </form>
   );

@@ -18,6 +18,8 @@
 }
 
 #signup-button {
-    height: 30px;
-    width: 70px;
+    margin-top: 20px;
+    background-color: #6a34ce;
+    color:white;
+    
 }

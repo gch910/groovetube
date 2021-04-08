@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { loginUser } from "../../store/session";
+import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -11,6 +14,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [password, setPassword] = useState("");
 
   const history = useHistory();
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(3),
+        width: '30ch',
+      },
+    },
+  }));
+
+  const classes = useStyles();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -33,12 +47,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
+
+
   // if (authenticated) {
   //   return <Redirect to="/" />;
   // }
+  
 
   return (
-    <form id="login-form" onSubmit={onLogin}>
+    <form id="login-form" className={classes.root} onSubmit={onLogin}>
       <h1>Login</h1>
       <div>
         {formErrors.map((error) => (
@@ -46,26 +63,30 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div>
-        <input
+        <TextField
           className="login-field"
           name="email"
           type="text"
           placeholder="Email"
           value={email}
           onChange={updateEmail}
+          label="Username"
+          variant="outlined"
         />
       </div>
       <div>
-        <input
+        <TextField
           className="login-field"
           name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={updatePassword}
+          label="Password"
+          variant="outlined"
         />
         <div id="login-button-div">
-          <button id="login-button" type="submit">Login</button>
+          <Button variant="contained" id="login-button" type="submit">Login</Button>
         </div>
       </div>
     </form>
