@@ -61,8 +61,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot]]["./images/logo.png"]
 This is a description.
 
 ### Built With
