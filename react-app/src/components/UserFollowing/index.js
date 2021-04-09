@@ -11,7 +11,7 @@ const UserFollowing = ({ user, displayCollection }) => {
           <NavLink to={`/users/${following.id}`} onClick={displayCollection}>
             <img src={following?.profile_img} className="following-img" />
           </NavLink>
-          <NavLink to={`/users/${following.id}`} onClick={displayCollection}>{following.username}</NavLink>
+          <NavLink id="following-text" to={`/users/${following.id}`} onClick={displayCollection}>{following.username}</NavLink>
         </div>
       ))}
     </div>

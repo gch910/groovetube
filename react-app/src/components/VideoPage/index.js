@@ -10,6 +10,7 @@ import {
 import { addUserFollow, getUserFollows } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import ButtonDiv from "./ButtonDiv";
+import Button from '@material-ui/core/Button';
 import "./VideoPage.css";
 
 
@@ -124,6 +125,7 @@ const VideoPage = () => {
           setNewComment={setNewComment}
         />
         <div id="comments-div">
+          <h3>Comments:</h3>
           {video?.comments.map((comment) => (
             <div
               className="comment-div"
@@ -146,7 +148,7 @@ const VideoPage = () => {
                   userId={comment.user_id}
                   onClick={deleteComment}
                 >
-                  Delete Comment
+                  Delete
                 </button>
               )}
             </div>

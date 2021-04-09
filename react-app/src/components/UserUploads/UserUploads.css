@@ -1,8 +1,11 @@
 .delete-video-button {
     width: 60px !important;
-    background-color: rgb(202, 46, 46);
+    background-color: rgb(243, 55, 55); 
     color: white;
     border: none;
     border-radius: 3px 3px 3px 3px;
     height: 20px;
 }
+
+
+

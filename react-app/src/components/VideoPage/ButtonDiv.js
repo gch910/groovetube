@@ -15,7 +15,7 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
           {video.user.id !== sessionUser.id && (
           <Button id="follow-button" variant="contained" onClick={() => addFollow(setIsFollowing)}>
               {isFollowing
-              ? "Following"
+              ? "Unfollow"
               : `Follow`
             }
           </Button>
