@@ -4,6 +4,7 @@ import { useParams, Redirect } from "react-router-dom";
 import UserVideos from "../UserVideos";
 import UserUploads from "../UserUploads";
 import UserFollowers from "../UserFollowers";
+import UserFollowing from "../UserFollowing";
 import "./User.css";
 
 function User() {
@@ -13,6 +14,7 @@ function User() {
   const [collectionClicked, setCollectionClicked] = useState(true);
   const [uploadedClicked, setUploadedClicked] = useState(false);
   const [followersClicked, setFollowersClicked] = useState(false);
+  const [followingClicked, setFollowingClicked] = useState(false);
 
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2]
@@ -32,17 +34,26 @@ function User() {
   const displayCollection = () => {
     setFollowersClicked(false);
     setUploadedClicked(false);
+    setFollowingClicked(false);
     setCollectionClicked(true);
   };
   const displayUploads = () => {
     setCollectionClicked(false);
     setFollowersClicked(false);
+    setFollowingClicked(false);
     setUploadedClicked(true);
   };
   const displayFollowers = () => {
     setCollectionClicked(false);
     setUploadedClicked(false);
+    setFollowingClicked(false);
     setFollowersClicked(true);
+  };
+  const displayFollowing = () => {
+    setCollectionClicked(false);
+    setUploadedClicked(false);
+    setFollowersClicked(false);
+    setFollowingClicked(true);
   };
 
   useEffect(() => {
@@ -83,6 +94,13 @@ function User() {
             : `${user.username}'s Followers`
           : ""}
       </h1>
+      <h1 id="user-favorites-h1">
+        {followingClicked
+          ? sessionUser.id === user.id
+            ? "Users You Follow"
+            : ` Users ${user.username} Follows`
+          : ""}
+      </h1>
       <nav id="profile-nav">
         <button
           className={`profile-nav-link no-outline ${
@@ -108,6 +126,14 @@ function User() {
         >
           Followers
         </button>
+        <button
+          className={`profile-nav-link no-outline ${
+            followingClicked ? "active" : ""
+          }`}
+          onClick={displayFollowing}
+        >
+          Following
+        </button>
       </nav>
       <div id="profile-display">
         <div id="profile-songs-div">
@@ -118,6 +144,9 @@ function User() {
         </div>
         <div id="profile-followers-div">
           {followersClicked ? <UserFollowers userId={userId} displayCollection={displayCollection} user={user} /> : ""}
+        </div>
+        <div id="profile-following-div">
+          {followingClicked ? <UserFollowing userId={userId} displayCollection={displayCollection} user={user} /> : ""}
         </div>
       </div>
     </div>

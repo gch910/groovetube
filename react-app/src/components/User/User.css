@@ -34,7 +34,7 @@
 #profile-nav {
     display: grid;
     grid-template-rows: 40px;
-    grid-template-columns: 1fr 1fr 6fr;
+    grid-template-columns: 1fr 1fr 1fr 6fr;
     align-items: center;
     border-bottom: 1px solid rgb(128, 128, 128, 0.2);
     background-color: white;
