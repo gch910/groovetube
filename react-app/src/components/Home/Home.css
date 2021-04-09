@@ -22,6 +22,8 @@
     display: flex;
     justify-content: center;
     color: #6a34ce;
+    font-size: 35px;
+    text-decoration: underline;
 }
 
 #thumbnail-div {
@@ -36,9 +38,6 @@
     width: 300px;
 }
 
-#thumbnail-h3-div {
-    padding: 10px;  
-}
 
 #thumbnail-h3-link {
     text-decoration: none;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postUserComment } from "../../store/videos";
+import Button from '@material-ui/core/Button';
 
 const CommentForm = ({ userId, newComment, setNewComment }) => {
   const { videoId } = useParams();
@@ -11,6 +12,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
   const [liked, setLiked] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+
 
 //   const likeSong = (e) => {
 //     e.preventDefault();
@@ -57,13 +59,14 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
           id="comment-text"
           placeholder="Comment"
         ></textarea>
-        <button
+        <Button
           onClick={newCommentSubmit}
           id="comment-submit-button"
           type="submit"
+          variant="contained"
         >
           Submit
-        </button>
+        </Button>
       </form>
     </div>
   );

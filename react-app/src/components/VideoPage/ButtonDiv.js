@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Button from '@material-ui/core/Button';
 
 const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
     const [isFollowing, setIsFollowing] = useState(video.user.is_following);
@@ -6,18 +7,18 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
     return (
         
         <div id="add-video-button-div">
-          <button id="add-button" onClick={addVideo}>
+          <Button id="add-button" variant="contained" onClick={addVideo}>
             {userVideos?.some((vid) => vid.id == video.id)
               ? "Added"
               : "Add"}
-          </button>
+          </Button>
           {video.user.id !== sessionUser.id && (
-          <button id="follow-button" onClick={() => addFollow(setIsFollowing)}>
+          <Button id="follow-button" variant="contained" onClick={() => addFollow(setIsFollowing)}>
               {isFollowing
               ? "Following"
               : `Follow`
             }
-          </button>
+          </Button>
           )}
         </div>
     )

@@ -138,6 +138,8 @@
 
 #comment-submit-button {
   border: 1px solid gray;
+  background-color: #6a34ce;
+  color: white;
   border-radius: 3px 3px 3px 3px;
   height: 30px;
 }
@@ -196,6 +198,6 @@
   border: none;
   color: white;
   height: 30px;
-  width: 70px;
+  width: 95px;
 }
 
