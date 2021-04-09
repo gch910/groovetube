@@ -69,9 +69,6 @@ function User() {
       </h1>
       <ul id="user-info">
         <li>
-          <strong>User Id</strong> {userId}
-        </li>
-        <li>
           <strong>Username</strong> {user.username}
         </li>
         <li>

@@ -15,15 +15,17 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <li id="user-list-name" key={user.id}>
+      <div id="user-list-name" key={user.id}>
+        <img src={user?.profile_img} className="user-profile-img" />
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
+      </div>
     );
   });
 
   return (
     <div id="user-list-div">
-      <h1 id="user-list-h1">User List: </h1>
+      <h1 id="user-list-h1">Explore Users:</h1>
+      {console.log(users[0])}
       <ul>{userComponents}</ul>
     </div>
   );

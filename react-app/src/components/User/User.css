@@ -25,6 +25,9 @@
     font-size: 40px;
     margin-bottom: 30px;
     list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 
 #profile-nav {
@@ -46,6 +49,17 @@
     /* padding-bottom: 20px; */
     color: #6a34ce;
     background-color: white;
+}
+
+.user-profile-img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+#user-info {
+    list-style: none;
+    margin-left: 0px;
 }
 
 /* .active {

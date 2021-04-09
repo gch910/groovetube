@@ -72,7 +72,8 @@ class User(db.Model, UserMixin):
       "comments": [comment.to_dict() for comment in self.comments],
       "video_collection": [video.to_dict() for video in self.video_collection],
       "followers": [user.to_simple() for user in self.followers],
-      "following": [user.to_simple() for user in self.following]
+      "following": [user.to_simple() for user in self.following],
+      "profile_img": self.profile_img
 
     }
 

@@ -55,7 +55,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <form id="signup-form" className={classes.root} onSubmit={onSignUp}>
-      <h1>Sign Up</h1>
+      <h1 id="signup-h1">Sign Up</h1>
       <div>
         <TextField
           className="signup-field"
