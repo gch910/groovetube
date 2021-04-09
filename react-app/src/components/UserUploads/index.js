@@ -17,9 +17,14 @@ const UserUploads = ({
   const uploadedVideos = useSelector((state) => state.videos.uploaded_videos);
   const [isLoaded, setIsLoaded] = useState(false);
   const [deleted, setDeleted] = useState(false);
-  const [shown, setShown] = useState(false);
+  const [hoverIndex, setHoverIndex] = useState(null);
+
   // const [buttonShown, setButtonShown] = useState(false);
 
+  const buttonClassname = (index) => {
+    if (index === hoverIndex) return "active";
+    else return "button inactive";
+  };
 
   const deleteVideoClick = (e) => {
     dispatch(deleteUserVideo(e.target.id));
@@ -31,7 +36,8 @@ const UserUploads = ({
     }, 1000);
   };
 
-  const changeImg = (e, video) => {
+  const changeImg = (e, video, idx) => {
+    setHoverIndex(idx)
     if (video && gifs[gifKeyCreator(video.gif_path)]) {
       e.target.src = gifs[gifKeyCreator(video.gif_path)];
     } else {
@@ -50,19 +56,25 @@ const UserUploads = ({
     isLoaded && (
       <>
         <div id="home-grid">
-          {uploadedVideos.map((video) => {
+          {uploadedVideos.map((video, idx) => {
             return (
-              <div id="thumbnail-div" onMouseEnter={(e) => setShown(true)} onMouseLeave={(e) => setShown(false)}>
+              <div
+                key={idx}
+                id="thumbnail-div"
+                number={video.id}
+                onMouseEnter={(e) => setHoverIndex(idx)}
+                onMouseLeave={(e) => setHoverIndex(null)}
+              >
                 <Link to={`/videos/${video.id}`}>
                   <img
-                    onMouseEnter={(e) => changeImg(e, video)}
+                    onMouseEnter={(e) => changeImg(e, video, idx)}
                     onMouseLeave={(e) => {
                       imgs[imgKeyCreator(video.img_path)]
                         ? (e.target.src = imgs[imgKeyCreator(video.img_path)])
-                        : (e.target.src = video.img_path)
+                        : (e.target.src = video.img_path);
                     }}
                     id={video?.gif_path}
-                    className="thumbnail"
+                    className={`thumbnail`}
                     src={
                       imgs[imgKeyCreator(video.img_path)]
                         ? imgs[imgKeyCreator(video.img_path)]
@@ -70,15 +82,14 @@ const UserUploads = ({
                     }
                   />
                 </Link>
-                {sessionUser.id === user.id && shown ? (
-                  <button
-                    shown={shown}
-                    onClick={(e) => deleteVideoClick(e)}
-                    id={video.id}
-                    className="delete-video-button"
-                  >
-                    Delete
-                  </button>
+                {sessionUser.id === user.id ? (
+                    <button
+                      onClick={(e) => deleteVideoClick(e)}
+                      id={video.id}
+                      className={`delete-video-button ${buttonClassname(idx)}`}
+                    >
+                      Delete
+                    </button>
                 ) : (
                   ""
                 )}
