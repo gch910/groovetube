@@ -176,5 +176,5 @@ Project Link: [https://github.com/gch910/groovetube](https://github.com/gch910/g
 [license-shield]: https://img.shields.io/github/license/gch910/groovetube.svg?style=for-the-badge
 [license-url]: https://github.com/gch910/groovetube/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/gch910
+[linkedin-url]: https://www.linkedin.com/in/gabriel-harris-249231208/
 
