@@ -1,25 +1,4 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the groovetube and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** gch910, groovetube, twitter_handle, gharris910@icloud.com, Groovetube, This is a project description.
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -28,8 +7,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/gch910/groovetube">
@@ -46,7 +23,7 @@
     <br />
     <a href="https://github.com/gch910/groovetube">View Demo</a>
     ·
-    <a href="https://github.com/gch910/groovetube/issues">groovetubert Bug</a>
+    <a href="https://github.com/gch910/groovetube/issues">Report a Bug</a>
     ·
     <a href="https://github.com/gch910/groovetube/issues">Request Feature</a>
   </p>
@@ -86,17 +63,18 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`gch910`, `groovetube`, `twitter_handle`, `gharris910@icloud.com`, `Groovetube`, `This is a project description.`
-
+This is a description.
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Javascript]()
+* [Python]()
+* [React]()
+* [Redux]()
+* [Flask]()
+* [SQLAlchemy]()
+* [PostgreSQL]()
+* [CSS]()
 
 
 
@@ -107,10 +85,14 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Installations
 * npm
   ```sh
   npm install npm@latest -g
+  ```
+* pipenv
+  ```sh
+  pipenv install 
   ```
 
 ### Installation
@@ -118,8 +100,13 @@ This is an example of how to list things you need to use the software and how to
 1. Clone the groovetube
    ```sh
    git clone https://github.com/gch910/groovetube.git
+
+2. Install Pipenv dependencies
+    ```sh
+   pipenv install
    ```
-2. Install NPM packages
+
+3. Install NPM packages - cd into react-app
    ```sh
    npm install
    ```
@@ -130,8 +117,6 @@ This is an example of how to list things you need to use the software and how to
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
@@ -174,9 +159,7 @@ Project Link: [https://github.com/gch910/groovetube](https://github.com/gch910/g
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [App Academy](https://www.appacademy.io/)
 
 
 
