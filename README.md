@@ -1,13 +1,13 @@
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the gch910 and create a pull request
+*** that would make this better, please fork the groovetube and create a pull request
 *** or simply open an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
 ***
 ***
 ***
 *** To avoid retyping too much info. Do a search and replace for the following:
-*** gch910, groovetube, twitter_handle, gharris910@icloud.com, Groovetube, This is a project description.
+*** groovetube, groovetube, twitter_handle, gharris910@icloud.com, Groovetube, This is a project description.
 -->
 
 
@@ -32,7 +32,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/gch910/groovetube">
+  <a href="https://github.com/groovetube/groovetube">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -41,14 +41,14 @@
   <p align="center">
     This is a project description.
     <br />
-    <a href="https://github.com/gch910/groovetube"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/groovetube/groovetube"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gch910/groovetube">View Demo</a>
+    <a href="https://github.com/groovetube/groovetube">View Demo</a>
     ·
-    <a href="https://github.com/gch910/groovetube/issues">gch910rt Bug</a>
+    <a href="https://github.com/groovetube/groovetube/issues">groovetubert Bug</a>
     ·
-    <a href="https://github.com/gch910/groovetube/issues">Request Feature</a>
+    <a href="https://github.com/groovetube/groovetube/issues">Request Feature</a>
   </p>
 </p>
 
@@ -89,7 +89,7 @@
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`gch910`, `groovetube`, `twitter_handle`, `gharris910@icloud.com`, `Groovetube`, `This is a project description.`
+`groovetube`, `groovetube`, `twitter_handle`, `gharris910@icloud.com`, `Groovetube`, `This is a project description.`
 
 
 ### Built With
@@ -115,9 +115,9 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Clone the gch910
+1. Clone the groovetube
    ```sh
-   git clone https://github.com/gch910/groovetube.git
+   git clone https://github.com/groovetube/groovetube.git
    ```
 2. Install NPM packages
    ```sh
@@ -138,7 +138,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/gch910/groovetube/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/groovetube/groovetube/issues) for a list of proposed features (and known issues).
 
 
 
@@ -167,7 +167,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - gharris910@icloud.com
 
-Project Link: [https://github.com/gch910/groovetube](https://github.com/gch910/groovetube)
+Project Link: [https://github.com/groovetube/groovetube](https://github.com/groovetube/groovetube)
 
 
 
@@ -184,15 +184,15 @@ Project Link: [https://github.com/gch910/groovetube](https://github.com/gch910/g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/gch910/gch910.svg?style=for-the-badge
-[contributors-url]: https://github.com/gch910/gch910/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/gch910/gch910.svg?style=for-the-badge
-[forks-url]: https://github.com/gch910/gch910/network/members
-[stars-shield]: https://img.shields.io/github/stars/gch910/gch910.svg?style=for-the-badge
-[stars-url]: https://github.com/gch910/gch910/stargazers
-[issues-shield]: https://img.shields.io/github/issues/gch910/gch910.svg?style=for-the-badge
-[issues-url]: https://github.com/gch910/gch910/issues
-[license-shield]: https://img.shields.io/github/license/gch910/gch910.svg?style=for-the-badge
-[license-url]: https://github.com/gch910/gch910/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/groovetube/groovetube.svg?style=for-the-badge
+[contributors-url]: https://github.com/groovetube/groovetube/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/groovetube/groovetube.svg?style=for-the-badge
+[forks-url]: https://github.com/groovetube/groovetube/network/members
+[stars-shield]: https://img.shields.io/github/stars/groovetube/groovetube.svg?style=for-the-badge
+[stars-url]: https://github.com/groovetube/groovetube/stargazers
+[issues-shield]: https://img.shields.io/github/issues/groovetube/groovetube.svg?style=for-the-badge
+[issues-url]: https://github.com/groovetube/groovetube/issues
+[license-shield]: https://img.shields.io/github/license/groovetube/groovetube.svg?style=for-the-badge
+[license-url]: https://github.com/groovetube/groovetube/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/gch910
+[linkedin-url]: https://linkedin.com/in/groovetube
