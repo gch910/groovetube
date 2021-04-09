@@ -1,6 +1,6 @@
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
+*** that would make this better, please fork the gch910 and create a pull request
 *** or simply open an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
 ***
@@ -46,7 +46,7 @@
     <br />
     <a href="https://github.com/gch910/groovetube">View Demo</a>
     ·
-    <a href="https://github.com/gch910/groovetube/issues">Report Bug</a>
+    <a href="https://github.com/gch910/groovetube/issues">gch910rt Bug</a>
     ·
     <a href="https://github.com/gch910/groovetube/issues">Request Feature</a>
   </p>
@@ -115,7 +115,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Clone the repo
+1. Clone the gch910
    ```sh
    git clone https://github.com/gch910/groovetube.git
    ```
@@ -184,15 +184,15 @@ Project Link: [https://github.com/gch910/groovetube](https://github.com/gch910/g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/gch910/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/gch910/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/gch910/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/gch910/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/gch910/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/gch910/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/gch910/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/gch910/repo/issues
-[license-shield]: https://img.shields.io/github/license/gch910/repo.svg?style=for-the-badge
-[license-url]: https://github.com/gch910/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/gch910/gch910.svg?style=for-the-badge
+[contributors-url]: https://github.com/gch910/gch910/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/gch910/gch910.svg?style=for-the-badge
+[forks-url]: https://github.com/gch910/gch910/network/members
+[stars-shield]: https://img.shields.io/github/stars/gch910/gch910.svg?style=for-the-badge
+[stars-url]: https://github.com/gch910/gch910/stargazers
+[issues-shield]: https://img.shields.io/github/issues/gch910/gch910.svg?style=for-the-badge
+[issues-url]: https://github.com/gch910/gch910/issues
+[license-shield]: https://img.shields.io/github/license/gch910/gch910.svg?style=for-the-badge
+[license-url]: https://github.com/gch910/gch910/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/gch910
