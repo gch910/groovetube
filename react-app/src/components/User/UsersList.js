@@ -25,7 +25,6 @@ function UsersList() {
   return (
     <div id="user-list-div">
       <h1 id="user-list-h1">Explore Users:</h1>
-      {console.log(users[0])}
       <ul>{userComponents}</ul>
     </div>
   );

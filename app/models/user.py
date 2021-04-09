@@ -102,7 +102,8 @@ class User(db.Model, UserMixin):
   def to_simple(self):
     return {
       "id": self.id,
-      "username": self.username
+      "username": self.username,
+      "profile_img": self.profile_img
     }
     
 

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import UserVideos from "../UserVideos";
 import UserUploads from "../UserUploads";
+import UserFollowers from "../UserFollowers";
 import "./User.css";
 
 function User() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  const [favoritesClicked, setfavoritesClicked] = useState(true);
+  const [collectionClicked, setCollectionClicked] = useState(true);
   const [uploadedClicked, setUploadedClicked] = useState(false);
+  const [followersClicked, setFollowersClicked] = useState(false);
 
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2]
@@ -27,13 +29,20 @@ function User() {
     return imgKey
   }
 
-  const displaySongs = () => {
-    setfavoritesClicked(true);
+  const displayCollection = () => {
+    setFollowersClicked(false);
     setUploadedClicked(false);
+    setCollectionClicked(true);
   };
-  const displayPopular = () => {
-    setfavoritesClicked(false);
+  const displayUploads = () => {
+    setCollectionClicked(false);
+    setFollowersClicked(false);
     setUploadedClicked(true);
+  };
+  const displayFollowers = () => {
+    setCollectionClicked(false);
+    setUploadedClicked(false);
+    setFollowersClicked(true);
   };
 
   useEffect(() => {
@@ -47,14 +56,14 @@ function User() {
     })();
   }, [userId]);
 
-  if (!user) {
-    return null;
+  if (!userId) {
+    return <Redirect to="/login"/>;
   }
 
   return (
     <div>
       <h1 id="user-favorites-h1">
-        {favoritesClicked
+        {collectionClicked
           ? sessionUser.id === user.id
             ? "Your Collection"
             : `${user.username}'s Collection`
@@ -67,20 +76,19 @@ function User() {
             : `${user.username}'s Uploads`
           : ""}
       </h1>
-      <ul id="user-info">
-        <li>
-          <strong>Username</strong> {user.username}
-        </li>
-        <li>
-          <strong>Email</strong> {user.email}
-        </li>
-      </ul>
+      <h1 id="user-favorites-h1">
+        {followersClicked
+          ? sessionUser.id === user.id
+            ? "Your Followers"
+            : `${user.username}'s Followers`
+          : ""}
+      </h1>
       <nav id="profile-nav">
         <button
           className={`profile-nav-link no-outline ${
-            favoritesClicked ? "active" : ""
+            collectionClicked ? "active" : ""
           }`}
-          onClick={displaySongs}
+          onClick={displayCollection}
         >
           Collection
         </button>
@@ -88,17 +96,28 @@ function User() {
           className={`profile-nav-link no-outline ${
             uploadedClicked ? "active" : ""
           }`}
-          onClick={displayPopular}
+          onClick={displayUploads}
         >
           Uploads
+        </button>
+        <button
+          className={`profile-nav-link no-outline ${
+            followersClicked ? "active" : ""
+          }`}
+          onClick={displayFollowers}
+        >
+          Followers
         </button>
       </nav>
       <div id="profile-display">
         <div id="profile-songs-div">
-          {favoritesClicked ? <UserVideos userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
+          {collectionClicked ? <UserVideos userId={userId} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
         </div>
         <div id="profile-popular-div">
           {uploadedClicked ? <UserUploads userId={userId} sessionUser={sessionUser} user={user} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator} /> : ""}
+        </div>
+        <div id="profile-followers-div">
+          {followersClicked ? <UserFollowers userId={userId} displayCollection={displayCollection} user={user} /> : ""}
         </div>
       </div>
     </div>
