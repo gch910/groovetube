@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 
 const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
     const [isFollowing, setIsFollowing] = useState(video.user.is_following);
+    console.log(video.user)
 
     return (
         

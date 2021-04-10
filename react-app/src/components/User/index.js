@@ -16,6 +16,10 @@ function User() {
   const [followersClicked, setFollowersClicked] = useState(false);
   const [followingClicked, setFollowingClicked] = useState(false);
 
+  
+
+  console.log(user)
+
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2]
  
@@ -65,7 +69,7 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId]);
+  }, [userId, followersClicked]);
 
   if (!userId) {
     return <Redirect to="/login"/>;
@@ -146,7 +150,7 @@ function User() {
           {followersClicked ? <UserFollowers userId={userId} displayCollection={displayCollection} user={user} /> : ""}
         </div>
         <div id="profile-following-div">
-          {followingClicked ? <UserFollowing userId={userId} displayCollection={displayCollection} user={user} /> : ""}
+          {followingClicked ? <UserFollowing userId={userId} followingClicked={followingClicked} setFollowingClicked={setFollowingClicked} displayFollowers={displayFollowers} displayCollection={displayCollection} displayFollowing={displayFollowing} user={user} /> : ""}
         </div>
       </div>
     </div>

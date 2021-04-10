@@ -15,7 +15,12 @@ def users():
 @user_routes.route('/<int:id>')
 def user(id):
     user = User.query.get(id)
-    return user.to_dict()
+    userDict = user.to_dict()
+    # is_following = current_user.id in [follower["id"] for follower in user.followers]:
+    #     useDict["is_following"] = True
+    
+    userDict["is_following"] = current_user.id in [follower.id for follower in user.followers] if current_user.is_authenticated else False
+    return userDict
 
 @user_routes.route("/me/following", methods=['POST'])
 @login_required
