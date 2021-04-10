@@ -19,7 +19,9 @@
 }
 
 #user-list-h1 {
-    font-size: 60px;
+    font-size: 50px;
+    text-decoration: underline;
+    color: #6a34ce;
 }
 
 #user-list-name {
@@ -53,9 +55,10 @@
 }
 
 .user-profile-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin-right: 20px;
+    border-radius: 50%;
 }
 
 #user-info {
@@ -63,6 +66,23 @@
     margin-left: 0px;
 }
 
+#follow-profile-button {
+   position: absolute;
+   background-color: #6a34ce;
+   color: white;
+   width: 90px;
+   left: 200px;
+}
+
+/* #profile-header {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#collection-header {
+    width: 200px;
+} */
 /* .active {
     color: black;
 } */
