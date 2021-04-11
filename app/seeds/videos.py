@@ -152,12 +152,194 @@ misch4 = Video(
     user_id=2,
     category_id=8
 )
+stone1 = Video(
+    title='Allen Stone - Somebody That I Used To Know (Gotye Cover - Live at Bear Creek Studio)',
+    artist="Allen Stone",
+    video_path="//www.youtube.com/embed/wE46huUs20E",
+    img_path="/images/stone1.jpg",
+    gif_path="/gifs/stone1.gif",
+    user_id=2,
+    category_id=7
+)
+stone2 = Video(
+    title='Allen Stone: NPR Music Tiny Desk Concert',
+    artist="Allen Stone",
+    video_path="//www.youtube.com/embed/uMEnML6sY5Q&t",
+    img_path="/images/stone2.jpg",
+    gif_path="/gifs/stone2.gif",
+    user_id=2,
+    category_id=7
+)
+stone3 = Video(
+    title='Allen Stone - Give You Blue (Official Live Video)',
+    artist="Allen Stone",
+    video_path="//www.youtube.com/embed/yUlnjRui7Mw",
+    img_path="/images/stone3.jpg",
+    gif_path="/gifs/stone3.gif",
+    user_id=2,
+    category_id=8
+)
+stone4 = Video(
+    title='Allen Stone - "The Bed I Made" Taylor Sessions',
+    artist="Allen Stone",
+    video_path="//www.youtube.com/embed/Ub7IcarC4TU",
+    img_path="/images/stone4.jpg",
+    gif_path="/gifs/stone4.gif",
+    user_id=2,
+    category_id=8
+)
+noname1 = Video(
+    title='Noname Boiler Room x Budweiser Cape Town Live Set',
+    artist="Noname",
+    video_path="//www.youtube.com/embed/H5y2bDBr02Q",
+    img_path="/images/noname1.jpg",
+    gif_path="/gifs/noname1.gif",
+    user_id=2,
+    category_id=1
+)
+noname2 = Video(
+    title='Noname: Tiny Desk Concert',
+    artist="Noname",
+    video_path="//www.youtube.com/embed/K58JYXhb4YA",
+    img_path="/images/noname2.jpg",
+    gif_path="/gifs/noname2.gif",
+    user_id=2,
+    category_id=1
+)
+noname3 = Video(
+    title="Noname Performs A Three-Song Medley From Her Album 'Room 25'",
+    artist="Noname",
+    video_path="//www.youtube.com/embed/otGhpa8tcoA",
+    img_path="/images/noname3.jpg",
+    gif_path="/gifs/noname3.gif",
+    user_id=2,
+    category_id=1
+)
+noname4 = Video(
+    title="Noname LIVE @ Le Chiffre, London [UK Debut Performance]",
+    artist="Noname",
+    video_path="//www.youtube.com/embed/MC2bJU4WwFY",
+    img_path="/images/noname4.jpg",
+    gif_path="/gifs/noname4.gif",
+    user_id=2,
+    category_id=1
+)
+haywyre1 = Video(
+    title="Haywyre - Insight (Live Performance) [Monstercat Release]",
+    artist="Haywyre",
+    video_path="//www.youtube.com/embed/UGeNoml0OHc",
+    img_path="/images/haywyre1.jpg",
+    gif_path="/gifs/haywyre1.gif",
+    user_id=3,
+    category_id=6
+)
+haywyre2 = Video(
+    title="Haywyre - Let Me Hear That",
+    artist="Haywyre",
+    video_path="//www.youtube.com/embed/21d1CdIqnj0",
+    img_path="/images/haywyre2.jpg",
+    gif_path="/gifs/haywyre2.gif",
+    user_id=3,
+    category_id=6
+)
+haywyre3 = Video(
+    title="Haywyre - Never Count On Me",
+    artist="Haywyre",
+    video_path="//www.youtube.com/embed/0pNWOjQfGxU",
+    img_path="/images/haywyre3.jpg",
+    gif_path="/gifs/haywyre3.gif",
+    user_id=3,
+    category_id=6
+)
+haywyre4 = Video(
+    title="Haywyre - Square One",
+    artist="Haywyre",
+    video_path="//www.youtube.com/embed/_C_4H--xjSI",
+    img_path="/images/haywyre4.jpg",
+    gif_path="/gifs/haywyre4.gif",
+    user_id=3,
+    category_id=6
+)
+hozier1 = Video(
+    title="Hozier - Movement (Live at The Current)",
+    artist="Hozier",
+    video_path="//www.youtube.com/embed/Nc7tV0lRfYY",
+    img_path="/images/hozier1.jpg",
+    gif_path="/gifs/hozier1.gif",
+    user_id=3,
+    category_id=4
+)
+hozier2 = Video(
+    title="Hozier: NPR Music Tiny Desk Concert",
+    artist="Hozier",
+    video_path="//www.youtube.com/embed/oLgZo6Qi3Uo",
+    img_path="/images/hozier2.jpg",
+    gif_path="/gifs/hozier2.gif",
+    user_id=3,
+    category_id=4
+)
+hozier3 = Video(
+    title="Hozier - Cherry Wine (Unplugged) | Mahogany Session",
+    artist="Hozier",
+    video_path="//www.youtube.com/embed/EtRIz7VocNs",
+    img_path="/images/hozier3.jpg",
+    gif_path="/gifs/hozier3.gif",
+    user_id=3,
+    category_id=4
+)
+hozier4 = Video(
+    title="Hozier - Nina Cried Power (feat. Mavis Staples) - Live At Windmill Lane Studios",
+    artist="Hozier",
+    video_path="//www.youtube.com/embed/OBKPI5t9xI8",
+    img_path="/images/hozier4.jpg",
+    gif_path="/gifs/hozier4.gif",
+    user_id=3,
+    category_id=4
+)
+dive1 = Video(
+    title="Lake Street Dive: NPR Music Tiny Desk",
+    artist="Lake Street Dive",
+    video_path="//www.youtube.com/embed/gdRAcoD5Gt0",
+    img_path="/images/dive1.jpg",
+    gif_path="/gifs/dive1.gif",
+    user_id=3,
+    category_id=5
+)
+dive2 = Video(
+    title='Lake Street Dive Plays "I Want You Back" On a Boston Sidewalk',
+    artist="Lake Street Dive",
+    video_path="//www.youtube.com/embed/6EPwRdVg5Ug",
+    img_path="/images/dive2.jpg",
+    gif_path="/gifs/dive2.gif",
+    user_id=3,
+    category_id=5
+)
+dive3 = Video(
+    title='Lake Street Dive - Full Performance (Live on KEXP)',
+    artist="Lake Street Dive",
+    video_path="//www.youtube.com/embed/crqkkXCGMyk",
+    img_path="/images/dive3.jpg",
+    gif_path="/gifs/dive3.gif",
+    user_id=3,
+    category_id=5
+)
+dive4 = Video(
+    title='Lake Street Dive - 3 Song Set (Recorded Live for World Cafe)',
+    artist="Lake Street Dive",
+    video_path="//www.youtube.com/embed/gl3vmRwXm0s",
+    img_path="/images/dive4.jpg",
+    gif_path="/gifs/dive4.gif",
+    user_id=3,
+    category_id=5
+)
 
 user1_collection = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4]
 
-user2_collection = [misch1, misch2, misch3, misch4]
+user2_collection = [misch1, misch2, misch3, misch4, stone1, stone2, stone3, stone4, noname1, noname2, noname3, noname4]
 
-all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, misch1, misch2, misch3, misch4]
+user3_collection = [haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4]
+
+all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, misch1, misch2, misch3, misch4, stone1, stone2, stone3, stone4, noname1, noname2, noname3, noname4, haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4]
 
     
     

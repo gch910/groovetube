@@ -5,7 +5,7 @@ def seed_categories():
     category2 = Category(name='Rock')  
     category3 = Category(name='R&B')  
     category4 = Category(name='Pop')  
-    category5 = Category(name='alternative')  
+    category5 = Category(name='Alternative')  
     category6 = Category(name='Electronic') 
     category7 = Category(name='Soul') 
     category8 = Category(name='Jazz') 
