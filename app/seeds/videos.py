@@ -162,9 +162,9 @@ stone1 = Video(
     category_id=7
 )
 stone2 = Video(
-    title='Allen Stone: NPR Music Tiny Desk Concert',
+    title='Allen Stone - Full Performance (Live on KEXP)',
     artist="Allen Stone",
-    video_path="//www.youtube.com/embed/uMEnML6sY5Q&t",
+    video_path="//www.youtube.com/embed/gDlmpBiSSt4",
     img_path="/images/stone2.jpg",
     gif_path="/gifs/stone2.gif",
     user_id=2,
@@ -332,14 +332,86 @@ dive4 = Video(
     user_id=3,
     category_id=5
 )
+bridges1 = Video(
+    title='Leon Bridges: NPR Music Tiny Desk Concert',
+    artist="Leon Bridges",
+    video_path="//www.youtube.com/embed/C_oACPWGvM4",
+    img_path="/images/bridges1.jpg",
+    gif_path="/gifs/bridges1.gif",
+    user_id=3,
+    category_id=3
+)
+bridges2 = Video(
+    title='Leon Bridges - Mrs. (Live From Nashville)',
+    artist="Leon Bridges",
+    video_path="//www.youtube.com/embed/01o83og1bf4",
+    img_path="/images/bridges2.jpg",
+    gif_path="/gifs/bridges2.gif",
+    user_id=3,
+    category_id=3
+)
+bridges3 = Video(
+    title='Leon Bridges Lollapalooza, Grant Park, Chicago',
+    artist="Leon Bridges",
+    video_path="//www.youtube.com/embed/7mYVPg2ablA",
+    img_path="/images/bridges3.jpg",
+    gif_path="/gifs/bridges3.gif",
+    user_id=3,
+    category_id=3
+)
+bridges4 = Video(
+    title='Leon Bridges - Sweeter (Live At Gold Diggers) ft. Terrace Martin',
+    artist="Leon Bridges",
+    video_path="//www.youtube.com/embed/ViQuEDyxKCA",
+    img_path="/images/bridges4.jpg",
+    gif_path="/gifs/bridges4.gif",
+    user_id=3,
+    category_id=3
+)
+haim1 = Video(
+    title='HAIM - Gasoline (Jimmy Kimmel Live!)',
+    artist="HAIM",
+    video_path="//www.youtube.com/embed/NCWSSTQb3qw",
+    img_path="/images/haim1.jpg",
+    gif_path="/gifs/haim1.gif",
+    user_id=1,
+    category_id=2
+)
+haim2 = Video(
+    title='HAIM - Want You Back (Live from The Tonight Show Starring Jimmy Fallon)',
+    artist="HAIM",
+    video_path="//www.youtube.com/embed/FkLaawsuAzk",
+    img_path="/images/haim2.jpg",
+    gif_path="/gifs/haim2.gif",
+    user_id=1,
+    category_id=2
+)
+haim3 = Video(
+    title='Haim: Tiny Desk (Home) Concert',
+    artist="HAIM",
+    video_path="//www.youtube.com/embed/Svv3IX8exP8",
+    img_path="/images/haim3.jpg",
+    gif_path="/gifs/haim3.gif",
+    user_id=1,
+    category_id=2
+)
+haim4 = Video(
+    title='HAIM - 3AM (Late Night with Seth Meyers)',
+    artist="HAIM",
+    video_path="//www.youtube.com/embed/FoC-l5-y8Eo",
+    img_path="/images/haim4.jpg",
+    gif_path="/gifs/haim4.gif",
+    user_id=1,
+    category_id=2
+)
 
-user1_collection = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4]
+user1_collection = [paak1, paak2, paak3, paak4, haim1, haim2, haim3, haim4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4]
 
 user2_collection = [misch1, misch2, misch3, misch4, stone1, stone2, stone3, stone4, noname1, noname2, noname3, noname4]
 
-user3_collection = [haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4]
+user3_collection = [haywyre1, haywyre2, haywyre3, haywyre4, bridges1, bridges2, bridges3, bridges4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4]
 
-all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, misch1, misch2, misch3, misch4, stone1, stone2, stone3, stone4, noname1, noname2, noname3, noname4, haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4]
+all_videos = [paak1, paak2, paak3, paak4, lahavas1, lahavas2, lahavas3, lahavas4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, misch1, misch2, misch3, misch4, stone1, stone2, stone3, stone4, noname1, noname2, noname3, noname4, haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, dive1, dive2, dive3, dive4, bridges1, bridges2, bridges3, bridges4, haim1, haim2, haim3, haim4]
 
     
     

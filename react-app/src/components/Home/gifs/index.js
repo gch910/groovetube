@@ -48,5 +48,14 @@ import stone1 from './stone1.gif'
 import stone2 from './stone2.gif'
 import stone3 from './stone3.gif'
 import stone4 from './stone4.gif'
+import haim1 from './haim1.gif'
+import haim2 from './haim2.gif'
+import haim3 from './haim3.gif'
+import haim4 from './haim4.gif'
+import bridges1 from './bridges1.gif'
+import bridges2 from './bridges2.gif'
+import bridges3 from './bridges3.gif'
+import bridges4 from './bridges4.gif'
 
-export default { dive1, dive2, dive3, dive4, haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, lahavas1, lahavas2, lahavas3, lahavas4, misch1, misch2, misch3, misch4, noname1, noname2, noname3, noname4, paak1, paak2, paak3, paak4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, stone1, stone2, stone3, stone4}
+
+export default { dive1, dive2, dive3, dive4, haywyre1, haywyre2, haywyre3, haywyre4, hozier1, hozier2, hozier3, hozier4, lahavas1, lahavas2, lahavas3, lahavas4, misch1, misch2, misch3, misch4, noname1, noname2, noname3, noname4, paak1, paak2, paak3, paak4, pinegrove1, pinegrove2, pinegrove3, pinegrove4, stone1, stone2, stone3, stone4, haim1, haim2, haim3, haim4, bridges1, bridges2, bridges3, bridges4}
