@@ -106,7 +106,7 @@ function User() {
           }
           <h1 id="user-favorites-h1">
             {collectionClicked
-              ? sessionUser?.id === user.id
+              ? sessionUser?.id === user?.id
                 ? "Your Collection"
                 : `${user.username}'s Collection`
               : ""}
@@ -114,21 +114,21 @@ function User() {
         </div>
         <h1 id="user-favorites-h1">
           {uploadedClicked
-            ? sessionUser.id === user.id
+            ? sessionUser?.id === user?.id
               ? "Your Uploads"
               : `${user.username}'s Uploads`
             : ""}
         </h1>
         <h1 id="user-favorites-h1">
           {followersClicked
-            ? sessionUser.id === user.id
+            ? sessionUser?.id === user?.id
               ? "Your Followers"
               : `${user.username}'s Followers`
             : ""}
         </h1>
         <h1 id="user-favorites-h1">
           {followingClicked
-            ? sessionUser?.id === user.id
+            ? sessionUser?.id === user?.id
               ? "Users You Follow"
               : ` Users ${user.username} Follows`
             : ""}
@@ -200,6 +200,7 @@ function User() {
               userId={userId}
               displayCollection={displayCollection}
               user={user}
+              sessionUser={sessionUser}
             />
           ) : (
             ""

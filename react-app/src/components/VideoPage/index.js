@@ -27,6 +27,12 @@ const VideoPage = () => {
   const [newComment, setNewComment] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [hoverIndex, setHoverIndex] = useState(null);
+
+  const buttonClassname = (index) => {
+    if (index === hoverIndex) return "active";
+    else return "button inactive";
+  };
   
 
   const addVideo = async (e) => {
@@ -128,12 +134,12 @@ const VideoPage = () => {
           setNewComment={setNewComment}
         />
         <div id="comments-div">
-          <h3>Comments:</h3>
-          {video?.comments.map((comment) => (
+          <h3>{video?.comments[0] ? "Comments:" : "Be the First to Comment!"}</h3>
+          {video?.comments.map((comment, idx) => (
             <div
               className="comment-div"
-              onMouseEnter={() => setDeleteShown(true)}
-              onMouseLeave={() => setDeleteShown(false)}
+              onMouseEnter={() => (setDeleteShown(true), setHoverIndex(idx))}
+              onMouseLeave={() => (setDeleteShown(false), setHoverIndex(null))}
             >
               <div id="image-username-comment">
                 <img
@@ -146,7 +152,7 @@ const VideoPage = () => {
               </div>
               {deleteShown && sessionUser?.id == comment.user_id && (
                 <button
-                  className={`delete-comment-button ${comment.user_id}`}
+                  className={`delete-comment-button ${comment.user_id} ${buttonClassname(idx)}`}
                   id={comment.id}
                   userId={comment.user_id}
                   onClick={deleteComment}

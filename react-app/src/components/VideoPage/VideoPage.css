@@ -177,6 +177,7 @@
   width: 50px;
   padding: 0px;
   background-color: rgb(243, 55, 55); 
+  color: white;
 }
 
 /* #delete-comment-button-div {
@@ -202,5 +203,25 @@
   color: white;
   height: 30px;
   width: 95px;
+}
+
+.delete-comment-button {
+  width: 50px !important;
+  background-color: rgb(243, 55, 55); 
+  color: white !important;
+  border: none;
+  border-radius: 3px 3px 3px 3px;
+  height: 20px;
+}
+
+.active:hover {
+  cursor: pointer;
+  visibility: visible;
+  color: white;
+  
+}
+
+.button.inactive {
+  visibility: hidden;
 }
 
