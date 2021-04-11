@@ -92,9 +92,9 @@ function User() {
 
   return (
     <div>
-      <div id="profile-header">
+      <div id="">
         <div id="collection-header">
-          {!(sessionUser.id === user.id) ?
+          {!(sessionUser?.id === user.id) ?
             <Button
               id="follow-profile-button"
               variant="contained"
@@ -106,7 +106,7 @@ function User() {
           }
           <h1 id="user-favorites-h1">
             {collectionClicked
-              ? sessionUser.id === user.id
+              ? sessionUser?.id === user.id
                 ? "Your Collection"
                 : `${user.username}'s Collection`
               : ""}
@@ -128,7 +128,7 @@ function User() {
         </h1>
         <h1 id="user-favorites-h1">
           {followingClicked
-            ? sessionUser.id === user.id
+            ? sessionUser?.id === user.id
               ? "Users You Follow"
               : ` Users ${user.username} Follows`
             : ""}
