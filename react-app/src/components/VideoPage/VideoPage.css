@@ -156,6 +156,10 @@
   color: #6a34ce;
 }
 
+#comment-username-link {
+  text-decoration: none;
+}
+
 #uploaded-by {
   margin-left: 10px;
 }
@@ -223,5 +227,9 @@
 
 .button.inactive {
   visibility: hidden;
+}
+
+#uploaded-by {
+  color: #6a34ce;
 }
 

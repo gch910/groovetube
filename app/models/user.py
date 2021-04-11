@@ -79,6 +79,7 @@ class User(db.Model, UserMixin):
 
   def just_username(self):
     return {
+      "id": self.id,
       "username": self.username,
       "profile_img": self.profile_img
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   getVideo,
   addCollection,
@@ -92,7 +92,7 @@ const VideoPage = () => {
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <h3 id="uploaded-by">Uploaded By: {video?.user.username}</h3>
+        <Link to={`/users/${video?.user?.id}`}><h2 id="uploaded-by">Uploaded By: {video?.user?.username}</h2></Link>
         <h2 id="video-h2">{video?.title}</h2>
         <div id="current-video-div">
           <iframe
@@ -147,7 +147,7 @@ const VideoPage = () => {
                   src={comment.user.profile_img}
                   alt="profile"
                 />
-                <h3 id="comment-username">{comment.user.username}:</h3>
+                <Link to={`/users/${comment?.user?.id}`} id="comment-username-link"><h3 id="comment-username">{comment.user.username}:</h3></Link>
                 <p id="comment-p">{comment.content}</p>
               </div>
               {deleteShown && sessionUser?.id == comment.user_id && (
