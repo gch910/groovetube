@@ -8,6 +8,8 @@
 
 #signup-button-div {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
@@ -18,7 +20,7 @@
 }
 
 #signup-button {
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #6a34ce;
     color:white;
     
@@ -27,4 +29,9 @@
 #signup-h1 {
     color: #6a34ce;
     margin-bottom: 0px;
+}
+
+#login-link {
+    margin-top: 10px;
+    color: #6a34ce;
 }

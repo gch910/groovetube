@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../store/session";
 import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import "./LoginForm.css";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -17,9 +17,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      '& .MuiTextField-root': {
+      "& .MuiTextField-root": {
         margin: theme.spacing(3),
-        width: '30ch',
+        width: "30ch",
       },
     },
   }));
@@ -39,6 +39,19 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     });
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    await dispatch(loginUser("demo@aa.io", "password")).then((res) => {
+      if (res?.errors) {
+        setFormErrors(res.errors);
+        return res.errors;
+      } else {
+        setAuthenticated(true);
+        return history.push("/");
+      }
+    });
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -47,12 +60,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-
-
   // if (authenticated) {
   //   return <Redirect to="/" />;
   // }
-  
 
   return (
     <form id="login-form" className={classes.root} onSubmit={onLogin}>
@@ -86,7 +96,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           variant="outlined"
         />
         <div id="login-button-div">
-          <Button variant="contained" id="login-button" type="submit">Login</Button>
+          <Link to="/sign-up" id="signup-link">
+            Don't have an account? Sign up!
+          </Link>
+          <div id="login-demo-div">
+            <Button variant="contained" id="login-button" type="submit">
+              Login
+            </Button>
+            <Button variant="contained" id="login-button" type="button" onClick={demoLogin}>
+              Demo
+            </Button>
+          </div>
         </div>
       </div>
     </form>

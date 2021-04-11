@@ -8,7 +8,9 @@
 
 #login-button-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -27,4 +29,15 @@
 #login-h1 {
     color: #6a34ce;
     margin-bottom: 0px;
+}
+
+#signup-link {
+    color: #6a34ce
+}
+
+#login-demo-div {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    width: 180px;
 }

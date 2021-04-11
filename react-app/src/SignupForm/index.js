@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { signUp } from "../services/auth";
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
@@ -106,6 +106,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         ></TextField>
       </div>
       <div id="signup-button-div">
+        <Link to="/login" id="login-link">Already have an account? Login!</Link>
         <Button variant="contained" id="signup-button" type="submit">Sign Up</Button>
       </div>
     </form>

@@ -1,5 +1,5 @@
 .active {
-    color: purple !important;
+    color: #6a34ce !important;
 }
 
 #side-nav {
@@ -11,7 +11,7 @@
     margin-top: 0px;
     justify-content: space-around;
     padding-bottom: 200px;
-    background-color: #85b69a;
+    background-color: #8dc0a3;
     /* border-right: 5px solid rgb(150, 150, 150); */
     box-shadow: -7px 7px 6px 7px rgba(0,0,0,0.7); 
 
@@ -29,7 +29,9 @@
 }
 
 #logout-button {
-    width: 100px;
+    width: 90px;
+    background-color: #6a34ce;
+    color: white;
 }
 
 #search-bar {
@@ -50,6 +52,10 @@
     text-decoration: none;
     font-size: 20px;
     color: rgb(58, 58, 58);
+}
+
+.nav-link:hover {
+    color:#6a34ce
 }
 
 #nav-logo {
