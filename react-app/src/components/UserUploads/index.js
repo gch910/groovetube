@@ -33,7 +33,7 @@ const UserUploads = ({
 
     setTimeout(() => {
       setDeleted(true);
-    }, 1000);
+    }, 500);
   };
 
   const changeImg = (e, video, idx) => {
@@ -86,7 +86,7 @@ const UserUploads = ({
                     <button
                       onClick={(e) => deleteVideoClick(e)}
                       id={video.id}
-                      className={`delete-video-button ${buttonClassname(idx)}`}
+                      className={`delete-video-button no-outline ${buttonClassname(idx)}`}
                     >
                       Delete
                     </button>

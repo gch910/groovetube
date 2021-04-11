@@ -1,0 +1,31 @@
+.remove-video-button {
+    width: 72px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 55, 55); 
+    color: white !important;
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+}
+
+
+.remove-button-div {
+    /* visibility: hidden; */
+}
+
+/* .button {
+  visibility: hidden;
+} */
+
+.active:hover {
+    cursor: pointer;
+    visibility: visible;
+    color: white;
+    
+}
+
+.button.inactive {
+    visibility: hidden;
+}

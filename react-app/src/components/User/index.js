@@ -175,6 +175,7 @@ function User() {
               userId={userId}
               gifKeyCreator={gifKeyCreator}
               imgKeyCreator={imgKeyCreator}
+              user={user}
             />
           ) : (
             ""
