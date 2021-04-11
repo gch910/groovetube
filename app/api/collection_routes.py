@@ -10,7 +10,12 @@ def collection_add(video_id, user_id):
 
     user = User.query.get(user_id)
 
-    user.video_collection.append(new_video)
+    if new_video in user.video_collection:
+        user.video_collection.remove(new_video)
+    
+    else:
+
+        user.video_collection.append(new_video)
 
     db.session.add(user)
     db.session.commit()
