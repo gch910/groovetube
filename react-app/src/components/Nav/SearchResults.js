@@ -37,7 +37,7 @@ const SearchResults = () => {
       {searchResults.map((video) => (
         <div id="search-results-videos">
           <div id="search-results-title-div">
-            <Link to={`/videos/${video.id}`}>
+            <Link id="search-results-link" to={`/videos/${video.id}`}>
               <h3 id="search-results-title">{video.title}</h3>
             </Link>
           </div>

@@ -15,6 +15,10 @@
     color: #6a34ce;
 }
 
+#search-results-link {
+    color: #6a34ce;
+}
+
 #no-results-h1 {
     display: flex;
     justify-content: center;
