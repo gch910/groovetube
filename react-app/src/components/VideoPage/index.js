@@ -71,7 +71,9 @@ const VideoPage = () => {
     dispatch(getVideo(videoId)).then(setIsLoaded(true));
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
-    return setNewComment(false);
+    return (
+      setNewComment(false),
+      setIsAdded(false))
   }, [dispatch, isAdded, newComment, deleted]);
 
   useEffect(() => {
