@@ -47,6 +47,7 @@ const SearchResults = () => {
                  onMouseEnter={(e) => changeImg(e, video)}
                  onMouseLeave={(e) => imgs[imgKeyCreator(video.img_path)] ? e.target.src = imgs[imgKeyCreator(video.img_path)] : e.target.src = video.img_path}
                 className="thumbnail"
+                id="search-img"
                 src={imgs[imgKeyCreator(video.img_path)] ? imgs[imgKeyCreator(video.img_path)] : video.img_path}
               />
             </Link>

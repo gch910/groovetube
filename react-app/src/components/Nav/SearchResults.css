@@ -12,6 +12,7 @@
 
 #search-results-title {
     width: 330px;
+    color: #6a34ce;
 }
 
 #no-results-h1 {
@@ -23,5 +24,7 @@
 }
 
 #search-results-videos {
-    margin-bottom: 30px;
+    margin-bottom: 30px;  
 }
+
+
