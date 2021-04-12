@@ -95,7 +95,7 @@ Installations
 
 ### Installation
 
-1. Clone the groovetube
+1. Clone the repository
    ```sh
    git clone https://github.com/gch910/groovetube.git
 
