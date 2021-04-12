@@ -16,7 +16,7 @@
   <h3 align="center">Groovetube</h3>
 
   <p align="center">
-    This is a project description.
+    A social platform for sharing live music video performances.
     <br />
     <a href="https://github.com/gch910/groovetube"><strong>Explore the docs »</strong></a>
     <br />
