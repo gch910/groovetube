@@ -12,6 +12,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   const videos = useSelector((state) => state.videos.user_videos);
   const [isRemoved, setIsRemoved] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
@@ -20,7 +21,9 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
 
   const addVideo = async (e, video) => {
     e.preventDefault();
-    await dispatch(addCollection(sessionUser?.id, e.target.id));
+    await dispatch(addCollection(sessionUser?.id, e.target.id)).then(() =>
+      setIsLoaded(true)
+    );
 
     e.target.innerText = "Removed!";
 
@@ -38,58 +41,62 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   };
 
   useEffect(() => {
-    dispatch(getUserVideos(userId));
+    dispatch(getUserVideos(userId)).then(() => setIsLoaded(true))
   }, [dispatch, isRemoved]);
 
   return (
-    <>
-      <div id="home-grid">
-        {videos.map((video, idx) => {
-          return (
-            <div
-              key={idx}
-              id="thumbnail-div"
-              onMouseEnter={(e) => setHoverIndex(idx)}
-              onMouseLeave={(e) => setHoverIndex(null)}
-            >
-              <Link to={`/videos/${video?.id}`}>
-                <img
-                  onMouseEnter={(e) => changeImg(e, video)}
-                  onMouseLeave={(e) =>
-                    imgs[imgKeyCreator(video.img_path)]
-                      ? (e.target.src = imgs[imgKeyCreator(video.img_path)])
-                      : (e.target.src = video.img_path)
-                  }
-                  id={video?.gif_path}
-                  className="thumbnail"
-                  src={
-                    imgs[imgKeyCreator(video.img_path)]
-                      ? imgs[imgKeyCreator(video.img_path)]
-                      : video.img_path
-                  }
-                />
-              </Link>
-              {sessionUser.id === user?.id ? (
-                <button
-                  onClick={(e) => addVideo(e, video)}
-                  id={video.id}
-                  className={`remove-video-button no-outline ${buttonClassname(idx)}`}
-                >
-                  Remove
-                </button>
-              ) : (
-                ""
-              )}
-              <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>
-                <div id="thumbnail-h3-div">
-                  <h3>{video.title}</h3>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </>
+    isLoaded && (
+      <>
+        <div id="home-grid">
+          {videos?.map((video, idx) => {
+            return (
+              <div
+                key={idx}
+                id="thumbnail-div"
+                onMouseEnter={(e) => setHoverIndex(idx)}
+                onMouseLeave={(e) => setHoverIndex(null)}
+              >
+                <Link to={`/videos/${video?.id}`}>
+                  <img
+                    onMouseEnter={(e) => changeImg(e, video)}
+                    onMouseLeave={(e) =>
+                      imgs[imgKeyCreator(video.img_path)]
+                        ? (e.target.src = imgs[imgKeyCreator(video.img_path)])
+                        : (e.target.src = video.img_path)
+                    }
+                    id={video?.gif_path}
+                    className="thumbnail"
+                    src={
+                      imgs[imgKeyCreator(video.img_path)]
+                        ? imgs[imgKeyCreator(video.img_path)]
+                        : video.img_path
+                    }
+                  />
+                </Link>
+                {sessionUser.id === user?.id ? (
+                  <button
+                    onClick={(e) => addVideo(e, video)}
+                    id={video?.id}
+                    className={`remove-video-button no-outline ${buttonClassname(
+                      idx
+                    )}`}
+                  >
+                    Remove
+                  </button>
+                ) : (
+                  ""
+                )}
+                <Link id="thumbnail-h3-link" to={`/videos/${video?.id}`}>
+                  <div id="thumbnail-h3-div">
+                    <h3>{video.title}</h3>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    )
   );
 };
 
