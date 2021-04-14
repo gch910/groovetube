@@ -136,15 +136,15 @@ function User() {
         <h1 id="user-favorites-h1">
           {followersClicked
             ? sessionUser?.id === user?.id
-              ? "Your Followers"
-              : `${user.username}'s Followers`
+              ? !(user?.followers[0]) ? ("You Don't Have Any Followers") : "Your Followers"
+              : !(user?.followers[0]) ? (`${user.username} Has No Followers`) : `${user.username}'s Followers`
             : ""}
         </h1>
         <h1 id="user-favorites-h1">
           {followingClicked
             ? sessionUser?.id === user?.id
-              ? "Users You Follow"
-              : ` Users ${user.username} Follows`
+              ? !user?.following[0] ? "You Aren't Following Anyone" : "Following"
+              : !user?.following[0] ? `${user.username} Isn't Following Anyone` : `${user.username}'s Follows`
             : ""}
         </h1>
       </div>

@@ -37,9 +37,10 @@ const UserFollowing = ({
 
   // }, [dispatch, isFollowing])
 
-  const results = !user?.following[0] ? sessionUser?.id === user.id ? (
-    <h1 id="no-following-h1">You Aren't Following Anyone</h1>
-  ) : <h1 id="no-following-h1">No Follows</h1> : (
+  // !user?.following[0] ? sessionUser?.id === user.id ? (
+  //   <h1 id="no-following-h1">You Aren't Following Anyone</h1>
+  // ) : <h1 id="no-following-h1">No Follows</h1> : (
+  const results = (
     <div id="user-following-div">
       {user.following.map((following) => (
         <>
@@ -70,6 +71,7 @@ const UserFollowing = ({
       ))}
     </div>
   );
+  // );
 
   // useEffect(() => {}, [user.following]);
   return results;
