@@ -39,22 +39,16 @@ const TopNav = () => {
   const onSearchSubmit = async (e) => {
     e.preventDefault();
     let found = false;
-    // const res = await fetch(`/api/videos/search`, {
-    //   method: "POST",
-    //   headers: {
-    //   "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     search: search
-    //   })
-    // })
-    // const data = await res.json()
+    
     await dispatch(getSearchResults(search)).then((res) => {
       if(res.length) {
+        setSearch("");
         return history.push('/search-results')
       } else {
+        setSearch("");
         return history.push('/no-results')
       }
+      
     })
     
     

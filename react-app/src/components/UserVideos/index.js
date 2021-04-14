@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { getUserVideos, addCollection } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
@@ -44,8 +44,12 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
     dispatch(getUserVideos(userId)).then(() => setIsLoaded(true))
   }, [dispatch, isRemoved]);
 
+  if (!userId) {
+    return <Redirect to="/login" />;
+  }
+
   return (
-    isLoaded && (
+    isLoaded && videos?.length && (
       <>
         <div id="home-grid">
           {videos?.map((video, idx) => {
@@ -73,7 +77,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
                     }
                   />
                 </Link>
-                {sessionUser.id === user?.id ? (
+                {sessionUser?.id === user?.id ? (
                   <button
                     onClick={(e) => addVideo(e, video)}
                     id={video?.id}
