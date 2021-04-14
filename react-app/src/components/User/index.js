@@ -32,6 +32,10 @@ function User() {
         setIsFollowing(false);
       }
     });
+    setFollowersClicked(false);
+    setTimeout(() => {
+      setFollowersClicked(true);
+    }, 1);
   };
 
   const gifKeyCreator = (path) => {
@@ -98,7 +102,7 @@ function User() {
 
     return () => dispatch(unloadUser())
   
-  }, [dispatch, userId, followingClicked])
+  }, [dispatch, userId, followingClicked, followersClicked])
 
   // if (!userId) {
   //   return <Redirect to="/login" />;
