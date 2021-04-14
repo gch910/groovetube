@@ -6,13 +6,13 @@ import {
   addCollection,
   getUserVideos,
   deleteUserComment,
+  unloadVideo,
 } from "../../store/videos";
 import { addUserFollow } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import ButtonDiv from "./ButtonDiv";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import "./VideoPage.css";
-
 
 const VideoPage = () => {
   const { videoId } = useParams();
@@ -33,11 +33,10 @@ const VideoPage = () => {
     if (index === hoverIndex) return "active";
     else return "button inactive";
   };
-  
 
-  const addVideo = async (e) => {
+  const addVideo = (e) => {
     e.preventDefault();
-    await dispatch(addCollection(sessionUser?.id, videoId));
+    dispatch(addCollection(sessionUser?.id, videoId));
     setIsAdded(true);
   };
 
@@ -74,13 +73,13 @@ const VideoPage = () => {
   // if(userVideosArray) setIsAdded(userVideosArray.some(video => video.id == videoId))
 
   useEffect(() => {
-    dispatch(getVideo(videoId)).then(setIsLoaded(true));
+    dispatch(getVideo(videoId)).then(() => setIsLoaded(true));
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return (
-      setNewComment(false),
-      setIsAdded(false))
-  }, [dispatch, isAdded, newComment, deleted]);
+      () => setNewComment(false), setIsAdded(false), dispatch(unloadVideo())
+    );
+  }, [dispatch, isAdded, newComment, deleted, videoId]);
 
   // useEffect(() => {
   //   video &&
@@ -92,7 +91,9 @@ const VideoPage = () => {
   return (
     isLoaded && (
       <div id="outer-video-div">
-        <Link to={`/users/${video?.user?.id}`}><h2 id="uploaded-by">Uploaded By: {video?.user?.username}</h2></Link>
+        <Link to={`/users/${video?.user?.id}`}>
+          <h2 id="uploaded-by">Uploaded By: {video?.user?.username}</h2>
+        </Link>
         <h2 id="video-h2">{video?.title}</h2>
         <div id="current-video-div">
           <iframe
@@ -134,7 +135,9 @@ const VideoPage = () => {
           setNewComment={setNewComment}
         />
         <div id="comments-div">
-          <h3>{video?.comments[0] ? "Comments:" : "Be the First to Comment!"}</h3>
+          <h3>
+            {video?.comments[0] ? "Comments:" : "Be the First to Comment!"}
+          </h3>
           {video?.comments.map((comment, idx) => (
             <div
               className="comment-div"
@@ -147,12 +150,19 @@ const VideoPage = () => {
                   src={comment.user.profile_img}
                   alt="profile"
                 />
-                <Link to={`/users/${comment?.user?.id}`} id="comment-username-link"><h3 id="comment-username">{comment.user.username}:</h3></Link>
+                <Link
+                  to={`/users/${comment?.user?.id}`}
+                  id="comment-username-link"
+                >
+                  <h3 id="comment-username">{comment.user.username}:</h3>
+                </Link>
                 <p id="comment-p">{comment.content}</p>
               </div>
               {deleteShown && sessionUser?.id == comment.user_id && (
                 <button
-                  className={`delete-comment-button ${comment.user_id} ${buttonClassname(idx)}`}
+                  className={`delete-comment-button ${
+                    comment.user_id
+                  } ${buttonClassname(idx)}`}
                   id={comment.id}
                   userId={comment.user_id}
                   onClick={deleteComment}

@@ -6,12 +6,14 @@ import UserUploads from "../UserUploads";
 import UserFollowers from "../UserFollowers";
 import UserFollowing from "../UserFollowing";
 import { addUserFollow, getUserFollows } from "../../store/follows";
+import { setProfileUser, unloadUser } from "../../store/profile";
 import Button from "@material-ui/core/Button";
 import "./User.css";
 
 function User() {
   const dispatch = useDispatch();
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
+  const user = useSelector(state => state.profile.user)
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const [collectionClicked, setCollectionClicked] = useState(true);
@@ -20,7 +22,6 @@ function User() {
   const [followingClicked, setFollowingClicked] = useState(false);
   const [isFollowing, setIsFollowing] = useState(user?.is_following);
 
-  console.log(user.is_following);
 
   const addFollow = () => {
     dispatch(addUserFollow(user.id)).then((res) => {
@@ -74,23 +75,37 @@ function User() {
   };
 
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
+    
+    // (async () => {
+    //   const response = await fetch(`/api/users/${userId}`);
+    //   const user = await response.json();
+    //   console.log(user)
+    //   setUser(user);
+    // })();
+    user &&
     setIsFollowing(user.is_following)
     // dispatch(getUserFollows(user.id));
-  }, [userId, user.is_following, followingClicked]);
+  }, [dispatch, user]);
 
-  if (!userId) {
-    return <Redirect to="/login" />;
-  }
+  //is_following
+  //followingClicked
 
-  return (
+  useEffect(() => {
+    console.log(userId)
+    // if (!userId) {
+    //   return;
+    // }
+    dispatch(setProfileUser(userId))
+
+    return () => dispatch(unloadUser())
+  
+  }, [dispatch, userId])
+
+  // if (!userId) {
+  //   return <Redirect to="/login" />;
+  // }
+  console.log("this is the user", user)
+  return user && ( 
     <div>
       <div id="">
         <div id="collection-header">

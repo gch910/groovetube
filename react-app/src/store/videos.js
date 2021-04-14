@@ -1,13 +1,13 @@
 const VIDEO = "videos/VIDEO";
-const USER_VIDEOS = "videos/USER_VIDEOS"
-const COLLECTION_ADD = "videos/COLLECTION_ADD"
+const USER_VIDEOS = "videos/USER_VIDEOS";
+const COLLECTION_ADD = "videos/COLLECTION_ADD";
 const ALL_VIDEOS = "videos/ALL_VIDEOS";
 const POST_COMMENT = "/videos/POST_COMMENT";
 const DELETE_COMMENT = "/videos/DELETE_COMMENT";
-const UPLOADED_VIDEOS = "/videos/UPLOADED_VIDEOS"
+const UPLOADED_VIDEOS = "/videos/UPLOADED_VIDEOS";
 const SEARCH_RESULTS = "videos/SEARCH_RESULTS";
 const DELETE_VIDEO = "video/DELETE_VIDEO";
-
+const UNLOAD_VIDEO = "video/UNLOAD_VIDEO";
 
 const video = (video) => {
   return {
@@ -20,57 +20,57 @@ const userVideos = (videos) => {
   return {
     type: USER_VIDEOS,
     videos,
-  }
-}
+  };
+};
 
 const uploadedVideos = (videos) => {
   return {
     type: UPLOADED_VIDEOS,
     videos,
-  }
-}
+  };
+};
 
-const collectionAdd = (vids) => (
-  {
-    type: COLLECTION_ADD,
-    vids,
-  }
-)
+const collectionAdd = (vids) => ({
+  type: COLLECTION_ADD,
+  vids,
+});
 
-const allVideos = (videos) => (
-  {
-    type: ALL_VIDEOS,
-    videos,
-  }
-)
+const allVideos = (videos) => ({
+  type: ALL_VIDEOS,
+  videos,
+});
 
 const postComment = (comment) => {
   return {
     type: POST_COMMENT,
-    comment: comment
-  }
-}
+    comment: comment,
+  };
+};
 
 const deleteComment = () => {
   return {
     type: DELETE_COMMENT,
-  }
-}
+  };
+};
 
 const searchResults = (videos) => {
   return {
     type: SEARCH_RESULTS,
     videos,
-
-  }
-}
+  };
+};
 
 const deleteVideo = () => {
   return {
     type: DELETE_VIDEO,
-  }
-}
- 
+  };
+};
+
+export const unloadVideo = () => {
+  return {
+    type: UNLOAD_VIDEO,
+  };
+};
 
 export const getVideo = (videoId) => async (dispatch) => {
   const res = await fetch(`/api/videos/${videoId}`);
@@ -82,43 +82,42 @@ export const getVideo = (videoId) => async (dispatch) => {
   return data;
 };
 
-export const getUserVideos = (userId) => async dispatch => {
-  const res = await fetch(`/api/videos/user/${userId}`)
+export const getUserVideos = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/videos/user/${userId}`);
 
   const data = await res.json();
 
-  dispatch(userVideos(data.videos))
+  dispatch(userVideos(data.videos));
 
   return data;
-}
+};
 
-export const getUploadedVideos = (userId) => async dispatch => {
-  const res = await fetch(`/api/videos/user/${userId}/uploads`)
+export const getUploadedVideos = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/videos/user/${userId}/uploads`);
 
   const data = await res.json();
 
-  dispatch(uploadedVideos(data.videos))
-  
-  return data;
-}
+  dispatch(uploadedVideos(data.videos));
 
-export const addCollection = (userId, videoId) => async dispatch => {
+  return data;
+};
+
+export const addCollection = (userId, videoId) => async (dispatch) => {
   const res = await fetch(`/api/collection/${videoId}/${userId}`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+      "Content-Type": "application/json",
+    },
+  });
 
   const data = await res.json();
 
-  dispatch(collectionAdd(data.collection))
+  dispatch(collectionAdd(data.collection));
 
   return data;
+};
 
-}
-
-export const getAllVideos = () => async dispatch => {
+export const getAllVideos = () => async (dispatch) => {
   const res = await fetch("/api/videos/");
 
   const data = await res.json();
@@ -126,10 +125,10 @@ export const getAllVideos = () => async dispatch => {
   dispatch(allVideos(data.videos));
 
   return data;
-}
+};
 
-export const postUserComment = (comment, videoId) => async dispatch => {
-  const { content, user_id } = comment
+export const postUserComment = (comment, videoId) => async (dispatch) => {
+  const { content, user_id } = comment;
 
   const res = await fetch(`/api/videos/${videoId}/comment`, {
     method: "POST",
@@ -139,60 +138,58 @@ export const postUserComment = (comment, videoId) => async dispatch => {
     body: JSON.stringify({
       content,
       user_id,
-      video_id: videoId
+      video_id: videoId,
     }),
-  })
+  });
 
-  const data = await res.json()
-  
-  dispatch(postComment(data))
+  const data = await res.json();
 
-  return data
-}
+  dispatch(postComment(data));
 
-export const deleteUserComment = (commentId) => async dispatch => {
+  return data;
+};
+
+export const deleteUserComment = (commentId) => async (dispatch) => {
   const res = await fetch(`/api/videos/comment/${commentId}/delete`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  console.log("response", res)
-  const data = await res.json()
+      "Content-Type": "application/json",
+    },
+  });
+  console.log("response", res);
+  const data = await res.json();
 
-  dispatch(deleteComment())
+  dispatch(deleteComment());
 
-  return data
-}
+  return data;
+};
 
-export const getSearchResults = (search) => async dispatch => {
+export const getSearchResults = (search) => async (dispatch) => {
   const res = await fetch(`/api/videos/search`, {
     method: "POST",
     headers: {
-    "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      search: search
-    })
-  })
+      search: search,
+    }),
+  });
   const data = await res.json();
   console.log(data);
   dispatch(searchResults(data.videos));
 
   return data.videos;
-}
+};
 
-export const deleteUserVideo = (videoId) => async dispatch => {
+export const deleteUserVideo = (videoId) => async (dispatch) => {
   const res = await fetch(`/api/videos/${videoId}/delete`, {
-    method: 'DELETE',
-    
-  })
+    method: "DELETE",
+  });
 
-  dispatch(deleteVideo())
+  dispatch(deleteVideo());
 
-  return res
-}
-
+  return res;
+};
 
 const initialState = {
   all_videos: [],
@@ -211,7 +208,7 @@ const videosReducer = (state = initialState, action) => {
       return newState;
     }
     case USER_VIDEOS: {
-      newState = {...state}
+      newState = { ...state };
       const videos = action.videos;
       newState.user_videos = videos;
       return newState;
@@ -223,13 +220,13 @@ const videosReducer = (state = initialState, action) => {
       return newState;
     }
     case COLLECTION_ADD: {
-      newState = {...state};
-      const collection = action.vids
+      newState = { ...state };
+      const collection = action.vids;
       newState.collection = collection;
-      return newState
+      return newState;
     }
     case ALL_VIDEOS: {
-      newState = {...state}
+      newState = { ...state };
       const videos = action.videos;
       newState.all_videos = videos;
       return newState;
@@ -245,14 +242,18 @@ const videosReducer = (state = initialState, action) => {
       return state;
     }
     case SEARCH_RESULTS: {
-      newState = {...state };
+      newState = { ...state };
       const videos = action.videos;
       newState.search_results = videos;
       return newState;
     }
     case DELETE_VIDEO: {
-      newState = {...state}
+      newState = { ...state };
       return newState;
+    }
+    case UNLOAD_VIDEO: {
+      state.user = null;
+      return state;
     }
     default:
       return state;

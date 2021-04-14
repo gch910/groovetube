@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { getUserVideos, addCollection } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
@@ -8,11 +8,14 @@ import "./UserVideos.css";
 
 const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   const dispatch = useDispatch();
+  // const paramsId = useParams().userId
   const sessionUser = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.videos.user_videos);
   const [isRemoved, setIsRemoved] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  console.log(sessionUser?.id === user?.id)
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
@@ -79,7 +82,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
                     }
                   />
                 </Link>
-                {sessionUser?.id === user?.id ? (
+                {(sessionUser?.id === user?.id) ? (
                   <button
                     onClick={(e) => addVideo(e, video)}
                     id={video?.id}
