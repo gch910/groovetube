@@ -58,6 +58,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
           onChange={(e) => setComment(e.target.value)}
           id="comment-text"
           placeholder="Comment"
+          className="no-outline"
         ></textarea>
         <Button
           onClick={newCommentSubmit}
