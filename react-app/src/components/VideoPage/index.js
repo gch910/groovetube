@@ -7,7 +7,7 @@ import {
   getUserVideos,
   deleteUserComment,
 } from "../../store/videos";
-import { addUserFollow, getUserFollows } from "../../store/follows";
+import { addUserFollow } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import ButtonDiv from "./ButtonDiv";
 import Button from '@material-ui/core/Button';
@@ -82,10 +82,10 @@ const VideoPage = () => {
       setIsAdded(false))
   }, [dispatch, isAdded, newComment, deleted]);
 
-  useEffect(() => {
-    video &&
-      dispatch(getUserFollows(video.user.id)).then(() => setIsLoaded(true));
-  }, [dispatch, video]);
+  // useEffect(() => {
+  //   video &&
+  //     dispatch(getUserFollows(video.user.id)).then(() => setIsLoaded(true));
+  // }, [dispatch, video]);
 
   if (sessionUser?.user) userId = sessionUser?.user?.id;
 

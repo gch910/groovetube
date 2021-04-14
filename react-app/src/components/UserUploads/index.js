@@ -33,6 +33,7 @@ const UserUploads = ({
 
     setTimeout(() => {
       setDeleted(true);
+      e.target.innerText = "Delete";
     }, 500);
   };
 

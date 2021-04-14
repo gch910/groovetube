@@ -112,6 +112,13 @@ def video_genre():
 def delete_video(video_id):
     video = Video.query.get(video_id)
 
+    comments = Comment.query.filter_by(video_id=video_id).all()
+
+    for comment in comments:
+        db.session.delete(comment)
+
     db.session.delete(video)
     db.session.commit()
+
+    return {"deleted": "success"}
 

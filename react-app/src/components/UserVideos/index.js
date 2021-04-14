@@ -42,6 +42,8 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
 
   useEffect(() => {
     dispatch(getUserVideos(userId)).then(() => setIsLoaded(true))
+
+    return setIsRemoved(false)
   }, [dispatch, isRemoved]);
 
   if (!userId) {
