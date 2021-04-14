@@ -106,7 +106,7 @@ function User() {
   console.log("this is the user", user)
   return user && ( 
     <div>
-      <div id="">
+      <div id="user-header-div">
         <div id="collection-header">
           {!(sessionUser?.id === user.id) ?
             <Button

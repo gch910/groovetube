@@ -8,9 +8,11 @@
     justify-content: center; */
     position: sticky;
     margin-left: 38%;
-    margin-top: 30px;
+    margin-top: 0px;
     color: #6a34ce;
+    width: 300px;
 }
+
 
 #user-list-div {
     display: flex;
@@ -74,15 +76,17 @@
    left: 200px;
 }
 
+#collection-header {
+    margin-top: 25px;
+} 
+
 /* #profile-header {
     width: 100vw;
     display: flex;
     justify-content: center;
 }
 
-#collection-header {
-    width: 200px;
-} */
+*/
 /* .active {
     color: black;
 } */

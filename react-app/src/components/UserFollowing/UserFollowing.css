@@ -26,8 +26,11 @@
 }
 
 #no-following-h1 {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    position: relative;
+    left: 41%;
+    /* transform: translateX(-10%); */
     margin-top: 30px;
     color: #6a34ce;
 }
