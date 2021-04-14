@@ -33,6 +33,10 @@ const UserFollowing = ({
     }, 1);
   };
 
+  // useEffect(() => {
+
+  // }, [dispatch, isFollowing])
+
   const results = !user?.following[0] ? sessionUser?.id === user.id ? (
     <h1 id="no-following-h1">You Aren't Following Anyone</h1>
   ) : <h1 id="no-following-h1">No Follows</h1> : (

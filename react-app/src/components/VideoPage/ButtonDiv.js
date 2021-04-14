@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import Button from '@material-ui/core/Button';
 
-const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
-    const [isFollowing, setIsFollowing] = useState(console.log("video is following!", video.user.is_following) || video.user.is_following);
+const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser, isFollowing }) => {
+    // const [isFollowing, setIsFollowing] = useState(console.log("video is following!", video.user.is_following) || video.user.is_following);
+    
 
     return (
         
@@ -13,7 +14,7 @@ const ButtonDiv = ({addFollow, addVideo, userVideos, video, sessionUser }) => {
               : "Add"}
           </Button>
           {video.user.id !== sessionUser.id && (
-          <Button id="follow-button" variant="contained" onClick={() => addFollow(setIsFollowing)}>
+          <Button id="follow-button" variant="contained" onClick={() => addFollow()}>
               {isFollowing
               ? "Unfollow"
               : `Follow`

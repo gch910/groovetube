@@ -28,6 +28,7 @@ const VideoPage = () => {
   const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
@@ -40,7 +41,7 @@ const VideoPage = () => {
     setIsAdded(true);
   };
 
-  const addFollow = (setIsFollowing) => {
+  const addFollow = () => {
     dispatch(addUserFollow(video.user.id)).then((res) => {
       console.log(res.result);
       if (res.result === "follow") {
@@ -86,6 +87,10 @@ const VideoPage = () => {
   //     dispatch(getUserFollows(video.user.id)).then(() => setIsLoaded(true));
   // }, [dispatch, video]);
 
+  useEffect(() => {
+    video && setIsFollowing(video?.user?.is_following)
+  }, [video?.user?.is_following])
+
   if (sessionUser?.user) userId = sessionUser?.user?.id;
 
   return (
@@ -114,6 +119,7 @@ const VideoPage = () => {
             userVideos={userVideos}
             addVideo={addVideo}
             sessionUser={sessionUser}
+            isFollowing={isFollowing}
           />
         )}
         {/* <div id="add-video-button-div">

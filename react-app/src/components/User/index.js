@@ -84,11 +84,9 @@ function User() {
     // })();
     user &&
     setIsFollowing(user.is_following)
-    // dispatch(getUserFollows(user.id));
+    
   }, [dispatch, user]);
 
-  //is_following
-  //followingClicked
 
   useEffect(() => {
     console.log(userId)
@@ -96,10 +94,11 @@ function User() {
     //   return;
     // }
     dispatch(setProfileUser(userId))
+    user && dispatch(getUserFollows(user.id));
 
     return () => dispatch(unloadUser())
   
-  }, [dispatch, userId])
+  }, [dispatch, userId, followingClicked])
 
   // if (!userId) {
   //   return <Redirect to="/login" />;

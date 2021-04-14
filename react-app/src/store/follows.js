@@ -35,18 +35,18 @@ export const addUserFollow = (userId) => async (dispatch) => {
   return data;
 };
 
-// export const getUserFollows = (userId) => async (dispatch) => {
-//   const res = await fetch(`/api/follow/followers/${userId}`)
+export const getUserFollows = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/follow/followers/${userId}`)
 
-//   const data = await res.json()
-//   console.log("followers get", data)
+  const data = await res.json()
+  console.log("followers get", data)
 
-//   dispatch(getFollows(data.followers))
+  dispatch(getFollows(data.followers))
 
-//   return data;
+  return data;
 
 
-// }
+}
 
 const initialState = {
   followers: [],
