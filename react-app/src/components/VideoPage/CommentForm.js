@@ -38,6 +38,8 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
 
   useEffect(() => {
     setComment("");
+
+    return () => setNewComment(false)
   }, [newComment]);
 
   const newCommentSubmit = () => {

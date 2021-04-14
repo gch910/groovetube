@@ -103,6 +103,7 @@
 
 #comment-p {
   width: 100vw;
+  font-size: 20px;
 }
 
 #image-username-comment {
@@ -131,6 +132,7 @@
   border-radius: 3px 3px 3px 3px;
   resize: none;
   font-family: 'Overpass', sans-serif;
+  font-size: 20px;
 }
 
 #user-comment-image {

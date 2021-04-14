@@ -78,7 +78,7 @@ const VideoPage = () => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return (
-      () => setNewComment(false), setIsAdded(false), dispatch(unloadVideo())
+      () => setIsAdded(false), dispatch(unloadVideo())
     );
   }, [dispatch, isAdded, newComment, deleted, videoId]);
 
