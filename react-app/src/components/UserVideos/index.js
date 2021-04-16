@@ -15,7 +15,8 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   const [hoverIndex, setHoverIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(sessionUser?.id === user?.id)
+  // console.log(sessionUser?.id === user?.id)
+  
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
