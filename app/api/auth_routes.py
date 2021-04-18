@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -69,14 +70,14 @@ def sign_up():
     # filename = secure_filename(image.filename)
     # img = image.read()
 
-
+    hashed_password=generate_password_hash(form.data['password'], method='pbkdf2:sha256', salt_length=8)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
             # profile_img=filename,
-            hashed_password=form.data['password']
+            hashed_password=hashed_password
         )
         print(user)
         db.session.add(user)
