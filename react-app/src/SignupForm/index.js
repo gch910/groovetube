@@ -11,6 +11,15 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [image, setImage] = useState("");
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    console.log(file)
+    setImage(file);
+  
+  };
+
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +34,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    // const img_path = new FormData();
+    // img_path.append("image", image);
+
     if (password === repeatPassword) {
       const user = await signUp(username, email, password);
       if (!user.errors) {
@@ -105,6 +117,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           label="Confirm Password"
         ></TextField>
       </div>
+      {/* <label className="upload-label">Upload an image</label>
+            <input
+              name="image"
+              className="upload-field"
+              type="file"
+              // accept="image/*"
+              onChange={updateImage}
+            /> */}
       <div id="signup-button-div">
         <Link to="/login" id="login-link">Already have an account? Login!</Link>
         <Button variant="contained" id="signup-button" type="submit">Sign Up</Button>

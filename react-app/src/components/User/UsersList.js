@@ -13,7 +13,7 @@ function UsersList() {
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
+  const userComponents = users?.map((user) => {
     return (
       <div id="user-list-name" key={user.id}>
         <img src={user?.profile_img} className="user-profile-img" />
