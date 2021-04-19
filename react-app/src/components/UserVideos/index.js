@@ -55,7 +55,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   }
 
   return (
-    isLoaded && videos?.length && (
+    isLoaded && videos?.length ? (
       <>
         <div id="home-grid">
           {videos?.map((video, idx) => {
@@ -106,7 +106,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
           })}
         </div>
       </>
-    )
+    ) : null
   );
 };
 

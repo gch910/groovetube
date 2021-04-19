@@ -1,4 +1,4 @@
-import { authenticate, logout, login } from "../services/auth";
+import { authenticate, logout, login, signUp } from "../services/auth";
 
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -27,11 +27,19 @@ export const loginUser = (email, password) => async (dispatch) => {
   dispatch(setUser(res));
 };
 
+export const signUpUser = (username, email, password) => async dispatch => {
+  const res = await signUp()
+  
+  dispatch(setUser(res))
+};
+
 export const logoutUser = () => async dispatch => {
     const res = await logout();
-    dispatch(removeUser())
+
+    dispatch(removeUser());
+
     return res;
-} 
+}; 
 
 const initialState = {
   user: null,
