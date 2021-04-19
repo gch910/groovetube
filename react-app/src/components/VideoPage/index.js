@@ -39,6 +39,9 @@ const VideoPage = () => {
     e.preventDefault();
     dispatch(addCollection(sessionUser?.id, videoId));
     setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 100);
   };
 
   const addFollow = () => {
@@ -78,7 +81,7 @@ const VideoPage = () => {
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
 
     return (
-      () => setIsAdded(false), dispatch(unloadVideo())
+      dispatch(unloadVideo())
     );
   }, [dispatch, isAdded, newComment, deleted, videoId]);
 
@@ -89,6 +92,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     video && setIsFollowing(video?.user?.is_following)
+  
   }, [video?.user?.is_following])
 
   if (sessionUser?.user) userId = sessionUser?.user?.id;

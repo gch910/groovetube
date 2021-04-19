@@ -19,6 +19,7 @@ def image_upload(user_id):
     image = request.files['image'] 
     filename = image.filename
     new_file = Path(f'{target}/{filename}').touch()
+   
     destination="/".join([target, filename])
     # destination=target
 

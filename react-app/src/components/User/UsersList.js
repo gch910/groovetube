@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import profPic from "../Home/profile-pics/index.js"
 
-console.log(profPic["file"])
+
+
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -19,7 +19,7 @@ function UsersList() {
   const userComponents = users?.map((user) => {
     return (
       <div id="user-list-name" key={user.id}>
-        <img src={user?.id == 2 ? profPic["file"] : user?.profile_img} className="user-profile-img" />
+        <img src={`${user?.profile_img}`} className="user-profile-img" />
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
       </div>
     );
