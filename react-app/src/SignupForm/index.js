@@ -119,8 +119,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       </div>
       {/* <label className="upload-label">Upload an image</label>
             <input
-              name="image"
-              className="upload-field"
+              // name="image"
+              // className="upload-field"
               type="file"
               // accept="image/*"
               onChange={updateImage}

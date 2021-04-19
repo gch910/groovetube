@@ -65,11 +65,11 @@ def sign_up():
     """
     form = SignUpForm()
     # something = request.form.get("image", False)
-    print("heloooooooooooooooooooooooooooo", form.data)
+        # print("heloooooooooooooooooooooooooooo", form.data, form.data['image'].get('image'))
     # image = request.files['image']
     # filename = secure_filename(image.filename)
     # img = image.read()
-
+    print("the daaaaaaaaaaaaaaaaata", request.data)
     hashed_password=generate_password_hash(form.data['password'], method='pbkdf2:sha256', salt_length=8)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -85,6 +85,8 @@ def sign_up():
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 
 
 @auth_routes.route('/unauthorized')

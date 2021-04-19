@@ -1,36 +1,35 @@
-# from flask import Blueprint, request
-# from app.models import db, Image
-# from flask_login import current_user, login_required
-# from app.s3_helpers import (
-#     upload_file_to_s3, allowed_file, get_unique_filename)
+import os
+from flask import Blueprint, jsonify, session, request
+from app.models import User, db
+from app.forms import LoginForm
+from app.forms import SignUpForm
+from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash
+from flask_login import current_user, login_user, logout_user, login_required
+from ..config import Config
+from pathlib import Path
 
-# image_routes = Blueprint("images", __name__)
+image_routes = Blueprint('images', __name__)
 
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-# @image_routes.route("", methods=["POST"])
-# @login_required
-# def upload_image():
-#     if "image" not in request.files:
-#         return {"errors": "image required"}, 400
+@image_routes.route('/upload/<int:user_id>', methods=['POST'])
+def image_upload(user_id):
+    target=Config.UPLOAD_FOLDER
+    image = request.files['image'] 
+    filename = image.filename
+    new_file = Path(f'{target}/{filename}').touch()
+    destination="/".join([target, filename])
+    # destination=target
 
-#     image = request.files["image"]
+    image.save(destination)
+    session['uploadFilePath']=destination
+    print(image)
+     
+    user = User.query.get(user_id)
+    user.profile_img = destination
+    db.session.add(user)
+    db.session.commit()
+    print(user.to_dict())
 
-#     if not allowed_file(image.filename):
-#         return {"errors": "file type not permitted"}, 400
-    
-#     image.filename = get_unique_filename(image.filename)
-
-#     upload = upload_file_to_s3(image)
-
-#     if "url" not in upload:
-#         # if the dictionary doesn't have a url key
-#         # it means that there was an error when we tried to upload
-#         # so we send back that error message
-#         return upload, 400
-
-#     url = upload["url"]
-#     # flask_login allows us to get the current user from the request
-#     new_image = Image(user=current_user, url=url)
-#     db.session.add(new_image)
-#     db.session.commit()
-#     return {"url": url}
+    return {"hello": "hello"}

@@ -15,6 +15,7 @@ import VideoPage from "./components/VideoPage";
 import SearchResults from "./components/Nav/SearchResults";
 import NoResults from "./components/Nav/NoResults";
 import UploadVideoForm from "./components/UploadVideoForm";
+import ProfileImageUpload from "./components/ProfileImageUpload";
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -89,6 +90,9 @@ function App() {
             </Route>
             <Route path="/newvideo/upload">
               <UploadVideoForm />
+            </Route>
+            <Route path="/profile-image/upload/:userId">
+              <ProfileImageUpload  />
             </Route>
           </Switch>
         </div>
