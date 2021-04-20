@@ -1,7 +1,7 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-const UserHeader = ({user, text}) => {
+export const UserHeader = ({user, text}) => {
     const history = useHistory();
     const changeImg = (e) => {
         e.target.src = "https://static.thenounproject.com/png/396915-200.png";
@@ -20,4 +20,15 @@ const UserHeader = ({user, text}) => {
     )
 }
 
-export default UserHeader;
+export const NotSessionHeader = ({user, text}) => {
+    return (
+        <div className="profile-header-div">
+        <img
+          className="profile-page-img"
+          src={user?.profile_img}
+        />
+        {text}
+      </div>
+    )
+}
+

@@ -5,7 +5,7 @@ import UserVideos from "../UserVideos";
 import UserUploads from "../UserUploads";
 import UserFollowers from "../UserFollowers";
 import UserFollowing from "../UserFollowing";
-import UserHeader from "./UserHeader";
+import { UserHeader, NotSessionHeader } from "./UserHeader";
 import { addUserFollow, getUserFollows } from "../../store/follows";
 import { setProfileUser, unloadUser } from "../../store/profile";
 import Button from "@material-ui/core/Button";
@@ -167,7 +167,7 @@ function User() {
                 sessionUser?.id === user?.id ? (
                  <UserHeader user={user} text={"Your Collection"} />
                 ) : (
-                  `${user.username}'s Collection`
+                  <NotSessionHeader user={user} text={`${user.username}'s Collection`} />
                 )
               ) : (
                 ""
@@ -178,7 +178,7 @@ function User() {
             {uploadedClicked
               ? sessionUser?.id === user?.id
                 ?  <UserHeader user={user} text={"Your Uploads"} />
-                : `${user.username}'s Uploads`
+                : <NotSessionHeader user={user} text={`${user.username}'s Uploads`} />
               : ""}
           </h1>
           <h1 id="user-favorites-h1">
@@ -188,8 +188,8 @@ function User() {
                   ?  <UserHeader user={user} text={"No Followers Yet"} />
                   :  <UserHeader user={user} text={"Your Followers"} />
                 : !user?.followers[0]
-                ? `${user.username} Has No Followers`
-                : `${user.username}'s Followers`
+                ? <NotSessionHeader user={user} text={`${user.username} Has No Followers`} />
+                : <NotSessionHeader user={user} text={`${user.username}'s Followers`} />
               : ""}
           </h1>
           <h1 id="user-favorites-h1">
@@ -199,8 +199,8 @@ function User() {
                   ?  <UserHeader user={user} text={"You Aren't Following Anyone"} />
                   :  <UserHeader user={user} text={"Following"} />
                 : !user?.following[0]
-                ? `${user.username} Isn't Following Anyone`
-                : `${user.username}'s Follows`
+                ? <NotSessionHeader user={user} text={`${user.username} Isn't Following Anyone`} />
+                : <NotSessionHeader user={user} text={`${user.username}'s Follows`} />
               : ""}
           </h1>
         </div>
