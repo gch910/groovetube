@@ -41,7 +41,7 @@ const Home = () => {
       <>
         {sessionUser ? (
           <div>
-            <h1 id="home-h1">Your Collection</h1>
+            <h1 id="home-h1">{ videos?.length ? "Your Collection" : ""}</h1>
             <UserVideos userId={sessionUser?.id} isLoaded={isLoaded} gifKeyCreator={gifKeyCreator} imgKeyCreator={imgKeyCreator}/>
           </div>
         ) : (

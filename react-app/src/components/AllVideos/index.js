@@ -41,7 +41,7 @@ const AllVideos = () => {
 
   return (
     <>
-      <h1 id="home-h1">All Videos</h1>
+      <h1 id="home-h1">{sessionUser ? "Start Adding To Your Collection!" : "All Videos"}</h1>
       <div id="home-grid">
         {allVideos.map((video) => {
           return (

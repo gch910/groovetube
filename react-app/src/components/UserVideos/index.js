@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useParams } from "react-router-dom";
 import { getUserVideos, addCollection } from "../../store/videos";
+import AllVideos from "../AllVideos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 import "./UserVideos.css";
@@ -106,7 +107,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
           })}
         </div>
       </>
-    ) : null
+    ) : <AllVideos />
   );
 };
 
