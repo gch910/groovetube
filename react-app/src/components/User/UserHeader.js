@@ -1,6 +1,8 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 
 const UserHeader = ({user, text}) => {
+    const history = useHistory();
     const changeImg = (e) => {
         e.target.src = "https://static.thenounproject.com/png/396915-200.png";
       };
@@ -9,6 +11,7 @@ const UserHeader = ({user, text}) => {
         <img
           onMouseEnter={(e) => changeImg(e)}
           onMouseLeave={(e) => e.target.src = user?.profile_img}
+          onClick={(e) => history.push(`/profile-image/upload/${user?.id}`)}
           className="profile-page-img"
           src={user?.profile_img}
         />

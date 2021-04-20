@@ -33,7 +33,7 @@ const SearchResults = () => {
   }
 
   return (
-    <div>
+    <div id="outer-search-results">
       {searchResults.map((video) => (
         <div id="search-results-videos">
           <div id="search-results-title-div">

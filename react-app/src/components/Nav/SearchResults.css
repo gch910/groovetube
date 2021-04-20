@@ -7,7 +7,7 @@
 #search-results-title-div {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #search-results-title {
@@ -29,6 +29,24 @@
 
 #search-results-videos {
     margin-bottom: 30px;  
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start; */
+    width: 400px;
+    position: relative;
+    left: 32%;
 }
+
+#search-img {
+    width: 400px;
+    height: 220px;
+}
+
+/* #outer-search-results {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+} */
 
 
