@@ -8,6 +8,7 @@ const UploadVideoForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const uploaded = useSelector((state) => state.uploads.uploadedVideo)
   const [selectCategories, setSelectCategories] = useState([]);
   const [category, setCategory] = useState(1);
   const [video, setvideo] = useState("");
@@ -19,10 +20,16 @@ const UploadVideoForm = () => {
   const [artist, setArtist] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    setImage(file);
+  };
+
   const getYoutubeEmbed = (link) => {
-    const linkEmbed = link.replace("watch?v=", "embed/")
-    return linkEmbed
-  }
+    const linkEmbed = link.replace("watch?v=", "embed/");
+    return linkEmbed;
+  };
 
   useEffect(() => {
     fetch("/api/videos/categories")
@@ -33,30 +40,39 @@ const UploadVideoForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const embed = getYoutubeEmbed(video)
+    const embed = getYoutubeEmbed(video);
 
     const videoAttributes = {
       title,
       artist: artist,
       video_path: embed,
-      img_path: image,
-      gif_path: gif,
+      // img_path: image,
+      // gif_path: gif,
       user_id: user.id,
       category_id: category,
     };
- 
-    dispatch(newUpload(videoAttributes));
 
+    await dispatch(newUpload(videoAttributes));
 
-    setSuccess(true)
+    setSuccess(true);
     setTimeout(() => {
       history.push("/");
-    }, 1500)
-      
-    // } 
+    }, 1500);
+
+    // }
   };
 
- 
+  useEffect(async () => {
+    if (uploaded?.id) {
+      const img = new FormData();
+      img.append("image", image);
+      await fetch(`/api/image/upload-video-image/${uploaded?.id}`, {
+        method: "POST",
+        body: img,
+      });
+    }
+  }, [dispatch, uploaded]);
+
   return (
     selectCategories.length && (
       <div id="upload-form-div">
@@ -111,12 +127,16 @@ const UploadVideoForm = () => {
             />
           </div>
           <div className="upload-div">
-            <label className="upload-label">Upload Video Thumbnail</label>
+            <label className="upload-label" id="choose-video-thumbnail">Upload Video Thumbnail
             <input
-              className="upload-field"
-              type="text"
-              onChange={(e) => setImage(e.target.value)}
+              // name="image"
+              id="choose-video-thumbnail-input"
+              className="upload-field no-outline"
+              type="file"
+              // accept="image/*"
+              onChange={updateImage}
             />
+            </label>
           </div>
           <div className="upload-div">
             <label className="upload-label">Upload Video Gif</label>

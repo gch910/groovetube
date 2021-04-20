@@ -89,8 +89,8 @@ def new_video():
             title=form.data['title'],
             artist=form.data['artist'],
             video_path=form.data['video_path'],
-            img_path=form.data['img_path'],
-            gif_path=form.data['gif_path'],
+            # img_path=form.data['img_path'],
+            # gif_path=form.data['gif_path'],
             user_id=form.data['user_id'],
             category_id=form.data['category_id']
         )

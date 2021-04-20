@@ -40,7 +40,6 @@ const ProfileImageUpload = () => {
   return (
     <form id="image-upload-form" onSubmit={onSubmit}>
       <h1 id="upload-image-h1">Upload Image</h1>
-
       <input
         // name="image"
         className="upload-field no-outline"

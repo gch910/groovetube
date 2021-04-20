@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import followsReducer from "./follows";
 import profileReducer from "./profile";
 import sessionReducer from "./session";
+import uploadsReducer from "./upload";
 import videosReducer from "./videos";
 
 const rootReducer = combineReducers({
@@ -10,6 +11,8 @@ const rootReducer = combineReducers({
     session: sessionReducer,
     follows: followsReducer,
     profile: profileReducer,
+    uploads: uploadsReducer,
+    
 });
 
 let enhancer;
