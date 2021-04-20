@@ -32,6 +32,16 @@
 }
 
 #login-link {
-    margin-top: 10px;
+    margin-top: 15px;
     color: #6a34ce;
+}
+
+.choose-file {
+    margin-top: 10px;
+    width: 300px;
+}
+
+#profile-img-label {
+    margin-top: 20px;
+    width: 300px;
 }

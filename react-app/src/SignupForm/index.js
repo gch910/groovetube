@@ -1,12 +1,18 @@
-import React, { useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, Link, useHistory } from "react-router-dom";
 import { signUp } from "../services/auth";
+import { signUpUser } from "../store/session";
 import TextField from "@material-ui/core/TextField";
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import "./SignupForm.css"
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import "./SignupForm.css";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
+  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [formErrors, setFormErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,17 +21,15 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const updateImage = (e) => {
     const file = e.target.files[0];
-    console.log(file)
+    console.log(file);
     setImage(file);
-  
   };
-
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      '& .MuiTextField-root': {
+      "& .MuiTextField-root": {
         margin: theme.spacing(3),
-        width: '30ch',
+        width: "30ch",
       },
     },
   }));
@@ -34,16 +38,33 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // const img_path = new FormData();
-    // img_path.append("image", image);
 
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      await dispatch(signUpUser(username, email, password)).then(
+        async (res) => {
+          if (res?.errors) {
+            setFormErrors(res.errors);
+            return res.errors;
+          } else {
+            setAuthenticated(true);
+
+            return history.push("/");
+          }
+        }
+      );
     }
   };
+
+  useEffect(async () => {
+    if (sessionUser?.id) {
+      const img = new FormData();
+      img.append("image", image);
+      await fetch(`/api/image/upload/${sessionUser?.id}`, {
+        method: "POST",
+        body: img,
+      });
+    }
+  }, [dispatch, sessionUser]);
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -117,17 +138,22 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           label="Confirm Password"
         ></TextField>
       </div>
-      {/* <label className="upload-label">Upload an image</label>
-            <input
-              // name="image"
-              // className="upload-field"
-              type="file"
-              // accept="image/*"
-              onChange={updateImage}
-            /> */}
+      <label id="profile-img-label">Profile Image</label>
+      <input
+        // name="image"
+        placeholder="Upload"
+        className="choose-file no-outline"
+        type="file"
+        // accept="image/*"
+        onChange={updateImage}
+      />
       <div id="signup-button-div">
-        <Link to="/login" id="login-link">Already have an account? Login!</Link>
-        <Button variant="contained" id="signup-button" type="submit">Sign Up</Button>
+        <Link to="/login" id="login-link">
+          Already have an account? Login!
+        </Link>
+        <Button variant="contained" id="signup-button" type="submit">
+          Sign Up
+        </Button>
       </div>
     </form>
   );
