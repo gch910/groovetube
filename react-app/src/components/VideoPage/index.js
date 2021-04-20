@@ -172,7 +172,7 @@ const VideoPage = () => {
                 <button
                   className={`delete-comment-button ${
                     comment.user_id
-                  } ${buttonClassname(idx)}`}
+                  } ${buttonClassname(idx)} no-outline`}
                   id={comment.id}
                   userId={comment.user_id}
                   onClick={deleteComment}

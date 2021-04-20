@@ -9,16 +9,12 @@ import { makeStyles } from '@material-ui/core/styles';
 const ProfileImageUpload = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [image, setImage] = useState("");
-  const [fileName, setFileName] = useState("");
+ 
 
   const updateImage = (e) => {
     const file = e.target.files[0];
     console.log(file)
     setImage(file);
-  
-  };
-  const updateFileName = (e) => {
-    setFileName(fileName);
   
   };
  
@@ -27,7 +23,6 @@ const ProfileImageUpload = () => {
     e.preventDefault();
     const img = new FormData();
     img.append("image", image);
-    img.append('filename', fileName);
 
     const res = await fetch(`/api/image/upload/${sessionUser?.id}`, {
         method: "POST",
@@ -49,7 +44,6 @@ const ProfileImageUpload = () => {
               // accept="image/*"
               onChange={updateImage}
             />
-            <input onChange={updateFileName} type="text" placeholder="File Name" />
       <div id="upload-image-button-div">
         <Button variant="contained" id="upload-image-button" type="submit">Upload</Button>
       </div>

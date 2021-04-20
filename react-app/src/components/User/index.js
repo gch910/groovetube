@@ -5,6 +5,7 @@ import UserVideos from "../UserVideos";
 import UserUploads from "../UserUploads";
 import UserFollowers from "../UserFollowers";
 import UserFollowing from "../UserFollowing";
+import UserHeader from "./UserHeader";
 import { addUserFollow, getUserFollows } from "../../store/follows";
 import { setProfileUser, unloadUser } from "../../store/profile";
 import Button from "@material-ui/core/Button";
@@ -25,7 +26,11 @@ function User() {
     user?.is_following
   );
 
-  console.log(isFollowing, isFollowingFollowers)
+  const changeImg = (e) => {
+    e.target.src = "https://static.thenounproject.com/png/396915-200.png";
+  };
+
+  console.log(isFollowing, isFollowingFollowers);
 
   const addFollow = () => {
     dispatch(addUserFollow(user.id)).then((res) => {
@@ -127,7 +132,13 @@ function User() {
     user && dispatch(getUserFollows(user.id));
 
     return () => dispatch(unloadUser());
-  }, [dispatch, userId, followingClicked, followersClicked, isFollowingFollowers]);
+  }, [
+    dispatch,
+    userId,
+    followingClicked,
+    followersClicked,
+    isFollowingFollowers,
+  ]);
 
   useEffect(() => {}, [isFollowing]);
 
@@ -152,17 +163,21 @@ function User() {
               ""
             )}
             <h1 id="user-favorites-h1">
-              {collectionClicked
-                ? sessionUser?.id === user?.id
-                  ? "Your Collection"
-                  : `${user.username}'s Collection`
-                : ""}
+              {collectionClicked ? (
+                sessionUser?.id === user?.id ? (
+                 <UserHeader user={user} text={"Your Collection"} />
+                ) : (
+                  `${user.username}'s Collection`
+                )
+              ) : (
+                ""
+              )}
             </h1>
           </div>
           <h1 id="user-favorites-h1">
             {uploadedClicked
               ? sessionUser?.id === user?.id
-                ? "Your Uploads"
+                ?  <UserHeader user={user} text={"Your Uploads"} />
                 : `${user.username}'s Uploads`
               : ""}
           </h1>
@@ -170,8 +185,8 @@ function User() {
             {followersClicked
               ? sessionUser?.id === user?.id
                 ? !user?.followers[0]
-                  ? "You Don't Have Any Followers"
-                  : "Your Followers"
+                  ?  <UserHeader user={user} text={"No Followers Yet"} />
+                  :  <UserHeader user={user} text={"Your Followers"} />
                 : !user?.followers[0]
                 ? `${user.username} Has No Followers`
                 : `${user.username}'s Followers`
@@ -181,8 +196,8 @@ function User() {
             {followingClicked
               ? sessionUser?.id === user?.id
                 ? !user?.following[0]
-                  ? "You Aren't Following Anyone"
-                  : "Following"
+                  ?  <UserHeader user={user} text={"You Aren't Following Anyone"} />
+                  :  <UserHeader user={user} text={"Following"} />
                 : !user?.following[0]
                 ? `${user.username} Isn't Following Anyone`
                 : `${user.username}'s Follows`
