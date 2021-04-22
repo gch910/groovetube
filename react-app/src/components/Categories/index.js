@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from "../../store/categories";
+import "./Categories.css";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -9,18 +10,22 @@ const Categories = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getCategories()).then(() => setIsLoaded(true))
+    dispatch(getCategories()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   console.log(categories);
   return (
     isLoaded && (
-      <div>
-        <h1>Categories</h1>;
-        {categories.map(cat => (
-            <Link to={`category/${cat.id}`}><h2>{cat.name}</h2></Link>
-        ))}
-      </div>
+      <>
+        <h1 id="categories-h1">Categories</h1>
+        <div id="categories-div">
+          {categories.map((cat) => (
+            <Link to={`category/${cat.id}`}>
+              <h2 id="categories-h2">{cat.name}</h2>
+            </Link>
+          ))}
+        </div>
+      </>
     )
   );
 };
