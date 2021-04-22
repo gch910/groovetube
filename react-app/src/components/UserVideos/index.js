@@ -15,9 +15,10 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   const [isRemoved, setIsRemoved] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [videosExist, setVideosExist] = useState(false);
 
   // console.log(sessionUser?.id === user?.id)
-  
+
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
@@ -46,6 +47,9 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   };
 
   useEffect(() => {
+    if(videos?.length) {
+      setVideosExist(true)
+    }
     dispatch(getUserVideos(userId)).then(() => setIsLoaded(true))
 
     return setIsRemoved(false)
@@ -107,7 +111,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
           })}
         </div>
       </>
-    ) : <AllVideos isLoaded={isLoaded}/>
+    ) : !videosExist && <AllVideos />
   );
 };
 
