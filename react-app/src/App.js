@@ -16,6 +16,8 @@ import SearchResults from "./components/Nav/SearchResults";
 import NoResults from "./components/Nav/NoResults";
 import UploadVideoForm from "./components/UploadVideoForm";
 import ProfileImageUpload from "./components/ProfileImageUpload";
+import Categories from "./components/Categories";
+import Category from "./components/Category";
 import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
@@ -93,6 +95,12 @@ function App() {
             </Route>
             <Route path="/profile-image/upload/:userId">
               <ProfileImageUpload  />
+            </Route>
+            <Route path="/categories">
+              <Categories />
+            </Route>
+            <Route path="/category/:categoryId">
+              <Category />
             </Route>
           </Switch>
         </div>

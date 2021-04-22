@@ -29,7 +29,7 @@ const SideNav = ({ setAuthenticated }) => {
           exact={true}
           activeClassName="active"
         >
-          {sessionUser ? sessionUser.username : "Login"}
+          {sessionUser ? "My Profile" : "Login"}
         </NavLink>
 
         <NavLink
@@ -39,6 +39,14 @@ const SideNav = ({ setAuthenticated }) => {
           activeClassName="active"
         >
           {sessionUser ? "All Videos" : "Sign Up"}
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          to={"/categories"}
+          exact={true}
+          activeClassName="active"
+        >
+          {"Categories"}
         </NavLink>
 
         <NavLink

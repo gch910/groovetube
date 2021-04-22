@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import categoriesReducer from "./categories";
 import followsReducer from "./follows";
 import profileReducer from "./profile";
 import sessionReducer from "./session";
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     follows: followsReducer,
     profile: profileReducer,
     uploads: uploadsReducer,
+    categories: categoriesReducer,
     
 });
 

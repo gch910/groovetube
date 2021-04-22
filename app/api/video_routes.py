@@ -110,6 +110,14 @@ def video_genre():
     categoriesDict = {"categories": [category.to_dict() for category in categories]}
     return categoriesDict
 
+@video_routes.route('/category/<int:category_id>')
+def category_videos(category_id):
+    videos = Video.query.filter_by(category_id=category_id).all()
+
+    videosDict = {"videos": [video.to_dict() for video in videos]}
+
+    return videosDict
+
 
 @video_routes.route('/<int:video_id>/delete', methods=['DELETE'])
 def delete_video(video_id):
@@ -124,4 +132,7 @@ def delete_video(video_id):
     db.session.commit()
 
     return {"deleted": "success"}
+
+
+
 

@@ -42,7 +42,7 @@ const AllVideos = () => {
     isLoaded && (
       <>
         <h1 id="home-h1">
-          {sessionUser ? "Start Adding To Your Collection!" : "All Videos"}
+          {sessionUser ? "Add To Your Collection!" : "Browse All Videos"}
         </h1>
         <div id="home-grid">
           {allVideos.map((video) => {

@@ -33,6 +33,7 @@ class Video(db.Model):
             "gif_path": self.gif_path,
             "user_id": self.user_id,
             "category_id": self.category_id,
+            "category_name": self.category.name,
             # "user_collection": [something.to_dict() for something in self.user_collection]
             # "user": self.user.to_dict(),
             "comments": [comment.to_dict() for comment in self.comments],
