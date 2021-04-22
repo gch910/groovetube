@@ -94,8 +94,11 @@ def new_video():
             user_id=form.data['user_id'],
             category_id=form.data['category_id']
         )
+        user = User.query.get(form.data['user_id'])
+        user.video_collection.append(video)
         print(video)
         db.session.add(video)
+        db.session.add(user)
         db.session.commit()
         return video.to_dict()
     print(form.errors)
