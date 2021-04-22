@@ -74,7 +74,7 @@ const UploadVideoForm = () => {
   }, [dispatch, uploaded]);
 
   return (
-    selectCategories.length && (
+    selectCategories.length ? (
       <div id="upload-form-div">
         <form id="upload-form" onSubmit={handleSubmit}>
           <h1 id="upload-h1">Upload a video</h1>
@@ -154,7 +154,7 @@ const UploadVideoForm = () => {
           </div>
         </form>
       </div>
-    )
+    ) : null
   );
 };
 
