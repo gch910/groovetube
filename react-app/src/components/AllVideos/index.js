@@ -5,7 +5,7 @@ import { getAllVideos } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 
-const AllVideos = ({ isLoaded }) => {
+const AllVideos = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVideos = useSelector((state) => state.videos.all_videos);
@@ -35,15 +35,10 @@ const AllVideos = ({ isLoaded }) => {
   };
 
   useEffect(() => {
-    dispatch(getAllVideos()).then(() => {
-      if (!isLoaded) {
-        setVideosLoaded(true);
-      }
-    });
+    dispatch(getAllVideos())
   }, [dispatch]);
 
   return (
-    isLoaded && (
       <>
         <h1 id="home-h1">
           {sessionUser ? "Add To Your Collection!" : "Browse All Videos"}
@@ -79,7 +74,6 @@ const AllVideos = ({ isLoaded }) => {
           })}
         </div>
       </>
-    )
   );
 };
 
