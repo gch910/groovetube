@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getAllVideos } from "../../store/videos";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getCatVideos } from "../../store/categories";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
+import "./Category.css";
 
-const AllVideos = ({ isLoaded }) => {
+const Category = () => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const allVideos = useSelector((state) => state.videos.all_videos);
-  const [videosLoaded, setVideosLoaded] = useState(false);
-  //   const [image, setImage] = useState("");
+  const categoryVids = useSelector((state) => state.categories.category_videos);
+  const { categoryId } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const changeImg = (e, video) => {
+    if (video && gifs[gifKeyCreator(video.gif_path)]) {
+      e.target.src = gifs[gifKeyCreator(video.gif_path)];
+    } else {
+      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
+    }
+  };
+
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2];
 
@@ -26,33 +35,22 @@ const AllVideos = ({ isLoaded }) => {
     return imgKey;
   };
 
-  const changeImg = (e, video) => {
-    if (video && gifs[gifKeyCreator(video.gif_path)]) {
-      e.target.src = gifs[gifKeyCreator(video.gif_path)];
-    } else {
-      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
-    }
-  };
+  let categoryName;
+  if (categoryVids[0]) categoryName = categoryVids[0].category_name;
 
   useEffect(() => {
-    dispatch(getAllVideos()).then(() => {
-      if (!isLoaded) {
-        setVideosLoaded(true);
-      }
-    });
+    dispatch(getCatVideos(categoryId)).then(() => setIsLoaded(true));
   }, [dispatch]);
-
+  
   return (
     isLoaded && (
       <>
-        <h1 id="home-h1">
-          {sessionUser ? "Add To Your Collection!" : "Browse All Videos"}
-        </h1>
+        <h1 id="category-h1">{categoryName}</h1>
         <div id="home-grid">
-          {allVideos.map((video) => {
+          {categoryVids?.map((video, idx) => {
             return (
-              <div id="thumbnail-div">
-                <Link to={`/videos/${video.id}`}>
+              <div key={idx} id="thumbnail-div">
+                <Link to={`/videos/${video?.id}`}>
                   <img
                     onMouseEnter={(e) => changeImg(e, video)}
                     onMouseLeave={(e) =>
@@ -69,7 +67,7 @@ const AllVideos = ({ isLoaded }) => {
                     }
                   />
                 </Link>
-                <Link id="thumbnail-h3-link" to={`/videos/${video.id}`}>
+                <Link id="thumbnail-h3-link" to={`/videos/${video?.id}`}>
                   <div id="thumbnail-h3-div">
                     <h3>{video.title}</h3>
                   </div>
@@ -83,4 +81,4 @@ const AllVideos = ({ isLoaded }) => {
   );
 };
 
-export default AllVideos;
+export default Category;
