@@ -20,7 +20,7 @@ const Categories = () => {
         <h1 id="categories-h1">Categories</h1>
         <div id="categories-div">
           {categories.map((cat) => (
-            <Link to={`category/${cat.id}`}>
+            <Link id="categories-link" to={`category/${cat.id}`}>
               <h2 id="categories-h2">{cat.name}</h2>
             </Link>
           ))}
