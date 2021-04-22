@@ -107,7 +107,7 @@ const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
           })}
         </div>
       </>
-    ) : <AllVideos />
+    ) : <AllVideos isLoaded={isLoaded}/>
   );
 };
 

@@ -5,11 +5,11 @@ import { getAllVideos } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 
-const AllVideos = () => {
+const AllVideos = ({isLoaded}) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const allVideos = useSelector((state) => state.videos.all_videos);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [videosLoaded, setVideosLoaded] = useState(false);
   //   const [image, setImage] = useState("");
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2];
@@ -35,14 +35,18 @@ const AllVideos = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllVideos()).then(() => setIsLoaded(true));
+    dispatch(getAllVideos()).then(() => {
+      if(!isLoaded) {
+        setVideosLoaded(true)
+      }
+    })
   }, [dispatch]);
 
   return (
-    isLoaded && (
+    (videosLoaded || isLoaded) ? (
       <>
         <h1 id="home-h1">
-          {sessionUser ? "Start Adding To Your Collection!" : "All Videos"}
+          {sessionUser ? "Add to your Collection!" : "All Videos"}
         </h1>
         <div id="home-grid">
           {allVideos.map((video) => {
@@ -75,7 +79,7 @@ const AllVideos = () => {
           })}
         </div>
       </>
-    )
+    ) : null
   );
 };
 
