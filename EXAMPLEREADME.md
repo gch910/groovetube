@@ -124,7 +124,7 @@ Installations
 1. Clone the repository
 
    ```sh
-   git clone https://github.com/gch910/cloudify-aa.git
+   git clone https://github.com/gch910/groovetube.git
 
    ```
 
@@ -208,7 +208,7 @@ The music player is built with wavesurfer.js, the package handles loading music 
 
 ## Roadmap
 
-See the [open issues](https://github.com/gch910/cloudify-aa/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/gch910/groovetube/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -252,18 +252,16 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 [search_results]: ./readme_images/search_results.PNG
 [playbar]: ./readme_images/cloudify-playbar.PNG
 
-[contributors-shield]: https://img.shields.io/github/contributors/gch910/cloudify-aa.svg?style=for-the-badge
-[contributors-url]: https://github.com/gch910/cloudify-aa/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/gch910/cloudify-aa.svg?style=for-the-badge
-[forks-url]: https://github.com/gch910/cloudify-aa/network/members
-[stars-shield]: https://img.shields.io/github/stars/gch910/cloudify-aa.svg?style=for-the-badge
-[stars-url]: https://github.com/gch910/cloudify-aa/stargazers
-[issues-shield]: https://img.shields.io/github/issues/gch910/cloudify-aa.svg?style=for-the-badge
-[issues-url]: https://github.com/gch910/cloudify-aa/issues
+[contributors-shield]: https://img.shields.io/github/contributors/gch910/groovetube.svg?style=for-the-badge
+[contributors-url]: https://github.com/gch910/groovetube/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/gch910/groovetube.svg?style=for-the-badge
+[forks-url]: https://github.com/gch910/groovetube/network/members
+[stars-shield]: https://img.shields.io/github/stars/gch910/groovetube.svg?style=for-the-badge
+[stars-url]: https://github.com/gch910/groovetube/stargazers
+[issues-shield]: https://img.shields.io/github/issues/gch910/groovetube.svg?style=for-the-badge
+[issues-url]: https://github.com/gch910/groovetube/issues
 [license-shield]: https://img.shields.io/badge/License-GPL%20v3-blue.svg
-[license-url]: https://github.com/gch910/cloudify-aa/blob/main/LICENSE
+[license-url]: https://github.com/gch910/groovetube/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url-gabriel]: https://www.linkedin.com/in/gabriel-harris-249231208/
-[linkedin-url-josh]: https://www.linkedin.com/in/joshua-miller-625685154/
-[linkedin-url-jevon]: https://www.linkedin.com/in/jevon-timmons/
 [product-screenshot]: images/screenshot.png
