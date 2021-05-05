@@ -38,7 +38,6 @@ const TopNav = () => {
   // };
   const onSearchSubmit = async (e) => {
     e.preventDefault();
-    let found = false;
     
     await dispatch(getSearchResults(search)).then((res) => {
       if(res.length) {

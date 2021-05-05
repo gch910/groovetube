@@ -145,7 +145,7 @@ function User() {
   // if (!userId) {
   //   return <Redirect to="/login" />;
   // }
-  console.log("this is the user", user);
+
   return (
     user && (
       <div>
