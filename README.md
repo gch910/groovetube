@@ -178,7 +178,7 @@ User authentication is handled in Flask using the flask_login package. The werkz
 
 #### Home Page
 
-The Groovetube homepage features sliding carousels of songs sorted by genre.  These carousels dynamically update to include music that has been recently uploaded to the platform.  All album images are active links that immediately play the song when clicked and take you to that artist's user page.  
+The Groovetube homepage features a responsive grid layout of the user's video collection if they are logged in, or a list of  videos to browse if they are not.  Each video thumbnail displays a static image which on hover will display a GIF of the video performance.  The video collection updates as a user adds more to their collection and videos can be removed from the collection via the user's profile page at any time.  The side navbar featured is present on all pages for easy navigation.
 
 ![homepage]
 
@@ -190,9 +190,9 @@ On navigation to the video page, if the specified video is not already present i
 
 #### User Profile
 
-Artist / User pages (they are synonymous in this app) function similarly to song pages.  The data is handled the same way, but the primary focus of this page is rendering all of the songs uploaded by this user. Album art and realease date are included for each song as well as a play button that updates the state of the global playbar when clicked.  The clicked song will become the new "playing" song and the playbar, which persists music playback and information through re-renders, will update to reflect the current audio.  The navigation bar utilizes React state to create seemless filtering of songs based on the active link.  A logged in user may click on their profile picture (a default is provided on signup) to upload a new profile image. 
+A user's profile page offers a grid layout of their collected videos on initial navigation.  On hover, if the logged in user matches the profile user, a button to remove an individual video is displayed, which displays a confirmation of removal once clicked.  A navbar is also presented with options to view the user's uploads, followers and the users they are following.  This navbar utilizes React state to only display information for the currently clicked link. Buttons to delete an uploaded video and unfollow users are only available if user auth has confirmed that this user is the owner of the profile.  Additionally, a follow/unfollow button is available on the profile page if it does not belong to the logged in user.
 
-![songpage]
+![profilepage]
 
 #### Search Results
 When a user enters something into the searchbar, a fetch request is sent to the backend where the data intensive task of querying for matching results is handled.  The backend responds with results for matching songs and artists, which is then rendered on the search results page with the appropriate images/navigation links. 
@@ -246,9 +246,9 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [signin]: ./readme_images/cloudify-login.PNG
-[homepage]: ./readme_images/cloudify-homepage.PNG
+[homepage]: ./readme_images/home-page-groovetube.PNG
 [videopage]: ./readme_images/video-page-groovetube.PNG
-[artistpage]: ./readme_images/cloudify-artistpage.PNG
+[profilepage]: ./readme_images/profile-page-groovetube.PNG
 [search_results]: ./readme_images/search_results.PNG
 [playbar]: ./readme_images/cloudify-playbar.PNG
 
