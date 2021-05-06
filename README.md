@@ -171,7 +171,7 @@ Installations
 
 
 #### User Authorization
-User authentication is handled in Flask using the flask_login package. The werkzeug.security package is used for password hashing. Passwords are not saved to the database, only password hashes. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
+The login page offers a simple but elegent display for entering user credentials. User authentication is handled in Flask using the flask_login package. The werkzeug.security package is used for password hashing. Passwords are not saved to the database, only password hashes. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
 
 ![signin]
 
@@ -190,7 +190,7 @@ On navigation to the video page, if the specified video is not already present i
 
 #### User Profile
 
-A user's profile page offers a grid layout of their collected videos on initial navigation.  On hover, if the logged in user matches the profile user, a button to remove an individual video is displayed, which displays a confirmation of removal once clicked.  A navbar is also presented with options to view the user's uploads, followers and the users they are following.  This navbar utilizes React state to only display information for the currently clicked link. Buttons to delete an uploaded video and unfollow users are only available if user auth has confirmed that this user is the owner of the profile.  Additionally, a follow/unfollow button is available on the profile page if it does not belong to the logged in user.
+At the top of the profile page, the user's profile image and username is displayed, with an option to upload/change the profile picture if they are logged in.  By default a grid layout of the profile user's collected videos is rendered on initial navigation.  On hover, if the logged in user matches the profile user, a button to remove an individual video is displayed, which displays a confirmation of removal once clicked.  A navbar is also presented with options to view the user's uploads, followers and the users they are following.  This navbar utilizes React state to only display information for the currently clicked link. Buttons to delete an uploaded video and unfollow users are only available if user auth has confirmed that this user is the owner of the profile.  Additionally, a follow/unfollow button is available on the profile page if it does not belong to the logged in user.
 
 ![profilepage]
 
@@ -245,7 +245,7 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[signin]: ./readme_images/cloudify-login.PNG
+[signin]: ./login-page-groovetube.PNG
 [homepage]: ./readme_images/home-page-groovetube.PNG
 [videopage]: ./readme_images/video-page-groovetube.PNG
 [profilepage]: ./readme_images/profile-page-groovetube.PNG
