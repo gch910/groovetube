@@ -245,7 +245,7 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[signin]: ./login-page-groovetube.PNG
+[signin]: ./readme_images/login-page-groovetube.PNG
 [homepage]: ./readme_images/home-page-groovetube.PNG
 [videopage]: ./readme_images/video-page-groovetube.PNG
 [profilepage]: ./readme_images/profile-page-groovetube.PNG
