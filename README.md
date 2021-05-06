@@ -204,6 +204,11 @@ Video results can be filtered based on the music genre to make it easier to brow
 
 ![categories]
 
+#### Following
+Clicking on the "following" nav-link on a user's profile page will display the users that they follow.  If the logged in user matches the current profile, they are able to click the "unfollow" button which will delete that column in the database join table and immediately display the updated results.
+
+![following]
+
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -251,6 +256,7 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 [profilepage]: ./readme_images/profile-page-groovetube.PNG
 [search_results]: ./readme_images/search-results-groovetube.PNG
 [categories]: ./readme_images/categories-groovetube.PNG
+[following]: ./readme_images/following-groovetube.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/groovetube.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/groovetube/graphs/contributors
