@@ -195,14 +195,14 @@ At the top of the profile page, the user's profile image and username is display
 ![profilepage]
 
 #### Search Results
-When a user enters something into the searchbar, a fetch request is sent to the backend where the data intensive task of querying for matching results is handled.  The backend responds with results for matching songs and artists, which is then rendered on the search results page with the appropriate images/navigation links. 
+When a user enters something into the searchbar, a fetch request is sent to the backend where the data intensive task of querying for matching results is handled.  The backend responds with results for matching video titles, which is then rendered on the search results page with the appropriate interactive thumbnails. 
 
 ![search_results]
 
-#### Collection
-The music player is built with wavesurfer.js, the package handles loading music and controls related to playing the music. The music is loaded through redux state and the playing/pause buttons are also tied to the redux state so play buttons throughout the website can also manage currently played songs and play/pause status. 
+#### Categories
+Video results can be filtered based on the music genre to make it easier to browse desired results.  A fetch request is made to the backend with the specified category ID, where a query is then made for all matching videos.  
 
-![playbar]
+![categories]
 
 <!-- ROADMAP -->
 
@@ -249,8 +249,8 @@ Project Link: [https://groovetube.herokuapp.com/](https://groovetube.herokuapp.c
 [homepage]: ./readme_images/home-page-groovetube.PNG
 [videopage]: ./readme_images/video-page-groovetube.PNG
 [profilepage]: ./readme_images/profile-page-groovetube.PNG
-[search_results]: ./readme_images/search_results.PNG
-[playbar]: ./readme_images/cloudify-playbar.PNG
+[search_results]: ./readme_images/search-results-groovetube.PNG
+[categories]: ./readme_images/categories-groovetube.PNG
 
 [contributors-shield]: https://img.shields.io/github/contributors/gch910/groovetube.svg?style=for-the-badge
 [contributors-url]: https://github.com/gch910/groovetube/graphs/contributors
