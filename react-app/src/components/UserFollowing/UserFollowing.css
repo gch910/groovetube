@@ -36,3 +36,9 @@
     color: #6a34ce;
 
 }
+
+#following-inner {
+    width: 400px;
+    display: flex;
+    align-items: center;
+}

@@ -45,16 +45,21 @@ const UserFollowing = ({
       {user.following.map((following) => (
         <>
           <div id="following-div">
-            <NavLink to={`/users/${following.id}`} onClick={displayCollection}>
-              <img src={following?.profile_img} className="following-img" />
-            </NavLink>
-            <NavLink
-              id="following-text"
-              to={`/users/${following.id}`}
-              onClick={displayCollection}
-            >
-              {following.username}
-            </NavLink>
+            <div id="following-inner">
+              <NavLink
+                to={`/users/${following.id}`}
+                onClick={displayCollection}
+              >
+                <img src={following?.profile_img} className="following-img" />
+              </NavLink>
+              <NavLink
+                id="following-text"
+                to={`/users/${following.id}`}
+                onClick={displayCollection}
+              >
+                {following.username}
+              </NavLink>
+            </div>
             {sessionUser?.id === user?.id ? (
               <Button
                 id="follow-button"
