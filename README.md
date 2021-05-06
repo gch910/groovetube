@@ -186,7 +186,7 @@ The Groovetube homepage features sliding carousels of songs sorted by genre.  Th
 
 On navigation to the video page, if the specified video is not already present in the redux store, a fetch request will be made to the backend which will respond with queried results of relevent video information.  Am YouTube iframe embed will be rendered for easy interaction with the player.  Using YouTube to host these videos cuts down on database storage and allows users to upload as many videos as they like.  A logged in user can interact with the video page by adding/un-adding the video to their collection, adding/deleting comments, following/unfollowing the posting user, and navigating the video player, with page updates happening instantly.  All of the updated video data is saved to the postgreSQL database where it can be retreived later on.
 
-![video]
+![videopage]
 
 #### User Profile
 
