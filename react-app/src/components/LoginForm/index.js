@@ -29,6 +29,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password)).then((res) => {
+      console.log("response from login", res)
       if (res?.errors) {
         setFormErrors(res.errors);
         return res.errors;
@@ -67,7 +68,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   return (
     <form id="login-form" className={classes.root} onSubmit={onLogin}>
       <h1 id="login-h1">Login</h1>
-      <div>
+      <div id="login-errors">
         {formErrors.map((error) => (
           <div>{error}</div>
         ))}
