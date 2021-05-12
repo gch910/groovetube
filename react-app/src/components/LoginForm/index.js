@@ -29,7 +29,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password)).then((res) => {
-      console.log("response from login", res)
       if (res?.errors) {
         setFormErrors(res.errors);
         return res.errors;

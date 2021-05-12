@@ -39,20 +39,19 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    if (password === repeatPassword) {
-      await dispatch(signUpUser(username, email, password)).then(
-        async (res) => {
-          if (res?.errors) {
-            setFormErrors(res.errors);
-            return res.errors;
-          } else {
-            setAuthenticated(true);
+    // if (password === repeatPassword) {
+    await dispatch(signUpUser(username, email, password)).then((res) => {
+      console.log("response from signup", res);
+      if (res?.errors) {
+        setFormErrors(res.errors);
+        return res.errors;
+      } else {
+        setAuthenticated(true);
 
-            return history.push("/");
-          }
-        }
-      );
-    }
+        return history.push("/");
+      }
+    });
+    // }
   };
 
   useEffect(async () => {
@@ -89,6 +88,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   return (
     <form id="signup-form" className={classes.root} onSubmit={onSignUp}>
       <h1 id="signup-h1">Sign Up</h1>
+      <div id="login-errors">
+        {formErrors.map((error) => (
+          <div>{error}</div>
+        ))}
+      </div>
       <div>
         <TextField
           className="signup-field"

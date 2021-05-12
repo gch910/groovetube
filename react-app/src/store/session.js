@@ -32,6 +32,7 @@ export const signUpUser = (username, email, password) => async dispatch => {
   const res = await signUp(username, email, password)
   
   dispatch(setUser(res))
+  return res;
 };
 
 export const logoutUser = () => async dispatch => {
