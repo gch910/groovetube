@@ -28,8 +28,8 @@ export const loginUser = (email, password) => async (dispatch) => {
   return res;
 };
 
-export const signUpUser = (username, email, password) => async dispatch => {
-  const res = await signUp(username, email, password)
+export const signUpUser = (username, email, password, confirm) => async dispatch => {
+  const res = await signUp(username, email, password, confirm)
   
   dispatch(setUser(res))
   return res;
