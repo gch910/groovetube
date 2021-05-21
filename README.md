@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://groovetube.herokuapp.com/">
-    <img src="favicon.ico" alt="Logo" width="80" height="80">
+    <img src="groovetube_logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Groovetube</h3>
@@ -17,7 +17,7 @@
   <p align="center">
      A social platform for sharing live music video performances.
     <br />
-    <a href="https://github.com/gch910/groovetube"><strong>Explore the docs »</strong></a>
+    <a href="https://groovetube.herokuapp.com/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/gch910/groovetube">View Demo</a>
