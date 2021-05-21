@@ -17,10 +17,10 @@
   <p align="center">
      A social platform for sharing live music video performances.
     <br />
-    <a href="https://groovetube.herokuapp.com/"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/gch910/groovetube"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gch910/groovetube">View Demo</a>
+    <a href="https://groovetube.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/gch910/groovetube/issues">Report a Bug</a>
     ·
