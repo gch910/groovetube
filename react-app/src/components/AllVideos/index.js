@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAllVideos } from "../../store/videos";
 import gifs from "../Home/gifs";
 import imgs from "../Home/images";
@@ -10,7 +10,8 @@ const AllVideos = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const allVideos = useSelector((state) => state.videos.all_videos);
   const [videosLoaded, setVideosLoaded] = useState(false);
-  //   const [image, setImage] = useState("");
+
+
   const gifKeyCreator = (path) => {
     const pathName = path.split("/")[2];
 

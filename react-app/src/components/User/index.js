@@ -49,28 +49,6 @@ function User() {
         }
       }
     });
-
-    // if (followingClicked) {
-    //   setFollowingClicked(false);
-    //   setTimeout(() => {
-    //     setFollowingClicked(true);
-    //   }, 0.0001);
-    // } else if (followersClicked) {
-    //   setFollowersClicked(false);
-    //   setTimeout(() => {
-    //     setFollowersClicked(true);
-    //   }, 0.0001);
-    // } else if (uploadedClicked) {
-    //   setUploadedClicked(false);
-    //   setTimeout(() => {
-    //     setUploadedClicked(true);
-    //   }, 0.0001);
-    // } else if (collectionClicked) {
-    //   setCollectionClicked(false);
-    //   setTimeout(() => {
-    //     setCollectionClicked(true);
-    //   }, 0.0001);
-    // }
   };
 
   const gifKeyCreator = (path) => {
@@ -114,20 +92,10 @@ function User() {
   };
 
   useEffect(() => {
-    // (async () => {
-    //   const response = await fetch(`/api/users/${userId}`);
-    //   const user = await response.json();
-    //   console.log(user)
-    //   setUser(user);
-    // })();
     user && setIsFollowing(user.is_following);
   }, [dispatch, user]);
 
   useEffect(() => {
-    console.log(userId);
-    // if (!userId) {
-    //   return;
-    // }
     dispatch(setProfileUser(userId));
     user && dispatch(getUserFollows(user.id));
 
@@ -141,10 +109,6 @@ function User() {
   ]);
 
   useEffect(() => {}, [isFollowing]);
-
-  // if (!userId) {
-  //   return <Redirect to="/login" />;
-  // }
 
   return (
     user && (
@@ -165,9 +129,12 @@ function User() {
             <h1 id="user-favorites-h1">
               {collectionClicked ? (
                 sessionUser?.id === user?.id ? (
-                 <UserHeader user={user} text={"Your Collection"} />
+                  <UserHeader user={user} text={"Your Collection"} />
                 ) : (
-                  <NotSessionHeader user={user} text={`${user.username}'s Collection`} />
+                  <NotSessionHeader
+                    user={user}
+                    text={`${user.username}'s Collection`}
+                  />
                 )
               ) : (
                 ""
@@ -175,33 +142,67 @@ function User() {
             </h1>
           </div>
           <h1 id="user-favorites-h1">
-            {uploadedClicked
-              ? sessionUser?.id === user?.id
-                ?  <UserHeader user={user} text={"Your Uploads"} />
-                : <NotSessionHeader user={user} text={`${user.username}'s Uploads`} />
-              : ""}
+            {uploadedClicked ? (
+              sessionUser?.id === user?.id ? (
+                <UserHeader user={user} text={"Your Uploads"} />
+              ) : (
+                <NotSessionHeader
+                  user={user}
+                  text={`${user.username}'s Uploads`}
+                />
+              )
+            ) : (
+              ""
+            )}
           </h1>
           <h1 id="user-favorites-h1">
-            {followersClicked
-              ? sessionUser?.id === user?.id
-                ? !user?.followers[0]
-                  ?  <UserHeader user={user} text={"No Followers Yet"} />
-                  :  <UserHeader user={user} text={"Your Followers"} />
-                : !user?.followers[0]
-                ? <NotSessionHeader user={user} text={`${user.username} Has No Followers`} />
-                : <NotSessionHeader user={user} text={`${user.username}'s Followers`} />
-              : ""}
+            {followersClicked ? (
+              sessionUser?.id === user?.id ? (
+                !user?.followers[0] ? (
+                  <UserHeader user={user} text={"No Followers Yet"} />
+                ) : (
+                  <UserHeader user={user} text={"Your Followers"} />
+                )
+              ) : !user?.followers[0] ? (
+                <NotSessionHeader
+                  user={user}
+                  text={`${user.username} Has No Followers`}
+                />
+              ) : (
+                <NotSessionHeader
+                  user={user}
+                  text={`${user.username}'s Followers`}
+                />
+              )
+            ) : (
+              ""
+            )}
           </h1>
           <h1 id="user-favorites-h1">
-            {followingClicked
-              ? sessionUser?.id === user?.id
-                ? !user?.following[0]
-                  ?  <UserHeader user={user} text={"You Aren't Following Anyone"} />
-                  :  <UserHeader user={user} text={"Following"} />
-                : !user?.following[0]
-                ? <NotSessionHeader user={user} text={`${user.username} Isn't Following Anyone`} />
-                : <NotSessionHeader user={user} text={`${user.username}'s Follows`} />
-              : ""}
+            {followingClicked ? (
+              sessionUser?.id === user?.id ? (
+                !user?.following[0] ? (
+                  <UserHeader
+                    user={user}
+                    text={"You Aren't Following Anyone"}
+                  />
+                ) : (
+                  <UserHeader user={user} text={"Following"} />
+                )
+              ) : !user?.following[0] ? (
+                <NotSessionHeader
+                  user={user}
+                  text={`${user.username} Isn't Following Anyone`}
+                />
+              ) : (
+                <NotSessionHeader
+                  user={user}
+                  text={`${user.username}'s Follows`}
+                />
+              )
+            ) : (
+              ""
+            )}
           </h1>
         </div>
         <nav id="profile-nav">
