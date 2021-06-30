@@ -74,7 +74,6 @@ const VideoPage = () => {
     ? (userVideosArray = Object.values(userVideos))
     : (userVideosArray = null);
 
-  // if(userVideosArray) setIsAdded(userVideosArray.some(video => video.id == videoId))
 
   useEffect(() => {
     dispatch(getVideo(videoId)).then(() => setIsLoaded(true));
@@ -84,11 +83,6 @@ const VideoPage = () => {
       dispatch(unloadVideo())
     );
   }, [dispatch, isAdded, newComment, deleted, videoId]);
-
-  // useEffect(() => {
-  //   video &&
-  //     dispatch(getUserFollows(video.user.id)).then(() => setIsLoaded(true));
-  // }, [dispatch, video]);
 
   useEffect(() => {
     video && setIsFollowing(video?.user?.is_following)
@@ -126,19 +120,6 @@ const VideoPage = () => {
             isFollowing={isFollowing}
           />
         )}
-        {/* <div id="add-video-button-div">
-          <button onClick={addVideo}>
-            {userVideosArray?.some((video) => video.id == videoId)
-              ? "Added"
-              : "Add Video"}
-          </button>
-          <button id="follow-button" onClick={addFollow}>
-              {video.user.is_following
-              ? "Following"
-              : `Follow ${video?.user.username}`
-            }
-          </button>
-        </div> */}
         <CommentForm
           userId={userId}
           newComment={newComment}
