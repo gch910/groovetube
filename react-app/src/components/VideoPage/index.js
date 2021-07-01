@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import {
   getVideo,
   addCollection,
   getUserVideos,
-  deleteUserComment,
-  unloadVideo,
 } from "../../store/videos";
 import { addUserFollow } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import ButtonDiv from "./ButtonDiv";
-import Button from "@material-ui/core/Button";
+import Comments from "./Comments";
 import "./VideoPage.css";
 
 const VideoPage = () => {
@@ -20,20 +18,13 @@ const VideoPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const video = useSelector((state) => state.videos.current_video);
   const userVideos = useSelector((state) => state.videos.user_videos);
-  const userFollows = useSelector((state) => state.follows);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  // const [isFollowed, setIsFollowed] = useState(false);
   const [newComment, setNewComment] = useState(false);
   const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
-
-  const buttonClassname = (index) => {
-    if (index === hoverIndex) return "active";
-    else return "button inactive";
-  };
 
   const addVideo = (e) => {
     e.preventDefault();
@@ -55,39 +46,16 @@ const VideoPage = () => {
     });
   };
 
-  console.log("video user", video?.user.id);
-
-  const deleteComment = (e) => {
-    console.log();
-    if (sessionUser?.id == e.target.className.split(" ")[1]) {
-      dispatch(deleteUserComment(e.target.id));
-      setDeleted(true);
-      setTimeout(() => {
-        setDeleted(false);
-      }, 100);
-    }
-  };
-
-  let userVideosArray;
   let userId;
-  userVideos
-    ? (userVideosArray = Object.values(userVideos))
-    : (userVideosArray = null);
-
 
   useEffect(() => {
     dispatch(getVideo(videoId)).then(() => setIsLoaded(true));
     dispatch(getUserVideos(sessionUser?.id)).then(() => setIsLoaded(true));
-
-    return (
-      dispatch(unloadVideo())
-    );
   }, [dispatch, isAdded, newComment, deleted, videoId]);
 
   useEffect(() => {
-    video && setIsFollowing(video?.user?.is_following)
-  
-  }, [video?.user?.is_following])
+    video && setIsFollowing(video?.user?.is_following);
+  }, [video?.user?.is_following]);
 
   if (sessionUser?.user) userId = sessionUser?.user?.id;
 
@@ -125,45 +93,11 @@ const VideoPage = () => {
           newComment={newComment}
           setNewComment={setNewComment}
         />
-        <div id="comments-div">
-          <h3>
-            {video?.comments[0] ? "Comments:" : "Be the First to Comment!"}
-          </h3>
-          {video?.comments.map((comment, idx) => (
-            <div
-              className="comment-div"
-              onMouseEnter={() => (setDeleteShown(true), setHoverIndex(idx))}
-              onMouseLeave={() => (setDeleteShown(false), setHoverIndex(null))}
-            >
-              <div id="image-username-comment">
-                <img
-                  id="user-comment-image"
-                  src={comment.user.profile_img}
-                  alt="profile"
-                />
-                <Link
-                  to={`/users/${comment?.user?.id}`}
-                  id="comment-username-link"
-                >
-                  <h3 id="comment-username">{comment.user.username}:</h3>
-                </Link>
-                <p id="comment-p">{comment.content}</p>
-              </div>
-              {deleteShown && sessionUser?.id == comment.user_id && (
-                <button
-                  className={`delete-comment-button ${
-                    comment.user_id
-                  } ${buttonClassname(idx)} no-outline`}
-                  id={comment.id}
-                  userId={comment.user_id}
-                  onClick={deleteComment}
-                >
-                  Delete
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
+        <Comments
+          video={video}
+          sessionUser={sessionUser}
+          setDeleted={setDeleted}
+        />
       </div>
     )
   );

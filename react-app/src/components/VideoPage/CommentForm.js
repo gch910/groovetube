@@ -2,26 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postUserComment } from "../../store/videos";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const CommentForm = ({ userId, newComment, setNewComment }) => {
   const { videoId } = useParams();
   const dispatch = useDispatch();
-//   const likes = useSelector((state) => state.songs.likes);
   const [comment, setComment] = useState("");
   const [liked, setLiked] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-
-
-//   const likeSong = (e) => {
-//     e.preventDefault();
-//     dispatch(userLike(videoId, userId));
-//     return setTimeout(() => {
-//       setLiked(true)
-//     }, 100)
-    
-//   };
 
   const commentSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +28,7 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
   useEffect(() => {
     setComment("");
 
-    return () => setNewComment(false)
+    return () => setNewComment(false);
   }, [newComment]);
 
   const newCommentSubmit = () => {
@@ -51,9 +40,6 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
 
   return (
     <div id="comment-form-div">
-      {/* <div id="like-button-div">
-         {liked ? <button onClick={likeSong} id="heart-button">Liked<i className="fas fa-heart"></i></button> : <button onClick={likeSong} id="heart-button">Like<i className="far fa-heart"></i></button>}
-      </div> */}
       <form method="post" id="comment-form" onSubmit={commentSubmit}>
         <textarea
           value={comment}
