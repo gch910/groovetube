@@ -13,7 +13,6 @@ import "./User.css";
 
 function User() {
   const dispatch = useDispatch();
-  // const [user, setUser] = useState({});
   const user = useSelector((state) => state.profile.user);
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
@@ -25,12 +24,6 @@ function User() {
   const [isFollowingFollowers, setIsFollowingFollowers] = useState(
     user?.is_following
   );
-
-  const changeImg = (e) => {
-    e.target.src = "https://static.thenounproject.com/png/396915-200.png";
-  };
-
-  console.log(isFollowing, isFollowingFollowers);
 
   const addFollow = () => {
     dispatch(addUserFollow(user.id)).then((res) => {
@@ -52,6 +45,7 @@ function User() {
   };
 
   const gifKeyCreator = (path) => {
+   
     const pathName = path.split("/")[2];
 
     const gifKey = pathName?.slice(0, pathName.indexOf("."));
@@ -281,11 +275,9 @@ function User() {
             {followingClicked ? (
               <UserFollowing
                 userId={userId}
-                followingClicked={followingClicked}
                 setFollowingClicked={setFollowingClicked}
-                displayFollowers={displayFollowers}
                 displayCollection={displayCollection}
-                displayFollowing={displayFollowing}
+                setIsFollowing={setIsFollowing}
                 sessionUser={sessionUser}
                 user={user}
               />

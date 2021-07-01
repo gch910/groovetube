@@ -9,15 +9,12 @@ import "./UserVideos.css";
 
 const UserVideos = ({ userId, gifKeyCreator, imgKeyCreator, user }) => {
   const dispatch = useDispatch();
-  // const paramsId = useParams().userId
   const sessionUser = useSelector((state) => state.session.user);
   const videos = useSelector((state) => state.videos.user_videos);
   const [isRemoved, setIsRemoved] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [videosExist, setVideosExist] = useState(false);
-
-  // console.log(sessionUser?.id === user?.id)
 
 
   const buttonClassname = (index) => {

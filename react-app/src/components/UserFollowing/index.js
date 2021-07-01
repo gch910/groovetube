@@ -8,13 +8,12 @@ import "./UserFollowing.css";
 const UserFollowing = ({
   user,
   displayCollection,
-  displayFollowers,
-  displayFollowing,
-  followingClicked,
   setFollowingClicked,
   sessionUser,
+  setIsFollowing,
+  isFollowing
 }) => {
-  const [isFollowing, setIsFollowing] = useState(null);
+
   const dispatch = useDispatch();
 
   const unfollow = (following) => {
@@ -32,6 +31,10 @@ const UserFollowing = ({
       setFollowingClicked(true);
     }, 1);
   };
+
+  useEffect(() => {
+
+  }, [isFollowing])
 
   const results = (
     <div id="user-following-div">
