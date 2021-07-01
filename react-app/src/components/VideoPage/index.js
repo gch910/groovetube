@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import {
-  getVideo,
-  addCollection,
-  getUserVideos,
-} from "../../store/videos";
+import { getVideo, addCollection, getUserVideos } from "../../store/videos";
 import { addUserFollow } from "../../store/follows";
 import CommentForm from "./CommentForm";
 import ButtonDiv from "./ButtonDiv";
 import Comments from "./Comments";
+import Video from "./Video";
 import "./VideoPage.css";
 
 const VideoPage = () => {
@@ -66,18 +63,7 @@ const VideoPage = () => {
           <h2 id="uploaded-by">Uploaded By: {video?.user?.username}</h2>
         </Link>
         <h2 id="video-h2">{video?.title}</h2>
-        <div id="current-video-div">
-          <iframe
-            id="current-video"
-            width="100%"
-            height="100%"
-            src={video?.video_path}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </div>
+        <Video video={video} />
         {video && sessionUser && (
           <ButtonDiv
             video={video}

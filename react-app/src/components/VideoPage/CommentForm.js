@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { postUserComment } from "../../store/videos";
 import Button from "@material-ui/core/Button";
 
-const CommentForm = ({ userId, newComment, setNewComment }) => {
+const CommentForm = ({ newComment, setNewComment }) => {
   const { videoId } = useParams();
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
-  const [liked, setLiked] = useState(false);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -25,18 +24,17 @@ const CommentForm = ({ userId, newComment, setNewComment }) => {
     await dispatch(postUserComment(userComment, videoId));
   };
 
+  const newCommentSubmit = () => {
+    return setTimeout(() => {
+      setNewComment(true);
+    }, 10);
+  };
+
   useEffect(() => {
     setComment("");
 
     return () => setNewComment(false);
   }, [newComment]);
-
-  const newCommentSubmit = () => {
-    return setTimeout(() => {
-      console.log("hello");
-      setNewComment(true);
-    }, 10);
-  };
 
   return (
     <div id="comment-form-div">
