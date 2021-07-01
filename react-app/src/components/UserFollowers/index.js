@@ -3,13 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./UserFollowers.css";
 
 const UserFollowers = ({ user, displayCollection, sessionUser }) => {
-  //   !user?.followers[0] ? (
-  //   sessionUser?.id === user.id ? (
-  //     <h1 id="no-following-h1">You Have No Followers</h1>
-  //   ) : (
-  //     <h1 id="no-following-h1">No Followers</h1>
-  //   )
-  // ) : (
+
   const results = (
     <div id="user-followers-div">
       {console.log(user)}
