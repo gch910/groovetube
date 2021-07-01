@@ -39,9 +39,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    // if (password === repeatPassword) {
     await dispatch(signUpUser(username, email, password, repeatPassword)).then((res) => {
-      console.log("response from signup", res);
+
       if (res?.errors) {
         setFormErrors(res.errors);
         return res.errors;
@@ -51,7 +50,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         return history.push("/");
       }
     });
-    // }
+
   };
 
   useEffect(async () => {
@@ -144,11 +143,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       </div>
       <label id="profile-img-label">Profile Image</label>
       <input
-        // name="image"
         placeholder="Upload"
         className="choose-file no-outline"
         type="file"
-        // accept="image/*"
         onChange={updateImage}
       />
       <div id="signup-button-div">

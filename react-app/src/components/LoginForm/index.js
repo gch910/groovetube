@@ -60,10 +60,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  // if (authenticated) {
-  //   return <Redirect to="/" />;
-  // }
-
   return (
     <form id="login-form" className={classes.root} onSubmit={onLogin}>
       <h1 id="login-h1">Login</h1>
