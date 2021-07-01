@@ -16,6 +16,7 @@ const UserFollowing = ({
 
   const dispatch = useDispatch();
 
+  //specifically used to unfollow for following section of logged in user
   const unfollow = (following) => {
     console.log(following);
     dispatch(addUserFollow(following.id)).then((res) => {

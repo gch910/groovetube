@@ -13,16 +13,13 @@ const UploadVideoForm = () => {
   const [category, setCategory] = useState(1);
   const [video, setvideo] = useState("");
   const [image, setImage] = useState("");
-  const [gif, setGif] = useState("");
-  const [imageLoading, setImageLoading] = useState(false);
-  const [gifLoading, setGifLoading] = useState(false);
+  // const [gif, setGif] = useState("");
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [success, setSuccess] = useState(false);
 
   const updateImage = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     setImage(file);
   };
 
@@ -46,8 +43,6 @@ const UploadVideoForm = () => {
       title,
       artist: artist,
       video_path: embed,
-      // img_path: image,
-      // gif_path: gif,
       user_id: user.id,
       category_id: category,
     };
@@ -59,7 +54,6 @@ const UploadVideoForm = () => {
       history.push("/");
     }, 1500);
 
-    // }
   };
 
   useEffect(async () => {
@@ -122,6 +116,7 @@ const UploadVideoForm = () => {
             <input
               className="upload-field"
               type="text"
+              video={video}
               onChange={(e) => setvideo(e.target.value)}
               required
             />
@@ -129,23 +124,22 @@ const UploadVideoForm = () => {
           <div className="upload-div">
             <label className="upload-label" id="choose-video-thumbnail">Upload Video Thumbnail
             <input
-              // name="image"
               id="choose-video-thumbnail-input"
               className="upload-field no-outline"
               type="file"
-              // accept="image/*"
+              //cannot include value here or page will refresh
+              // value={image}
               onChange={updateImage}
             />
             </label>
           </div>
           <div className="upload-div">
-            <label className="upload-label">Upload Video Gif</label>
-            <input
+            <label className="upload-label">Upload Video Gif (coming soon)</label>
+            {/* <input
               className="upload-field"
               type="text"
-              // accept="image/*"
               onChange={(e) => setGif(e.target.value)}
-            />
+            /> */}
           </div>
           <div id="upload-submit-button-div">
             <button id="upload-submit-button" type="submit">
