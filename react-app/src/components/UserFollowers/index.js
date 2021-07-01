@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./UserFollowers.css";
 
-const UserFollowers = ({ user, displayCollection, sessionUser }) => {
+const UserFollowers = ({ user, displayCollection }) => {
 
   const results = (
     <div id="user-followers-div">

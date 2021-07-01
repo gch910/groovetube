@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import UserVideos from "../UserVideos";
 import UserUploads from "../UserUploads";
 import UserFollowers from "../UserFollowers";
 import UserFollowing from "../UserFollowing";
 import { UserHeader, NotSessionHeader } from "./UserHeader";
-import { addUserFollow, getUserFollows } from "../../store/follows";
+import { addUserFollow } from "../../store/follows";
 import { setProfileUser, unloadUser } from "../../store/profile";
 import Button from "@material-ui/core/Button";
 import "./User.css";
@@ -21,31 +21,20 @@ function User() {
   const [followersClicked, setFollowersClicked] = useState(false);
   const [followingClicked, setFollowingClicked] = useState(false);
   const [isFollowing, setIsFollowing] = useState(user?.is_following);
-  const [isFollowingFollowers, setIsFollowingFollowers] = useState(
-    user?.is_following
-  );
 
   const addFollow = () => {
     dispatch(addUserFollow(user.id)).then((res) => {
       console.log(res.result);
-      if (followersClicked) {
-        if (res.result === "follow") {
-          setIsFollowingFollowers(true);
-        } else {
-          setIsFollowingFollowers(false);
-        }
+
+      if (res.result === "follow") {
+        setIsFollowing(true);
       } else {
-        if (res.result === "follow") {
-          setIsFollowing(true);
-        } else {
-          setIsFollowing(false);
-        }
+        setIsFollowing(false);
       }
     });
   };
 
   const gifKeyCreator = (path) => {
-   
     const pathName = path.split("/")[2];
 
     const gifKey = pathName?.slice(0, pathName.indexOf("."));
@@ -86,23 +75,14 @@ function User() {
   };
 
   useEffect(() => {
-    user && setIsFollowing(user.is_following);
-  }, [dispatch, user]);
-
-  useEffect(() => {
     dispatch(setProfileUser(userId));
-    user && dispatch(getUserFollows(user.id));
 
     return () => dispatch(unloadUser());
-  }, [
-    dispatch,
-    userId,
-    followingClicked,
-    followersClicked,
-    isFollowingFollowers,
-  ]);
+  }, [dispatch, userId, followingClicked, followersClicked, isFollowing]);
 
-  useEffect(() => {}, [isFollowing]);
+  useEffect(() => {
+    user && setIsFollowing(user.is_following);
+  }, [dispatch, user]);
 
   return (
     user && (
@@ -115,7 +95,7 @@ function User() {
                 variant="contained"
                 onClick={() => addFollow()}
               >
-                {isFollowing || isFollowingFollowers ? "Unfollow" : `Follow`}
+                {isFollowing ? "Unfollow" : `Follow`}
               </Button>
             ) : (
               ""

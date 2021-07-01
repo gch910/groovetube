@@ -16,8 +16,6 @@ def users():
 def user(id):
     user = User.query.get(id)
     userDict = user.to_dict()
-    # is_following = current_user.id in [follower["id"] for follower in user.followers]:
-    #     useDict["is_following"] = True
     
     userDict["is_following"] = current_user.id in [follower.id for follower in user.followers] if current_user.is_authenticated else False
     return userDict
@@ -59,8 +57,6 @@ def get_followers(user_id):
 
     
 
-
-    # return {"success": False}
 
 
 

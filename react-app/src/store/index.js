@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import categoriesReducer from "./categories";
-import followsReducer from "./follows";
 import profileReducer from "./profile";
 import sessionReducer from "./session";
 import uploadsReducer from "./upload";
@@ -10,7 +9,6 @@ import videosReducer from "./videos";
 const rootReducer = combineReducers({
     videos: videosReducer,
     session: sessionReducer,
-    follows: followsReducer,
     profile: profileReducer,
     uploads: uploadsReducer,
     categories: categoriesReducer,
