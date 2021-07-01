@@ -233,7 +233,6 @@ const videosReducer = (state = initialState, action) => {
     }
     case POST_COMMENT: {
       newState = { ...state };
-      // const userSongs = newState.user_songs = {}
       const comment = action.comment;
       newState.comments = comment;
       return newState;

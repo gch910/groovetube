@@ -4,13 +4,6 @@ from flask_login import UserMixin
 from .collection import user_collection
 from .follows import follows
 
-
-
-# follows = db.Table('follows',
-#     db.Column('follow_a_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-#     db.Column('follow_b_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-# )
-
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
@@ -29,7 +22,6 @@ class User(db.Model, UserMixin):
     secondary=follows,
     primaryjoin=(follows.c.follower_id == id),
     secondaryjoin=(follows.c.followed_id == id),
-    # backref=db.backref("follows", lazy="dynamic"),
     lazy="dynamic"
   )
   following = db.relationship(
@@ -37,16 +29,8 @@ class User(db.Model, UserMixin):
     secondary=follows,
     primaryjoin=(follows.c.followed_id == id),
     secondaryjoin=(follows.c.follower_id == id),
-    # backref=db.backref("follows", lazy="dynamic"),
     lazy="dynamic"
   )
-  # liked_videos = db.relationship('Video', backref=db.backref("videos"), secondary='Like')
-
-  # friends = db.relationship(
-  #   'User', secondary=follows,
-  #   primaryjoin = (id==follows.c.follow_a_id),
-  #   secondaryjoin= (id==follows.c.follow_b_id)
-  # )
 
 
   @property
@@ -68,7 +52,6 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email,
-      # "videos": [video.to_dict() for video in self.videos],
       "comments": [comment.to_dict() for comment in self.comments],
       "video_collection": [video.to_dict() for video in self.video_collection],
       "followers": [user.to_simple() for user in self.followers],
@@ -83,22 +66,6 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "profile_img": self.profile_img
     }
-
-  # def followers_dict(self):
-  #   return {
-  #   "id": self.id,
-  #   "username": self.username,
-  #   "email": self.email,
-  #   "followers": [user.followers_dict() for user in self.followers]
-  #   }
-
-  # def following_dict(self):
-  #     return {
-  #   "id": self.id,
-  #   "username": self.username,
-  #   "email": self.email,
-  #   "following": [user.following_dict() for user in self.following]
-  #   }
   
   def to_simple(self):
     return {

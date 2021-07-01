@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required, current_user
+from flask_login import current_user
 from app.models import db, Video, User, Comment, Category
 from app.forms.comment_form import CommentForm
 from app.forms.search_form import SearchForm
@@ -89,8 +89,6 @@ def new_video():
             title=form.data['title'],
             artist=form.data['artist'],
             video_path=form.data['video_path'],
-            # img_path=form.data['img_path'],
-            # gif_path=form.data['gif_path'],
             user_id=form.data['user_id'],
             category_id=form.data['category_id']
         )

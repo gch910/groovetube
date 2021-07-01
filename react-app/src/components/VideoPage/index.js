@@ -18,9 +18,7 @@ const VideoPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [newComment, setNewComment] = useState(false);
-  const [deleteShown, setDeleteShown] = useState(false);
   const [deleted, setDeleted] = useState(false);
-  const [hoverIndex, setHoverIndex] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
 
   const addVideo = (e) => {
