@@ -6,6 +6,8 @@ import gifs from "../Home/gifs";
 import imgs from "../Home/images";
 import "./Category.css";
 
+
+//actual videos from a given category
 const Category = () => {
   const dispatch = useDispatch();
   const categoryVids = useSelector((state) => state.categories.category_videos);

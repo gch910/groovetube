@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from "../../store/categories";
 import "./Categories.css";
 
+//list of categories with links to vids from that category
 const Categories = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.all_categories);
@@ -13,7 +14,7 @@ const Categories = () => {
     dispatch(getCategories()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  console.log(categories);
+ 
   return (
     isLoaded && (
       <>
