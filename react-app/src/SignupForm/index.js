@@ -97,6 +97,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           className="signup-field"
           type="text"
           name="username"
+          autoComplete="username"
           placeholder="Username"
           onChange={updateUsername}
           value={username}

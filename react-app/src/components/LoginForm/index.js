@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect, useHistory, Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../store/session";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -29,10 +29,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password)).then((res) => {
+      console.log("response", res)
       if (res?.errors) {
+        console.log("response errors", res?.errors)
         setFormErrors(res.errors);
         return res.errors;
       } else {
+        console.log("good response", res)
         setAuthenticated(true);
         return history.push("/");
       }
@@ -76,7 +79,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           placeholder="Email"
           value={email}
           onChange={updateEmail}
-          label="Username"
+          label="Email"
           variant="outlined"
         />
       </div>
