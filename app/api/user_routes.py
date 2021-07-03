@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User
 
@@ -19,6 +19,7 @@ def user(id):
     
     userDict["is_following"] = current_user.id in [follower.id for follower in user.followers] if current_user.is_authenticated else False
     return userDict
+
 
 @user_routes.route("/me/following", methods=['POST'])
 @login_required

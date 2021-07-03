@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import current_user
 from app.models import db, Video, User, Comment, Category
 from app.forms.comment_form import CommentForm
@@ -47,7 +47,6 @@ def video(video_id):
     return {"video": videoDict}
 
 
-
 @video_routes.route('/<int:id>/comment', methods=['POST'])
 def video_comment(id):
     form = CommentForm()
@@ -60,6 +59,7 @@ def video_comment(id):
         db.session.add(comment)
         db.session.commit()
     return comment.to_dict()
+
 
 @video_routes.route('/comment/<int:id>/delete', methods=["DELETE"])
 def delete_video_comment(id):
@@ -102,11 +102,13 @@ def new_video():
     print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+
 @video_routes.route('/categories')
 def video_genre():
     categories = Category.query.all()
     categoriesDict = {"categories": [category.to_dict() for category in categories]}
     return categoriesDict
+
 
 @video_routes.route('/category/<int:category_id>')
 def category_videos(category_id):
