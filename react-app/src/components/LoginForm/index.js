@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import "./LoginForm.css";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
   const [formErrors, setFormErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -29,13 +29,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(email, password)).then((res) => {
-      console.log("response", res)
       if (res?.errors) {
-        console.log("response errors", res?.errors)
         setFormErrors(res.errors);
         return res.errors;
       } else {
-        console.log("good response", res)
         setAuthenticated(true);
         return history.push("/");
       }
