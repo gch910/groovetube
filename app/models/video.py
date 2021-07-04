@@ -22,6 +22,7 @@ class Video(db.Model):
     user_collection = db.relationship("User", secondary=user_collection, back_populates="video_collection")
 
     def to_dict(self):
+        #temporary way to get comment to top - need to do this by time and change model
         if self.comments:
             self.comments.insert(0, self.comments.pop())
         return {
