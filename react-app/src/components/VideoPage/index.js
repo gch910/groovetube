@@ -81,6 +81,7 @@ const VideoPage = () => {
           video={video}
           sessionUser={sessionUser}
           setDeleted={setDeleted}
+          newComment={newComment}
         />
       </div>
     )

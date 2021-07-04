@@ -175,7 +175,7 @@ export const getSearchResults = (search) => async (dispatch) => {
     }),
   });
   const data = await res.json();
-  console.log(data);
+  
   dispatch(searchResults(data.videos));
 
   return data.videos;

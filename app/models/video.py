@@ -22,6 +22,8 @@ class Video(db.Model):
     user_collection = db.relationship("User", secondary=user_collection, back_populates="video_collection")
 
     def to_dict(self):
+        if self.comments:
+            self.comments.insert(0, self.comments.pop())
         return {
             "id": self.id,
             "title": self.title,

@@ -77,6 +77,7 @@ def video_search():
     user_search = form.data["search"]
     if form.validate_on_submit():
         videos = Video.query.filter(Video.title.ilike(f'%{user_search}%')).all()
+        
     return {"videos": [video.to_dict() for video in videos]}
 
 

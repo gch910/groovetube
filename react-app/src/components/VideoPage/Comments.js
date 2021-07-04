@@ -25,6 +25,7 @@ const Comments = ({ video, sessionUser, setDeleted }) => {
     }
   };
 
+
   return (
     <div id="comments-div">
       <h3>{video?.comments[0] ? "Comments:" : "Be the First to Comment!"}</h3>
@@ -37,7 +38,7 @@ const Comments = ({ video, sessionUser, setDeleted }) => {
           <div id="image-username-comment">
             <img
               id="user-comment-image"
-              src={comment.user.profile_img}
+              src={comment?.user?.profile_img}
               alt="profile"
             />
             <Link to={`/users/${comment?.user?.id}`} id="comment-username-link">

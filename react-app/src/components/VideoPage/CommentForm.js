@@ -22,6 +22,7 @@ const CommentForm = ({ newComment, setNewComment }) => {
     };
 
     await dispatch(postUserComment(userComment, videoId));
+
   };
 
   const newCommentSubmit = () => {
