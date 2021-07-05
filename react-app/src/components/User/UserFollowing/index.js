@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { addUserFollow } from "../../store/follows";
+import { addUserFollow } from "../../../store/follows";
 import Button from "@material-ui/core/Button";
 import "./UserFollowing.css";
 

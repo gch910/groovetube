@@ -18,7 +18,7 @@ import UploadVideoForm from "./components/UploadVideoForm";
 import ProfileImageUpload from "./components/ProfileImageUpload";
 import Categories from "./components/Categories";
 import Category from "./components/Category";
-import { authenticate } from "./services/auth";
+// import { authenticate } from "./services/auth";
 import { restoreUser } from "./store/session";
 
 function App() {

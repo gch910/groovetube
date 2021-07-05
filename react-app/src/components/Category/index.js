@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCatVideos } from "../../store/categories";
-import gifs from "../Home/gifs";
 import imgs from "../Home/images";
+import { imgKeyCreator, changeImg } from "../utils";
 import "./Category.css";
 
 
@@ -14,30 +14,8 @@ const Category = () => {
   const { categoryId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const changeImg = (e, video) => {
-    if (video && gifs[gifKeyCreator(video.gif_path)]) {
-      e.target.src = gifs[gifKeyCreator(video.gif_path)];
-    } else {
-      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
-    }
-  };
-
-  const gifKeyCreator = (path) => {
-    const pathName = path.split("/")[2];
-
-    const gifKey = pathName?.slice(0, pathName.indexOf("."));
-
-    return gifKey;
-  };
-  const imgKeyCreator = (path) => {
-    const pathName = path.split("/")[2];
-
-    const imgKey = pathName?.slice(0, pathName.indexOf("."));
-
-    return imgKey;
-  };
-
   let categoryName;
+
   if (categoryVids[0]) categoryName = categoryVids[0].category_name;
 
   useEffect(() => {

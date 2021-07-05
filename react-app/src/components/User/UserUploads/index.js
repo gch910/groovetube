@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUploadedVideos, deleteUserVideo } from "../../store/videos";
-import gifs from "../Home/gifs";
-import imgs from "../Home/images";
+import { getUploadedVideos, deleteUserVideo } from "../../../store/videos";
+import imgs from "../../Home/images";
+import { imgKeyCreator, changeImg } from "../../utils";
 import "./UserUploads.css";
 
-const UserUploads = ({
-  userId,
-  gifKeyCreator,
-  imgKeyCreator,
-  user,
-  sessionUser,
-}) => {
+const UserUploads = ({ userId, user, sessionUser }) => {
   const dispatch = useDispatch();
   const uploadedVideos = useSelector((state) => state.videos.uploaded_videos);
   const [isLoaded, setIsLoaded] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
-
-  // const [buttonShown, setButtonShown] = useState(false);
 
   const buttonClassname = (index) => {
     if (index === hoverIndex) return "active";
@@ -35,16 +27,6 @@ const UserUploads = ({
       setDeleted(true);
       e.target.innerText = "Delete";
     }, 500);
-  };
-
-  const changeImg = (e, video, idx) => {
-    setHoverIndex(idx)
-    if (video && gifs[gifKeyCreator(video.gif_path)]) {
-      e.target.src = gifs[gifKeyCreator(video.gif_path)];
-    } else {
-      video && (e.target.src = "https://i.stack.imgur.com/y9DpT.jpg");
-    }
-    // setButtonShown(true);
   };
 
   useEffect(() => {
@@ -84,13 +66,15 @@ const UserUploads = ({
                   />
                 </Link>
                 {sessionUser?.id === user?.id ? (
-                    <button
-                      onClick={(e) => deleteVideoClick(e)}
-                      id={video.id}
-                      className={`delete-video-button no-outline ${buttonClassname(idx)}`}
-                    >
-                      Delete
-                    </button>
+                  <button
+                    onClick={(e) => deleteVideoClick(e)}
+                    id={video.id}
+                    className={`delete-video-button no-outline ${buttonClassname(
+                      idx
+                    )}`}
+                  >
+                    Delete
+                  </button>
                 ) : (
                   ""
                 )}

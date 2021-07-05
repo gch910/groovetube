@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import UserVideos from "../UserVideos";
-import UserUploads from "../UserUploads";
-import UserFollowers from "../UserFollowers";
-import UserFollowing from "../UserFollowing";
+import UserVideos from "./UserVideos";
+import UserUploads from "./UserUploads";
+import UserFollowers from "./UserFollowers";
+import UserFollowing from "./UserFollowing";
 import { UserHeader, NotSessionHeader } from "./UserHeader";
 import { addUserFollow } from "../../store/follows";
 import { setProfileUser, unloadUser } from "../../store/profile";
@@ -32,21 +32,6 @@ function User() {
         setIsFollowing(false);
       }
     });
-  };
-
-  const gifKeyCreator = (path) => {
-    const pathName = path.split("/")[2];
-
-    const gifKey = pathName?.slice(0, pathName.indexOf("."));
-
-    return gifKey;
-  };
-  const imgKeyCreator = (path) => {
-    const pathName = path.split("/")[2];
-
-    const imgKey = pathName?.slice(0, pathName.indexOf("."));
-
-    return imgKey;
   };
 
   const displayCollection = () => {
@@ -216,12 +201,7 @@ function User() {
         <div id="profile-display">
           <div id="profile-songs-div">
             {collectionClicked ? (
-              <UserVideos
-                userId={userId}
-                gifKeyCreator={gifKeyCreator}
-                imgKeyCreator={imgKeyCreator}
-                user={user}
-              />
+              <UserVideos userId={userId} user={user} />
             ) : (
               ""
             )}
@@ -232,8 +212,6 @@ function User() {
                 userId={userId}
                 sessionUser={sessionUser}
                 user={user}
-                gifKeyCreator={gifKeyCreator}
-                imgKeyCreator={imgKeyCreator}
               />
             ) : (
               ""

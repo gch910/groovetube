@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllVideos } from "../../store/videos";
-import AllVideos from "../AllVideos";
+import AllVideos from "./AllVideos";
 import "./AllVideos.css";
 
 //meant to render AllVideos component
