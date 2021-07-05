@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./SignupForm";
-import Nav from "./components/Nav";
 import SideNav from "./components/Nav/SideNav";
 import TopNav from "./components/Nav/TopNav";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -25,7 +24,6 @@ function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const sessionUser = useSelector((state) => state.user);
 
   useEffect(() => {
     (async () => {
@@ -43,7 +41,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Nav setAuthenticated={setAuthenticated} /> */}
       <TopNav setAuthenticated={setAuthenticated} />
       <div id="content">
         <SideNav setAuthenticated={setAuthenticated} />
@@ -94,7 +91,7 @@ function App() {
               <UploadVideoForm />
             </Route>
             <Route path="/profile-image/upload/:userId">
-              <ProfileImageUpload  />
+              <ProfileImageUpload />
             </Route>
             <Route path="/categories">
               <Categories />

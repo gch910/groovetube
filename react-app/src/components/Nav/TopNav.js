@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSearchResults } from "../../store/videos";
 import { Link, useHistory } from "react-router-dom";
 import logo from "./logo"
+import "./NavBar.css";
 
 const TopNav = () => {
   const dispatch = useDispatch();
