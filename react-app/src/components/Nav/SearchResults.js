@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./SearchResults.css";
 import imgs from "../Home/images";
