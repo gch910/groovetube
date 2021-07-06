@@ -32,7 +32,7 @@ const VideoPage = () => {
 
   const addFollow = () => {
     dispatch(addUserFollow(video.user.id)).then((res) => {
-      console.log(res.result);
+      
       if (res.result === "follow") {
         setIsFollowing(true);
       } else {

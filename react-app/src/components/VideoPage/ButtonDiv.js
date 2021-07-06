@@ -20,7 +20,7 @@ const ButtonDiv = ({
           variant="contained"
           onClick={() => addFollow()}
         >
-          {isFollowing ? "Unfollow" : `Follow`}
+          {isFollowing ? "Unfollow" : "Follow"}
         </Button>
       )}
     </div>

@@ -28,19 +28,20 @@ def add_follower():
 
     user = User.query.get(body["person_to_follow_id"])
     result = {}
-
+    #to follow
     if current_user.id not in [follower.id for follower in user.followers]:
 
         user.followers.append(current_user)
 
         db.session.add(user)
-        result["success"] = True
+
         result["result"] = "follow" 
-        
+
+    #to unfollow   
     else:
         user.followers = filter(lambda follower: follower.id != current_user.id, user.followers)
         db.session.add(user)
-        result["success"] = True
+
         result["result"] = "unfollow" 
 
 
