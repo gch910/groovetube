@@ -25,7 +25,6 @@ function User() {
   const addFollow = () => {
     dispatch(addUserFollow(user.id)).then((res) => {
 
-
       if (res.result === "follow") {
         setIsFollowing(true);
       } else {
